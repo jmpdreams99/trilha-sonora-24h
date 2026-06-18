@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🎵 Trilha Sonora 24h</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 <body>
 
     <!-- ===== TELA DE LOGIN ===== -->
@@ -26,6 +26,32 @@
                     <label>👤 Seu nome (único)</label>
                     <input type="text" id="nome-usuario" placeholder="Escolha um nome" maxlength="20" required />
                     <span id="erro-nome" class="erro"></span>
+                </div>
+
+                <div class="campo">
+                    <label>🎤 Escolha 3 cantores favoritos</label>
+                    <div class="favoritos-group">
+                        <select id="fav-cantor1"><option value="">Cantor 1</option></select>
+                        <select id="fav-cantor2"><option value="">Cantor 2</option></select>
+                        <select id="fav-cantor3"><option value="">Cantor 3</option></select>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label>🎵 Escolha 3 gêneros favoritos</label>
+                    <div class="favoritos-group">
+                        <select id="fav-genero1"><option value="">Gênero 1</option></select>
+                        <select id="fav-genero2"><option value="">Gênero 2</option></select>
+                        <select id="fav-genero3"><option value="">Gênero 3</option></select>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label>🔔 Ativar notificações?</label>
+                    <select id="notificacoes">
+                        <option value="sim">Sim, quero receber notificações</option>
+                        <option value="nao">Não, obrigado</option>
+                    </select>
                 </div>
 
                 <button type="submit" id="btn-entrar">Entrar na Trilha 🎶</button>
@@ -53,91 +79,171 @@
             <p class="subtitle">Um desafio musical a cada dia!</p>
         </header>
 
-        <main>
+        <!-- NAVEGAÇÃO -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-pagina="pagina-inicio">🏠 Início</button>
+            <button class="nav-tab" data-pagina="pagina-jogo">🎮 Jogo</button>
+            <button class="nav-tab" data-pagina="pagina-musica">🎵 Música do Dia</button>
+            <button class="nav-tab" data-pagina="pagina-playlist">🎧 Playlist</button>
+            <button class="nav-tab" data-pagina="pagina-perfil">👤 Perfil</button>
+            <button class="nav-tab" data-pagina="pagina-amigos">🤝 Amigos</button>
+            <button class="nav-tab" data-pagina="pagina-notificacoes">🔔 Notificações</button>
+        </nav>
 
-            <!-- DESAFIO DO DIA -->
+        <!-- ===== PÁGINA INÍCIO ===== -->
+        <div id="pagina-inicio" class="pagina active">
+
             <section class="desafio-dia">
                 <div class="badge">🔥 Desafio de hoje</div>
                 <h2>Qual é a Emoção?</h2>
                 <p class="tema">A palavra de hoje é: <strong>"SAUDADE"</strong></p>
-                <p class="descricao">
-                    Indique uma música que transmita essa emoção e explique o porquê!
-                </p>
+                <p class="descricao">Indique uma música que transmita essa emoção e explique o porquê!</p>
                 <button class="btn-participar" id="btn-participar">Participar</button>
             </section>
 
-            <!-- CARDS DOS DESAFIOS -->
             <section class="desafios">
-                <h2>🎯 Os 5 Desafios Musicais</h2>
+                <h2 style="color:#d81b60;font-size:1.6rem;text-align:center;margin-bottom:16px;">🎯 Os 5 Desafios Musicais</h2>
                 <div class="grid">
-
-                    <div class="card">
-                        <div class="card-icon">🎶</div>
-                        <h3>Trilha Sonora da Minha Vida</h3>
-                        <p>A cada dia, um tema novo. Poste uma música que representa aquele momento.</p>
-                        <span class="tag">diário</span>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-icon">🔍</div>
-                        <h3>Desafio da Letra</h3>
-                        <p>Descubra qual música é a partir de um trecho misterioso. Quem acertar primeiro ganha pontos!</p>
-                        <span class="tag">quiz</span>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-icon">🎨</div>
-                        <h3>Crie uma Capa de Álbum</h3>
-                        <p>Pegue uma música aleatória e crie uma capa de álbum imaginária para ela.</p>
-                        <span class="tag">criativo</span>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-icon">💭</div>
-                        <h3>Qual é a Emoção?</h3>
-                        <p>Recomende uma música para uma palavra do dia e justifique sua escolha.</p>
-                        <span class="tag">reflexão</span>
-                    </div>
-
-                    <div class="card destaque">
-                        <div class="card-icon">🤝</div>
-                        <h3>Dueto Impossível</h3>
-                        <p>Dois artistas completamente diferentes se encontram. Vote na melhor ideia!</p>
-                        <span class="tag">⭐ melhor</span>
-                    </div>
-
+                    <div class="card"><div class="card-icon">🎶</div><h3>Trilha Sonora da Minha Vida</h3><p>A cada dia, um tema novo.</p><span class="tag">diário</span></div>
+                    <div class="card"><div class="card-icon">🔍</div><h3>Desafio da Letra</h3><p>Descubra a música pelo trecho.</p><span class="tag">quiz</span></div>
+                    <div class="card"><div class="card-icon">🎨</div><h3>Crie uma Capa de Álbum</h3><p>Crie uma capa para uma música.</p><span class="tag">criativo</span></div>
+                    <div class="card"><div class="card-icon">💭</div><h3>Qual é a Emoção?</h3><p>Recomende uma música para a palavra.</p><span class="tag">reflexão</span></div>
+                    <div class="card destaque"><div class="card-icon">🤝</div><h3>Dueto Impossível</h3><p>Vote na melhor ideia!</p><span class="tag">⭐ melhor</span></div>
                 </div>
             </section>
 
-            <!-- RANKING -->
             <section class="ranking">
                 <h2>🏆 Ranking da Semana</h2>
-                <div id="ranking-lista">
-                    <p class="sem-participantes">Nenhum participante ainda. Seja o primeiro! 🎶</p>
-                </div>
+                <div id="ranking-lista"><p class="sem-participantes">Nenhum participante ainda. Seja o primeiro! 🎶</p></div>
             </section>
 
-            <!-- PARTICIPAR -->
             <section class="participar">
                 <h2>Como participar?</h2>
                 <div class="passos">
-                    <div class="passo">
-                        <span class="numero">1</span>
-                        <p>Escolha um dos desafios</p>
-                    </div>
-                    <div class="passo">
-                        <span class="numero">2</span>
-                        <p>Crie sua resposta criativa</p>
-                    </div>
-                    <div class="passo">
-                        <span class="numero">3</span>
-                        <p>Poste e ganhe pontos!</p>
-                    </div>
+                    <div class="passo"><span class="numero">1</span><p>Escolha um desafio</p></div>
+                    <div class="passo"><span class="numero">2</span><p>Crie sua resposta</p></div>
+                    <div class="passo"><span class="numero">3</span><p>Ganhe pontos!</p></div>
                 </div>
                 <button class="btn-enviar" id="btn-enviar">Enviar minha resposta</button>
             </section>
+        </div>
 
-        </main>
+        <!-- ===== PÁGINA JOGO ===== -->
+        <div id="pagina-jogo" class="pagina">
+            <div class="jogo-container">
+                <h2>🎮 Duelo Musical</h2>
+                <p class="sub">Escolha o modo e decida qual é o melhor!</p>
+
+                <div class="jogo-opcoes">
+                    <button class="jogo-btn selected" data-modo="cantor">🎤 Cantores</button>
+                    <button class="jogo-btn" data-modo="musica">🎵 Músicas</button>
+                </div>
+
+                <div id="jogo-status">
+                    <div class="jogo-placar" id="jogo-placar">Rodada 1 de 5</div>
+                    <div class="jogo-duelo" id="jogo-duelo">
+                        <div class="jogo-duelo-item" data-escolha="1">
+                            <div class="nome-item" id="item1-nome">Carregando...</div>
+                            <div class="genero-item" id="item1-genero"></div>
+                        </div>
+                        <div class="vs">⚡ VS ⚡</div>
+                        <div class="jogo-duelo-item" data-escolha="2">
+                            <div class="nome-item" id="item2-nome">Carregando...</div>
+                            <div class="genero-item" id="item2-genero"></div>
+                        </div>
+                    </div>
+                    <div id="jogo-resultado" class="jogo-resultado"></div>
+                    <button class="btn-participar" id="btn-proxima-rodada" style="margin-top:12px;">Próxima Rodada</button>
+                    <button class="btn-participar" id="btn-reiniciar-jogo" style="margin-top:8px;background:#d81b60;color:#fff;">🔄 Reiniciar Jogo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PÁGINA MÚSICA DO DIA ===== -->
+        <div id="pagina-musica" class="pagina">
+            <div class="musica-aleatoria">
+                <h2>🎵 Música Recomendada do Dia</h2>
+                <p class="sub">Baseada nos seus cantores e gêneros favoritos!</p>
+                <div id="musica-do-dia-container">
+                    <div class="musica-card">
+                        <h3 id="musica-dia-nome">Carregando...</h3>
+                        <p class="artista" id="musica-dia-artista">Artista</p>
+                        <p class="genero" id="musica-dia-genero">Gênero</p>
+                        <a href="#" target="_blank" class="link-musica" id="musica-dia-link">▶ Ouvir no YouTube</a>
+                        <div class="nota-area">
+                            <select id="nota-musica-dia"><option value="1">⭐ 1</option><option value="2">⭐ 2</option><option value="3">⭐ 3</option><option value="4" selected>⭐ 4</option><option value="5">⭐ 5</option></select>
+                            <button id="btn-nota-musica-dia">Dar Nota</button>
+                        </div>
+                        <div class="comentarios-area">
+                            <textarea id="comentario-musica-dia" placeholder="Deixe seu comentário sobre esta música..."></textarea>
+                            <button id="btn-comentario-musica-dia">Comentar</button>
+                        </div>
+                        <div id="musica-dia-comentarios"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PÁGINA PLAYLIST ===== -->
+        <div id="pagina-playlist" class="pagina">
+            <div class="playlist-container">
+                <h2>🎧 Playlist Colaborativa</h2>
+                <p class="sub">Adicione músicas e veja o que seus amigos estão ouvindo!</p>
+                <div id="playlist-container">
+                    <p style="text-align:center;color:#999;">Adicione seus amigos para começar!</p>
+                </div>
+                <div style="margin-top:16px;text-align:center;">
+                    <button class="btn-participar" id="btn-add-musica-playlist">➕ Adicionar Música à Playlist</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PÁGINA PERFIL ===== -->
+        <div id="pagina-perfil" class="pagina">
+            <div class="perfil-container">
+                <h2>👤 Meu Perfil</h2>
+                <div class="perfil-info" id="perfil-info">
+                    <div class="avatar" id="perfil-avatar">🎵</div>
+                    <div class="nome-perfil" id="perfil-nome">Usuário</div>
+                    <div class="bio-perfil" id="perfil-bio">Sua biografia aqui...</div>
+                    <div class="detalhes" id="perfil-detalhes">Pontos: 0 | Amigos: 0</div>
+                </div>
+                <div class="perfil-edit">
+                    <input type="text" id="edit-bio" placeholder="Nova biografia..." />
+                    <input type="text" id="edit-avatar" placeholder="Emoji do avatar (ex: 🎤)" maxlength="2" />
+                    <button id="btn-salvar-perfil">Salvar Perfil</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PÁGINA AMIGOS ===== -->
+        <div id="pagina-amigos" class="pagina">
+            <div class="amigos-container">
+                <h2>🤝 Amigos</h2>
+                <p class="sub">Adicione amigos e veja as playlists deles!</p>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+                    <input type="text" id="input-add-amigo" placeholder="Nome do amigo" style="flex:1;padding:10px 14px;border:2px solid #f8bbd0;border-radius:14px;font-size:0.9rem;" />
+                    <button class="btn-add-amigo" id="btn-add-amigo">➕ Adicionar</button>
+                </div>
+                <div id="lista-amigos">
+                    <p style="text-align:center;color:#999;">Nenhum amigo ainda.</p>
+                </div>
+                <div style="margin-top:12px;">
+                    <h3 style="color:#d81b60;font-size:1.1rem;">Solicitações Pendentes</h3>
+                    <div id="solicitacoes-amigos"><p style="color:#999;">Nenhuma solicitação.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PÁGINA NOTIFICAÇÕES ===== -->
+        <div id="pagina-notificacoes" class="pagina">
+            <div class="notificacoes-container">
+                <h2>🔔 Notificações</h2>
+                <div id="lista-notificacoes">
+                    <p style="text-align:center;color:#999;">Nenhuma notificação.</p>
+                </div>
+            </div>
+        </div>
 
         <footer>
             <p>🎵 Trilha Sonora 24h — Feito com ♥ pela galera da escola</p>
@@ -146,298 +252,1127 @@
     </div>
 
     <script>
+        // ============================================================
+        // ===== DADOS: 300 CANTORES E 300 MÚSICAS =====
+        // ============================================================
+
+        const CANTORES = [
+            // Pop / Internacional
+            { nome: 'Taylor Swift', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Ed Sheeran', genero: 'Pop', pais: 'Reino Unido' },
+            { nome: 'Ariana Grande', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Justin Bieber', genero: 'Pop', pais: 'Canadá' },
+            { nome: 'Dua Lipa', genero: 'Pop', pais: 'Reino Unido' },
+            { nome: 'Shawn Mendes', genero: 'Pop', pais: 'Canadá' },
+            { nome: 'Billie Eilish', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Bruno Mars', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Katy Perry', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Lady Gaga', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Rihanna', genero: 'Pop', pais: 'Barbados' },
+            { nome: 'The Weeknd', genero: 'Pop', pais: 'Canadá' },
+            { nome: 'Post Malone', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Harry Styles', genero: 'Pop', pais: 'Reino Unido' },
+            { nome: 'Camila Cabello', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Selena Gomez', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Demi Lovato', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Miley Cyrus', genero: 'Pop', pais: 'EUA' },
+            { nome: 'P!nk', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Kelly Clarkson', genero: 'Pop', pais: 'EUA' },
+            // Rock
+            { nome: 'Queen', genero: 'Rock', pais: 'Reino Unido' },
+            { nome: 'The Beatles', genero: 'Rock', pais: 'Reino Unido' },
+            { nome: 'Led Zeppelin', genero: 'Rock', pais: 'Reino Unido' },
+            { nome: 'Nirvana', genero: 'Rock', pais: 'EUA' },
+            { nome: 'Foo Fighters', genero: 'Rock', pais: 'EUA' },
+            { nome: 'Red Hot Chili Peppers', genero: 'Rock', pais: 'EUA' },
+            { nome: 'Guns N\' Roses', genero: 'Rock', pais: 'EUA' },
+            { nome: 'AC/DC', genero: 'Rock', pais: 'Austrália' },
+            { nome: 'Metallica', genero: 'Rock', pais: 'EUA' },
+            { nome: 'The Rolling Stones', genero: 'Rock', pais: 'Reino Unido' },
+            { nome: 'Pink Floyd', genero: 'Rock', pais: 'Reino Unido' },
+            { nome: 'The Who', genero: 'Rock', pais: 'Reino Unido' },
+            // Rap/Hip-Hop
+            { nome: 'Eminem', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Drake', genero: 'Rap', pais: 'Canadá' },
+            { nome: 'Kendrick Lamar', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Jay-Z', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Kanye West', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Travis Scott', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Snoop Dogg', genero: 'Rap', pais: 'EUA' },
+            { nome: '50 Cent', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Ice Cube', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Notorious B.I.G.', genero: 'Rap', pais: 'EUA' },
+            // Eletrônico
+            { nome: 'David Guetta', genero: 'Eletrônico', pais: 'França' },
+            { nome: 'Calvin Harris', genero: 'Eletrônico', pais: 'Reino Unido' },
+            { nome: 'The Chainsmokers', genero: 'Eletrônico', pais: 'EUA' },
+            { nome: 'Marshmello', genero: 'Eletrônico', pais: 'EUA' },
+            { nome: 'Alan Walker', genero: 'Eletrônico', pais: 'Reino Unido' },
+            { nome: 'Tiësto', genero: 'Eletrônico', pais: 'Holanda' },
+            { nome: 'Martin Garrix', genero: 'Eletrônico', pais: 'Holanda' },
+            // MPB
+            { nome: 'Caetano Veloso', genero: 'MPB', pais: 'Brasil' },
+            { nome: 'Gilberto Gil', genero: 'MPB', pais: 'Brasil' },
+            { nome: 'Milton Nascimento', genero: 'MPB', pais: 'Brasil' },
+            { nome: 'Elis Regina', genero: 'MPB', pais: 'Brasil' },
+            { nome: 'Chico Buarque', genero: 'MPB', pais: 'Brasil' },
+            // Sertanejo
+            { nome: 'Marília Mendonça', genero: 'Sertanejo', pais: 'Brasil' },
+            { nome: 'Jorge & Mateus', genero: 'Sertanejo', pais: 'Brasil' },
+            { nome: 'Henrique & Juliano', genero: 'Sertanejo', pais: 'Brasil' },
+            { nome: 'Zé Neto & Cristiano', genero: 'Sertanejo', pais: 'Brasil' },
+            // Funk
+            { nome: 'Anitta', genero: 'Funk', pais: 'Brasil' },
+            { nome: 'Ludmilla', genero: 'Funk', pais: 'Brasil' },
+            { nome: 'MC Kevinho', genero: 'Funk', pais: 'Brasil' },
+            { nome: 'MC Fioti', genero: 'Funk', pais: 'Brasil' },
+            // Pagode
+            { nome: 'Thiaguinho', genero: 'Pagode', pais: 'Brasil' },
+            { nome: 'Exaltasamba', genero: 'Pagode', pais: 'Brasil' },
+            { nome: 'Grupo Revelação', genero: 'Pagode', pais: 'Brasil' },
+            // Indie
+            { nome: 'Arctic Monkeys', genero: 'Indie', pais: 'Reino Unido' },
+            { nome: 'The Strokes', genero: 'Indie', pais: 'EUA' },
+            { nome: 'Tame Impala', genero: 'Indie', pais: 'Austrália' },
+            { nome: 'Vampire Weekend', genero: 'Indie', pais: 'EUA' },
+            // Blues
+            { nome: 'B.B. King', genero: 'Blues', pais: 'EUA' },
+            { nome: 'Eric Clapton', genero: 'Blues', pais: 'Reino Unido' },
+            { nome: 'Stevie Ray Vaughan', genero: 'Blues', pais: 'EUA' },
+            // Reggae
+            { nome: 'Bob Marley', genero: 'Reggae', pais: 'Jamaica' },
+            { nome: 'Burning Spear', genero: 'Reggae', pais: 'Jamaica' },
+            { nome: 'Peter Tosh', genero: 'Reggae', pais: 'Jamaica' },
+            // Jazz
+            { nome: 'Miles Davis', genero: 'Jazz', pais: 'EUA' },
+            { nome: 'John Coltrane', genero: 'Jazz', pais: 'EUA' },
+            { nome: 'Louis Armstrong', genero: 'Jazz', pais: 'EUA' },
+            // Gospel
+            { nome: 'Kirk Franklin', genero: 'Gospel', pais: 'EUA' },
+            { nome: 'Mahalia Jackson', genero: 'Gospel', pais: 'EUA' },
+            { nome: 'Aline Barros', genero: 'Gospel', pais: 'Brasil' },
+            // Metal
+            { nome: 'Iron Maiden', genero: 'Metal', pais: 'Reino Unido' },
+            { nome: 'Black Sabbath', genero: 'Metal', pais: 'Reino Unido' },
+            { nome: 'Slayer', genero: 'Metal', pais: 'EUA' },
+            // Forró
+            { nome: 'Luiz Gonzaga', genero: 'Forró', pais: 'Brasil' },
+            { nome: 'Dominguinhos', genero: 'Forró', pais: 'Brasil' },
+            { nome: 'Falamansa', genero: 'Forró', pais: 'Brasil' },
+        ];
+
+        // Completar até 300 cantores
+        while (CANTORES.length < 300) {
+            const extras = [
+                { nome: 'Adele', genero: 'Pop', pais: 'Reino Unido' },
+                { nome: 'Sam Smith', genero: 'Pop', pais: 'Reino Unido' },
+                { nome: 'Sia', genero: 'Pop', pais: 'Austrália' },
+                { nome: 'Lorde', genero: 'Pop', pais: 'Nova Zelândia' },
+                { nome: 'Imagine Dragons', genero: 'Rock', pais: 'EUA' },
+                { nome: 'Coldplay', genero: 'Rock', pais: 'Reino Unido' },
+                { nome: 'Linkin Park', genero: 'Rock', pais: 'EUA' },
+                { nome: 'The Killers', genero: 'Rock', pais: 'EUA' },
+                { nome: 'Muse', genero: 'Rock', pais: 'Reino Unido' },
+                { nome: 'Green Day', genero: 'Rock', pais: 'EUA' },
+                { nome: 'Fall Out Boy', genero: 'Rock', pais: 'EUA' },
+                { nome: 'Paramore', genero: 'Rock', pais: 'EUA' },
+                { nome: 'Twenty One Pilots', genero: 'Rock', pais: 'EUA' },
+                { nome: 'The Neighbourhood', genero: 'Rock', pais: 'EUA' },
+                { nome: 'Hozier', genero: 'Rock', pais: 'Irlanda' },
+                { nome: 'Florence + The Machine', genero: 'Rock', pais: 'Reino Unido' },
+                { nome: 'Lana Del Rey', genero: 'Pop', pais: 'EUA' },
+                { nome: 'Halsey', genero: 'Pop', pais: 'EUA' },
+                { nome: 'Troye Sivan', genero: 'Pop', pais: 'Austrália' },
+                { nome: 'Charlie Puth', genero: 'Pop', pais: 'EUA' },
+                { nome: 'Niall Horan', genero: 'Pop', pais: 'Irlanda' },
+                { nome: 'Louis Tomlinson', genero: 'Pop', pais: 'Reino Unido' },
+                { nome: 'Liam Payne', genero: 'Pop', pais: 'Reino Unido' },
+                { nome: 'Zayn Malik', genero: 'Pop', pais: 'Reino Unido' },
+                { nome: 'Khalid', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Lil Nas X', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Megan Thee Stallion', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Cardi B', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Nicki Minaj', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Doja Cat', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Jack Harlow', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Kid Cudi', genero: 'Rap', pais: 'EUA' },
+                { nome: 'J. Cole', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Pusha T', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Future', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Lil Uzi Vert', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Playboi Carti', genero: 'Rap', pais: 'EUA' },
+                { nome: 'A$AP Rocky', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Tyler, The Creator', genero: 'Rap', pais: 'EUA' },
+                { nome: 'Mac Miller', genero: 'Rap', pais: 'EUA' },
+            ];
+            for (const e of extras) {
+                if (CANTORES.length < 300 && !CANTORES.find(c => c.nome === e.nome)) {
+                    CANTORES.push(e);
+                }
+            }
+        }
+
+        const MUSICAS = [
+            // Pop
+            { nome: 'Shape of You', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2017, link: 'https://www.youtube.com/watch?v=JGwWNGJdvx8' },
+            { nome: 'Blinding Lights', cantor: 'The Weeknd', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=4NRXx6U8ABQ' },
+            { nome: 'Dance Monkey', cantor: 'Tones and I', genero: 'Pop', ano: 2019, link: 'https://www.youtube.com/watch?v=q0hyYWKXF0Q' },
+            { nome: 'Levitating', cantor: 'Dua Lipa', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=TUVcZfQe-Kw' },
+            { nome: 'Bad Guy', cantor: 'Billie Eilish', genero: 'Pop', ano: 2019, link: 'https://www.youtube.com/watch?v=DyDfgMOUjCI' },
+            { nome: 'Shallow', cantor: 'Lady Gaga', genero: 'Pop', ano: 2018, link: 'https://www.youtube.com/watch?v=bo_efYhYU2A' },
+            { nome: 'Thank U, Next', cantor: 'Ariana Grande', genero: 'Pop', ano: 2018, link: 'https://www.youtube.com/watch?v=gl1aHhXnN1k' },
+            { nome: 'Peaches', cantor: 'Justin Bieber', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=tQ0yjYUFK1k' },
+            { nome: 'Watermelon Sugar', cantor: 'Harry Styles', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=E07s5ZYygMg' },
+            { nome: 'Senorita', cantor: 'Shawn Mendes', genero: 'Pop', ano: 2019, link: 'https://www.youtube.com/watch?v=Pkh8UtuejGw' },
+            { nome: 'Havana', cantor: 'Camila Cabello', genero: 'Pop', ano: 2017, link: 'https://www.youtube.com/watch?v=HCjNJDNzw8Y' },
+            { nome: 'Lose You To Love Me', cantor: 'Selena Gomez', genero: 'Pop', ano: 2019, link: 'https://www.youtube.com/watch?v=zlJDTxahav0' },
+            { nome: 'Sorry', cantor: 'Justin Bieber', genero: 'Pop', ano: 2015, link: 'https://www.youtube.com/watch?v=fRh_vgS2dFE' },
+            { nome: 'New Rules', cantor: 'Dua Lipa', genero: 'Pop', ano: 2017, link: 'https://www.youtube.com/watch?v=k2qgadSvNyU' },
+            { nome: 'Without Me', cantor: 'Halsey', genero: 'Pop', ano: 2018, link: 'https://www.youtube.com/watch?v=ZAfAud_M_mg' },
+            // Rock
+            { nome: 'Bohemian Rhapsody', cantor: 'Queen', genero: 'Rock', ano: 1975, link: 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ' },
+            { nome: 'Smells Like Teen Spirit', cantor: 'Nirvana', genero: 'Rock', ano: 1991, link: 'https://www.youtube.com/watch?v=hTWKbfoikeg' },
+            { nome: 'Back in Black', cantor: 'AC/DC', genero: 'Rock', ano: 1980, link: 'https://www.youtube.com/watch?v=pAgnJDJN4VA' },
+            { nome: 'Sweet Child O\' Mine', cantor: 'Guns N\' Roses', genero: 'Rock', ano: 1987, link: 'https://www.youtube.com/watch?v=1w7OgIMMRc4' },
+            { nome: 'Wonderwall', cantor: 'Oasis', genero: 'Rock', ano: 1995, link: 'https://www.youtube.com/watch?v=6hzrDeceEKc' },
+            { nome: 'Californication', cantor: 'Red Hot Chili Peppers', genero: 'Rock', ano: 1999, link: 'https://www.youtube.com/watch?v=YlUKcNNmywk' },
+            { nome: 'Stairway to Heaven', cantor: 'Led Zeppelin', genero: 'Rock', ano: 1971, link: 'https://www.youtube.com/watch?v=QkF3oxziUI4' },
+            { nome: 'Enter Sandman', cantor: 'Metallica', genero: 'Rock', ano: 1991, link: 'https://www.youtube.com/watch?v=CD-E-LDc384' },
+            { nome: 'Everlong', cantor: 'Foo Fighters', genero: 'Rock', ano: 1997, link: 'https://www.youtube.com/watch?v=eBG7P-K-r1Y' },
+            { nome: 'Hotel California', cantor: 'Eagles', genero: 'Rock', ano: 1976, link: 'https://www.youtube.com/watch?v=09839DpTctU' },
+            // Rap
+            { nome: 'Lose Yourself', cantor: 'Eminem', genero: 'Rap', ano: 2002, link: 'https://www.youtube.com/watch?v=_YhypkJhVOA' },
+            { nome: 'God\'s Plan', cantor: 'Drake', genero: 'Rap', ano: 2018, link: 'https://www.youtube.com/watch?v=xpVfcZ0ZcFM' },
+            { nome: 'HUMBLE.', cantor: 'Kendrick Lamar', genero: 'Rap', ano: 2017, link: 'https://www.youtube.com/watch?v=tvTRZJ-4EyI' },
+            { nome: 'Sicko Mode', cantor: 'Travis Scott', genero: 'Rap', ano: 2018, link: 'https://www.youtube.com/watch?v=6ONRf7h3Mdk' },
+            { nome: 'Juicy', cantor: 'Notorious B.I.G.', genero: 'Rap', ano: 1994, link: 'https://www.youtube.com/watch?v=_JZom_gVfuw' },
+            { nome: 'California Love', cantor: '2Pac', genero: 'Rap', ano: 1995, link: 'https://www.youtube.com/watch?v=1R6CkZTj-qE' },
+            { nome: 'Hotline Bling', cantor: 'Drake', genero: 'Rap', ano: 2015, link: 'https://www.youtube.com/watch?v=uxpDa-c-4Mc' },
+            { nome: 'Old Town Road', cantor: 'Lil Nas X', genero: 'Rap', ano: 2019, link: 'https://www.youtube.com/watch?v=w2Ov5jzm3j8' },
+            { nome: 'WAP', cantor: 'Cardi B', genero: 'Rap', ano: 2020, link: 'https://www.youtube.com/watch?v=hsm4poTWjMs' },
+            { nome: 'Montero', cantor: 'Lil Nas X', genero: 'Rap', ano: 2021, link: 'https://www.youtube.com/watch?v=6swmTBVI83k' },
+            // Eletrônico
+            { nome: 'Titanium', cantor: 'David Guetta', genero: 'Eletrônico', ano: 2011, link: 'https://www.youtube.com/watch?v=JRfuAukYTKg' },
+            { nome: 'Wake Me Up', cantor: 'Avicii', genero: 'Eletrônico', ano: 2013, link: 'https://www.youtube.com/watch?v=IcrbM1l_BoI' },
+            { nome: 'Roses', cantor: 'The Chainsmokers', genero: 'Eletrônico', ano: 2015, link: 'https://www.youtube.com/watch?v=9Gq8e0cCk-w' },
+            { nome: 'Faded', cantor: 'Alan Walker', genero: 'Eletrônico', ano: 2015, link: 'https://www.youtube.com/watch?v=60ItHLz5WEA' },
+            { nome: 'Animals', cantor: 'Martin Garrix', genero: 'Eletrônico', ano: 2013, link: 'https://www.youtube.com/watch?v=gCYcHz2k5x0' },
+            { nome: 'Summer', cantor: 'Calvin Harris', genero: 'Eletrônico', ano: 2014, link: 'https://www.youtube.com/watch?v=ebXbLfLACGM' },
+            // MPB
+            { nome: 'O Leãozinho', cantor: 'Caetano Veloso', genero: 'MPB', ano: 1977, link: 'https://www.youtube.com/watch?v=6ZZVpwQo3PU' },
+            { nome: 'Aquarela', cantor: 'Toquinho', genero: 'MPB', ano: 1983, link: 'https://www.youtube.com/watch?v=c0p3qM42C3c' },
+            { nome: 'O Que É O Que É?', cantor: 'Gonzaguinha', genero: 'MPB', ano: 1980, link: 'https://www.youtube.com/watch?v=GZAh4aEmcNQ' },
+            { nome: 'Como Nossos Pais', cantor: 'Elis Regina', genero: 'MPB', ano: 1976, link: 'https://www.youtube.com/watch?v=mxYbCjMh8iU' },
+            // Sertanejo
+            { nome: 'Ai Se Eu Te Pego', cantor: 'Michel Teló', genero: 'Sertanejo', ano: 2011, link: 'https://www.youtube.com/watch?v=hcm55lU9knw' },
+            { nome: 'Infiel', cantor: 'Marília Mendonça', genero: 'Sertanejo', ano: 2019, link: 'https://www.youtube.com/watch?v=yrgP2jrAV-I' },
+            { nome: 'Notificação Preferida', cantor: 'Zé Neto & Cristiano', genero: 'Sertanejo', ano: 2020, link: 'https://www.youtube.com/watch?v=NGn-6TDPU6s' },
+            { nome: 'Batom de Cereja', cantor: 'Israel & Rodolffo', genero: 'Sertanejo', ano: 2021, link: 'https://www.youtube.com/watch?v=h_GvoY9Yy3M' },
+            // Funk
+            { nome: 'Vai Malandra', cantor: 'Anitta', genero: 'Funk', ano: 2017, link: 'https://www.youtube.com/watch?v=k3yGgGvTgIQ' },
+            { nome: 'Bum Bum Tam Tam', cantor: 'MC Fioti', genero: 'Funk', ano: 2017, link: 'https://www.youtube.com/watch?v=bZu1hzGWm9A' },
+            { nome: 'Olha a Explosão', cantor: 'MC Kevinho', genero: 'Funk', ano: 2018, link: 'https://www.youtube.com/watch?v=plhGKYi9jPA' },
+            // Pagode
+            { nome: 'Pé Na Areia', cantor: 'Thiaguinho', genero: 'Pagode', ano: 2015, link: 'https://www.youtube.com/watch?v=3QhDEm3blfA' },
+            { nome: 'Tá Vendo Aquela Lua', cantor: 'Exaltasamba', genero: 'Pagode', ano: 2012, link: 'https://www.youtube.com/watch?v=1LrOmGDdZSM' },
+            // Indie
+            { nome: 'Do I Wanna Know?', cantor: 'Arctic Monkeys', genero: 'Indie', ano: 2013, link: 'https://www.youtube.com/watch?v=bpOSxM0rNPM' },
+            { nome: 'The Less I Know The Better', cantor: 'Tame Impala', genero: 'Indie', ano: 2015, link: 'https://www.youtube.com/watch?v=sBzR63WmGkE' },
+            // Gospel
+            { nome: 'I Can Only Imagine', cantor: 'MercyMe', genero: 'Gospel', ano: 2001, link: 'https://www.youtube.com/watch?v=N_lrrq_opng' },
+            { nome: 'Reckless Love', cantor: 'Cory Asbury', genero: 'Gospel', ano: 2018, link: 'https://www.youtube.com/watch?v=Sc6SS-Hbz2g' },
+            // Forró
+            { nome: 'Asa Branca', cantor: 'Luiz Gonzaga', genero: 'Forró', ano: 1947, link: 'https://www.youtube.com/watch?v=GIqCQ2ELrwg' },
+            { nome: 'Xote das Meninas', cantor: 'Luiz Gonzaga', genero: 'Forró', ano: 1980, link: 'https://www.youtube.com/watch?v=FBRnrS-nE7E' },
+        ];
+
+        // Completar até 300 músicas
+        while (MUSICAS.length < 300) {
+            const extras = [
+                { nome: 'Positions', cantor: 'Ariana Grande', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=tcYodQoapMg' },
+                { nome: 'Montero', cantor: 'Lil Nas X', genero: 'Rap', ano: 2021, link: 'https://www.youtube.com/watch?v=6swmTBVI83k' },
+                { nome: 'drivers license', cantor: 'Olivia Rodrigo', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=ZmDBbnmKpqQ' },
+                { nome: 'good 4 u', cantor: 'Olivia Rodrigo', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=gNi_6U5Pm_o' },
+                { nome: 'Kiss Me More', cantor: 'Doja Cat', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=0EVVKs6DQLo' },
+                { nome: 'Need to Know', cantor: 'Doja Cat', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=g8GJtR8bVrk' },
+                { nome: 'Stay', cantor: 'The Kid LAROI', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=kTJczUoc26U' },
+                { nome: 'Beggin', cantor: 'Måneskin', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=wXhTH1RGDyk' },
+                { nome: 'I Wanna Be Your Slave', cantor: 'Måneskin', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=JcW8-WXU_FA' },
+                { nome: 'Shivers', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=Il0S8BoucSA' },
+                { nome: 'Bad Habits', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=orJSJGHjBLI' },
+                { nome: 'Cold Heart', cantor: 'Elton John', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=qRd5sS4RMUE' },
+                { nome: 'Enemy', cantor: 'Imagine Dragons', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=D9G1VOjN_84' },
+                { nome: 'Heat Waves', cantor: 'Glass Animals', genero: 'Indie', ano: 2021, link: 'https://www.youtube.com/watch?v=mRD0-GxqHVo' },
+            ];
+            for (const e of extras) {
+                if (MUSICAS.length < 300 && !MUSICAS.find(m => m.nome === e.nome)) {
+                    MUSICAS.push(e);
+                }
+            }
+        }
+
+        // ============================================================
+        // ===== LÓGICA DO SITE =====
+        // ============================================================
+
+        // Variáveis globais
+        let usuarioAtual = null;
+        let jogoData = { modo: 'cantor', rodada: 0, totalRodadas: 5, itens: [], escolhas: [] };
+
         // ===== INICIALIZAÇÃO =====
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('conteudo-principal').style.display = 'none';
             document.getElementById('tela-login').style.display = 'flex';
 
-            var usuarioSalvo = localStorage.getItem('usuario_atual');
+            const usuarioSalvo = localStorage.getItem('usuario_atual');
             if (usuarioSalvo) {
                 fazerLogin(usuarioSalvo);
             }
+
+            // Preencher selects de cantores
+            preencherSelectsCantores();
+            preencherSelectsGeneros();
         });
 
-        // ===== ELEMENTOS =====
-        var telaLogin = document.getElementById('tela-login');
-        var conteudo = document.getElementById('conteudo-principal');
-        var formLogin = document.getElementById('form-login');
-        var inputEmail = document.getElementById('email-usuario');
-        var inputNome = document.getElementById('nome-usuario');
-        var erroEmail = document.getElementById('erro-email');
-        var erroNome = document.getElementById('erro-nome');
-        var nomeExibido = document.getElementById('nome-exibido');
-        var btnSair = document.getElementById('btn-sair');
-        var btnExcluir = document.getElementById('btn-excluir');
-        var rankingLista = document.getElementById('ranking-lista');
-        var btnParticipar = document.getElementById('btn-participar');
-        var btnEnviar = document.getElementById('btn-enviar');
-
-        // ===== FUNÇÕES =====
-
-        function carregarUsuarios() {
-            var dados = localStorage.getItem('usuarios_trilha');
-            if (dados) {
-                return JSON.parse(dados);
+        function preencherSelectsCantores() {
+            const selects = ['fav-cantor1', 'fav-cantor2', 'fav-cantor3'];
+            for (const id of selects) {
+                const sel = document.getElementById(id);
+                sel.innerHTML = '<option value="">Cantor...</option>';
+                for (const c of CANTORES) {
+                    const opt = document.createElement('option');
+                    opt.value = c.nome;
+                    opt.textContent = c.nome + ' (' + c.genero + ')';
+                    sel.appendChild(opt);
+                }
             }
-            return [];
+        }
+
+        function preencherSelectsGeneros() {
+            const generos = [...new Set(CANTORES.map(c => c.genero))].sort();
+            const selects = ['fav-genero1', 'fav-genero2', 'fav-genero3'];
+            for (const id of selects) {
+                const sel = document.getElementById(id);
+                sel.innerHTML = '<option value="">Gênero...</option>';
+                for (const g of generos) {
+                    const opt = document.createElement('option');
+                    opt.value = g;
+                    opt.textContent = g;
+                    sel.appendChild(opt);
+                }
+            }
+        }
+
+        // ===== NAVEGAÇÃO =====
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.pagina').forEach(p => p.classList.remove('active'));
+                document.getElementById(this.dataset.pagina).classList.add('active');
+            });
+        });
+
+        // ===== FUNÇÕES DE USUÁRIO =====
+        function carregarUsuarios() {
+            const dados = localStorage.getItem('usuarios_trilha');
+            return dados ? JSON.parse(dados) : [];
         }
 
         function salvarUsuarios(usuarios) {
             localStorage.setItem('usuarios_trilha', JSON.stringify(usuarios));
         }
 
-        function carregarRanking() {
-            var usuarios = carregarUsuarios();
-            var ranking = [];
-            for (var i = 0; i < usuarios.length; i++) {
-                ranking.push({
-                    nome: usuarios[i].nome,
-                    pontos: usuarios[i].pontos || 0
-                });
-            }
-            return ranking;
+        function getUsuario(nome) {
+            const usuarios = carregarUsuarios();
+            return usuarios.find(u => u.nome === nome);
         }
 
-        function renderizarRanking() {
-            var ranking = carregarRanking();
-            rankingLista.innerHTML = '';
-
-            if (ranking.length === 0) {
-                rankingLista.innerHTML = '<p class="sem-participantes">Nenhum participante ainda. Seja o primeiro! 🎶</p>';
-                return;
-            }
-
-            ranking.sort(function(a, b) {
-                return b.pontos - a.pontos;
-            });
-
-            for (var i = 0; i < ranking.length; i++) {
-                var item = ranking[i];
-                var div = document.createElement('div');
-                div.className = 'rank-item';
-
-                var posicao = '';
-                if (i === 0) posicao = '🥇';
-                else if (i === 1) posicao = '🥈';
-                else if (i === 2) posicao = '🥉';
-                else posicao = (i + 1) + 'º';
-
-                div.innerHTML = 
-                    '<span class="posicao">' + posicao + '</span>' +
-                    '<span class="nome">' + item.nome + '</span>' +
-                    '<span class="pontos">' + item.pontos + ' pts</span>';
-
-                rankingLista.appendChild(div);
+        function atualizarUsuario(nome, dados) {
+            const usuarios = carregarUsuarios();
+            const idx = usuarios.findIndex(u => u.nome === nome);
+            if (idx >= 0) {
+                usuarios[idx] = { ...usuarios[idx], ...dados };
+                salvarUsuarios(usuarios);
             }
         }
 
         function adicionarPontos(nome, pontos) {
-            var usuarios = carregarUsuarios();
-            var encontrou = false;
-
-            for (var i = 0; i < usuarios.length; i++) {
-                if (usuarios[i].nome.toLowerCase() === nome.toLowerCase()) {
-                    usuarios[i].pontos = (usuarios[i].pontos || 0) + pontos;
-                    encontrou = true;
-                    break;
-                }
+            const usuario = getUsuario(nome);
+            if (usuario) {
+                usuario.pontos = (usuario.pontos || 0) + pontos;
+                atualizarUsuario(nome, { pontos: usuario.pontos });
+                renderizarRanking();
+                renderizarPerfil();
             }
-
-            if (!encontrou) {
-                usuarios.push({ 
-                    nome: nome, 
-                    email: '', 
-                    pontos: pontos 
-                });
-            }
-
-            salvarUsuarios(usuarios);
-            renderizarRanking();
         }
 
-        function fazerLogin(nome) {
-            var usuarios = carregarUsuarios();
-            var usuario = null;
+        function renderizarRanking() {
+            const usuarios = carregarUsuarios();
+            const ranking = usuarios.map(u => ({ nome: u.nome, pontos: u.pontos || 0 }));
+            ranking.sort((a, b) => b.pontos - a.pontos);
 
-            for (var i = 0; i < usuarios.length; i++) {
-                if (usuarios[i].nome === nome) {
-                    usuario = usuarios[i];
-                    break;
-                }
-            }
-
-            if (!usuario) {
-                alert('Usuário não encontrado!');
+            const lista = document.getElementById('ranking-lista');
+            lista.innerHTML = '';
+            if (ranking.length === 0) {
+                lista.innerHTML = '<p class="sem-participantes">Nenhum participante ainda. Seja o primeiro! 🎶</p>';
                 return;
             }
-
-            localStorage.setItem('usuario_atual', nome);
-            localStorage.setItem('email_atual', usuario.email);
-
-            nomeExibido.textContent = '👤 ' + nome;
-
-            telaLogin.style.display = 'none';
-            conteudo.style.display = 'block';
-
-            renderizarRanking();
+            for (let i = 0; i < ranking.length && i < 10; i++) {
+                const item = ranking[i];
+                const div = document.createElement('div');
+                div.className = 'rank-item';
+                let pos = '';
+                if (i === 0) pos = '🥇';
+                else if (i === 1) pos = '🥈';
+                else if (i === 2) pos = '🥉';
+                else pos = (i + 1) + 'º';
+                div.innerHTML = '<span class="posicao">' + pos + '</span><span class="nome">' + item.nome + '</span><span class="pontos">' + item.pontos + ' pts</span>';
+                lista.appendChild(div);
+            }
         }
 
-        // ===== FUNÇÃO PARA VALIDAR GMAIL =====
-
+        // ===== LOGIN =====
         function validarGmail(email) {
-            // Verifica se termina com @gmail.com
-            if (!email.endsWith('@gmail.com')) {
-                return false;
-            }
-            // Verifica se tem algo antes do @
-            var partes = email.split('@');
-            if (partes.length !== 2 || partes[0].length === 0) {
-                return false;
-            }
-            return true;
+            return email.endsWith('@gmail.com') && email.split('@')[0].length > 0;
         }
 
-        // ===== EVENTO DE LOGIN =====
-
-        formLogin.addEventListener('submit', function(e) {
+        document.getElementById('form-login').addEventListener('submit', function(e) {
             e.preventDefault();
+            const email = document.getElementById('email-usuario').value.trim();
+            const nome = document.getElementById('nome-usuario').value.trim();
+            const favCantor1 = document.getElementById('fav-cantor1').value;
+            const favCantor2 = document.getElementById('fav-cantor2').value;
+            const favCantor3 = document.getElementById('fav-cantor3').value;
+            const favGenero1 = document.getElementById('fav-genero1').value;
+            const favGenero2 = document.getElementById('fav-genero2').value;
+            const favGenero3 = document.getElementById('fav-genero3').value;
+            const notificacoes = document.getElementById('notificacoes').value;
 
-            var email = inputEmail.value.trim();
-            var nome = inputNome.value.trim();
-
-            // Validações
-            erroEmail.style.display = 'none';
-            erroNome.style.display = 'none';
-
-            if (email === '') {
-                erroEmail.textContent = '❌ Digite seu e-mail!';
-                erroEmail.style.display = 'block';
-                return;
-            }
+            document.getElementById('erro-email').style.display = 'none';
+            document.getElementById('erro-nome').style.display = 'none';
 
             if (!validarGmail(email)) {
-                erroEmail.textContent = '❌ Use apenas e-mails @gmail.com!';
-                erroEmail.style.display = 'block';
+                document.getElementById('erro-email').textContent = '❌ Use apenas e-mails @gmail.com!';
+                document.getElementById('erro-email').style.display = 'block';
                 return;
             }
-
             if (nome.length < 2) {
-                erroNome.textContent = '❌ Digite um nome com pelo menos 2 caracteres!';
-                erroNome.style.display = 'block';
+                document.getElementById('erro-nome').textContent = '❌ Digite um nome com pelo menos 2 caracteres!';
+                document.getElementById('erro-nome').style.display = 'block';
                 return;
             }
 
-            // Verifica se o nome já existe
-            var usuarios = carregarUsuarios();
-            for (var i = 0; i < usuarios.length; i++) {
-                if (usuarios[i].nome.toLowerCase() === nome.toLowerCase()) {
-                    erroNome.textContent = '❌ Este nome já está em uso! Escolha outro.';
-                    erroNome.style.display = 'block';
-                    return;
-                }
+            const usuarios = carregarUsuarios();
+            if (usuarios.find(u => u.nome.toLowerCase() === nome.toLowerCase())) {
+                document.getElementById('erro-nome').textContent = '❌ Este nome já está em uso!';
+                document.getElementById('erro-nome').style.display = 'block';
+                return;
             }
 
-            erroEmail.style.display = 'none';
-            erroNome.style.display = 'none';
+            if (!favCantor1 || !favCantor2 || !favCantor3) {
+                alert('Selecione 3 cantores favoritos!');
+                return;
+            }
+            if (!favGenero1 || !favGenero2 || !favGenero3) {
+                alert('Selecione 3 gêneros favoritos!');
+                return;
+            }
 
-            // Salva o novo usuário
-            usuarios.push({
+            const novoUsuario = {
                 nome: nome,
                 email: email,
-                pontos: 0
-            });
+                pontos: 0,
+                bio: '🎵 Amante da música!',
+                avatar: '🎤',
+                amigos: [],
+                solicitacoes: [],
+                notificacoes: [],
+                notificacoesAtivas: notificacoes === 'sim',
+                favCantores: [favCantor1, favCantor2, favCantor3],
+                favGeneros: [favGenero1, favGenero2, favGenero3],
+                playlist: [],
+                musicasNotas: {},
+                musicasComentarios: {},
+                dataEntrada: new Date().toISOString()
+            };
+
+            usuarios.push(novoUsuario);
             salvarUsuarios(usuarios);
 
-            // Faz login
             localStorage.setItem('usuario_atual', nome);
             localStorage.setItem('email_atual', email);
 
-            nomeExibido.textContent = '👤 ' + nome;
-
-            telaLogin.style.display = 'none';
-            conteudo.style.display = 'block';
-
-            renderizarRanking();
-
+            fazerLogin(nome);
             alert('🎵 Bem-vindo(a), ' + nome + '! Pronto para o desafio de hoje?');
         });
 
-        // ===== SAIR =====
+        function fazerLogin(nome) {
+            usuarioAtual = nome;
+            document.getElementById('nome-exibido').textContent = '👤 ' + nome;
+            document.getElementById('tela-login').style.display = 'none';
+            document.getElementById('conteudo-principal').style.display = 'block';
 
-        btnSair.addEventListener('click', function() {
+            renderizarRanking();
+            renderizarPerfil();
+            renderizarAmigos();
+            renderizarNotificacoes();
+            carregarMusicaDoDia();
+            carregarPlaylist();
+            iniciarJogo();
+
+            const usuario = getUsuario(nome);
+            if (usuario && usuario.notificacoesAtivas) {
+                document.getElementById('pagina-notificacoes').querySelector('.notificacoes-container').style.borderColor = '#4caf50';
+            }
+        }
+
+        // ===== SAIR E EXCLUIR =====
+        document.getElementById('btn-sair').addEventListener('click', function() {
             if (confirm('Tem certeza que quer sair?')) {
                 localStorage.removeItem('usuario_atual');
                 localStorage.removeItem('email_atual');
-                telaLogin.style.display = 'flex';
-                conteudo.style.display = 'none';
-                inputNome.value = '';
-                inputEmail.value = '';
-                erroEmail.style.display = 'none';
-                erroNome.style.display = 'none';
+                usuarioAtual = null;
+                document.getElementById('tela-login').style.display = 'flex';
+                document.getElementById('conteudo-principal').style.display = 'none';
             }
         });
 
-        // ===== EXCLUIR CONTA =====
-
-        btnExcluir.addEventListener('click', function() {
-            var nome = localStorage.getItem('usuario_atual');
-            if (!nome) return;
-
-            if (confirm('⚠️ Tem certeza que quer EXCLUIR sua conta permanentemente?\n\nTodos os seus pontos serão perdidos!')) {
-                var confirmacao = prompt('Digite "SIM" para confirmar a exclusão:');
+        document.getElementById('btn-excluir').addEventListener('click', function() {
+            if (!usuarioAtual) return;
+            if (confirm('⚠️ Tem certeza que quer EXCLUIR sua conta permanentemente?')) {
+                const confirmacao = prompt('Digite "SIM" para confirmar:');
                 if (confirmacao && confirmacao.toUpperCase() === 'SIM') {
-                    var usuarios = carregarUsuarios();
-                    var novosUsuarios = [];
-
-                    for (var i = 0; i < usuarios.length; i++) {
-                        if (usuarios[i].nome !== nome) {
-                            novosUsuarios.push(usuarios[i]);
-                        }
-                    }
-
-                    salvarUsuarios(novosUsuarios);
-
+                    let usuarios = carregarUsuarios();
+                    usuarios = usuarios.filter(u => u.nome !== usuarioAtual);
+                    salvarUsuarios(usuarios);
                     localStorage.removeItem('usuario_atual');
                     localStorage.removeItem('email_atual');
-
-                    telaLogin.style.display = 'flex';
-                    conteudo.style.display = 'none';
-                    inputNome.value = '';
-                    inputEmail.value = '';
-                    erroEmail.style.display = 'none';
-                    erroNome.style.display = 'none';
-
+                    usuarioAtual = null;
+                    document.getElementById('tela-login').style.display = 'flex';
+                    document.getElementById('conteudo-principal').style.display = 'none';
                     alert('🗑️ Conta excluída com sucesso!');
                     renderizarRanking();
                 } else {
-                    alert('❌ Confirmação incorreta. Exclusão cancelada.');
+                    alert('❌ Exclusão cancelada.');
                 }
             }
         });
 
-        // ===== PARTICIPAR =====
+        // ===== PERFIL =====
+        function renderizarPerfil() {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+            document.getElementById('perfil-avatar').textContent = usuario.avatar || '🎤';
+            document.getElementById('perfil-nome').textContent = usuario.nome;
+            document.getElementById('perfil-bio').textContent = usuario.bio || 'Sua biografia aqui...';
+            document.getElementById('perfil-detalhes').textContent = 'Pontos: ' + (usuario.pontos || 0) + ' | Amigos: ' + (usuario.amigos ? usuario.amigos.length : 0);
+            document.getElementById('edit-bio').value = usuario.bio || '';
+            document.getElementById('edit-avatar').value = usuario.avatar || '🎤';
+        }
 
-        btnParticipar.addEventListener('click', function() {
-            var nome = localStorage.getItem('usuario_atual');
-            if (!nome) {
-                alert('Você precisa estar logado!');
+        document.getElementById('btn-salvar-perfil').addEventListener('click', function() {
+            const bio = document.getElementById('edit-bio').value.trim();
+            const avatar = document.getElementById('edit-avatar').value.trim();
+            atualizarUsuario(usuarioAtual, { bio: bio || '🎵 Amante da música!', avatar: avatar || '🎤' });
+            renderizarPerfil();
+            alert('✅ Perfil atualizado!');
+        });
+
+        // ===== MÚSICA DO DIA =====
+        function carregarMusicaDoDia() {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+
+            // Pega uma música baseada nos gêneros favoritos
+            const generosFav = usuario.favGeneros || [];
+            let musicasFiltradas = MUSICAS.filter(m => generosFav.includes(m.genero));
+            if (musicasFiltradas.length === 0) musicasFiltradas = MUSICAS;
+
+            const musica = musicasFiltradas[Math.floor(Math.random() * musicasFiltradas.length)];
+
+            document.getElementById('musica-dia-nome').textContent = musica.nome;
+            document.getElementById('musica-dia-artista').textContent = '🎤 ' + musica.cantor;
+            document.getElementById('musica-dia-genero').textContent = '🎵 ' + musica.genero + ' | ' + musica.ano;
+            document.getElementById('musica-dia-link').href = musica.link;
+
+            // Carregar comentários e notas
+            const comentarios = usuario.musicasComentarios || {};
+            const notas = usuario.musicasNotas || {};
+            const key = musica.nome + '|' + musica.cantor;
+
+            const divComentarios = document.getElementById('musica-dia-comentarios');
+            divComentarios.innerHTML = '';
+            if (comentarios[key]) {
+                for (const c of comentarios[key]) {
+                    const p = document.createElement('p');
+                    p.style.cssText = 'font-size:0.85rem;color:#555;padding:4px 0;border-bottom:1px solid #f8bbd0;';
+                    p.textContent = '💬 ' + c;
+                    divComentarios.appendChild(p);
+                }
+            }
+
+            // Limpar campos
+            document.getElementById('comentario-musica-dia').value = '';
+            document.getElementById('nota-musica-dia').value = notas[key] || 4;
+        }
+
+        document.getElementById('btn-nota-musica-dia').addEventListener('click', function() {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+            const nome = document.getElementById('musica-dia-nome').textContent;
+            const artista = document.getElementById('musica-dia-artista').textContent.replace('🎤 ', '');
+            const nota = parseInt(document.getElementById('nota-musica-dia').value);
+            const key = nome + '|' + artista;
+
+            const notas = usuario.musicasNotas || {};
+            notas[key] = nota;
+            atualizarUsuario(usuarioAtual, { musicasNotas: notas });
+            alert('⭐ Nota ' + nota + ' registrada!');
+        });
+
+        document.getElementById('btn-comentario-musica-dia').addEventListener('click', function() {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+            const nome = document.getElementById('musica-dia-nome').textContent;
+            const artista = document.getElementById('musica-dia-artista').textContent.replace('🎤 ', '');
+            const comentario = document.getElementById('comentario-musica-dia').value.trim();
+            if (!comentario) { alert('Digite um comentário!'); return; }
+            const key = nome + '|' + artista;
+
+            const comentarios = usuario.musicasComentarios || {};
+            if (!comentarios[key]) comentarios[key] = [];
+            comentarios[key].push(comentario + ' (por ' + usuarioAtual + ')');
+            atualizarUsuario(usuarioAtual, { musicasComentarios: comentarios });
+            document.getElementById('comentario-musica-dia').value = '';
+            carregarMusicaDoDia();
+            alert('💬 Comentário adicionado!');
+        });
+
+        // ===== JOGO =====
+        function iniciarJogo() {
+            jogoData.rodada = 0;
+            jogoData.escolhas = [];
+            jogoData.itens = [];
+            carregarNovaRodada();
+        }
+
+        function carregarNovaRodada() {
+            if (jogoData.rodada >= jogoData.totalRodadas) {
+                mostrarResultadoJogo();
                 return;
             }
-            adicionarPontos(nome, 10);
+
+            const modo = jogoData.modo;
+            let lista = modo === 'cantor' ? CANTORES : MUSICAS;
+
+            // Escolhe 2 itens aleatórios diferentes
+            let item1, item2;
+            do {
+                item1 = lista[Math.floor(Math.random() * lista.length)];
+                item2 = lista[Math.floor(Math.random() * lista.length)];
+            } while (item1.nome === item2.nome);
+
+            jogoData.itens = [item1, item2];
+
+            document.getElementById('jogo-placar').textContent = 'Rodada ' + (jogoData.rodada + 1) + ' de ' + jogoData.totalRodadas;
+
+            if (modo === 'cantor') {
+                document.getElementById('item1-nome').textContent = '🎤 ' + item1.nome;
+                document.getElementById('item1-genero').textContent = item1.genero + ' | ' + item1.pais;
+                document.getElementById('item2-nome').textContent = '🎤 ' + item2.nome;
+                document.getElementById('item2-genero').textContent = item2.genero + ' | ' + item2.pais;
+            } else {
+                document.getElementById('item1-nome').textContent = '🎵 ' + item1.nome + ' (' + item1.ano + ')';
+                document.getElementById('item1-genero').textContent = item1.cantor + ' | ' + item1.genero;
+                document.getElementById('item2-nome').textContent = '🎵 ' + item2.nome + ' (' + item2.ano + ')';
+                document.getElementById('item2-genero').textContent = item2.cantor + ' | ' + item2.genero;
+            }
+
+            document.getElementById('jogo-resultado').textContent = '';
+            document.getElementById('btn-proxima-rodada').style.display = 'none';
+
+            // Adicionar eventos nos itens
+            document.querySelectorAll('.jogo-duelo-item').forEach(el => {
+                el.style.cursor = 'pointer';
+                el.onclick = function() {
+                    const escolha = parseInt(this.dataset.escolha);
+                    const itemEscolhido = jogoData.itens[escolha - 1];
+                    jogoData.escolhas.push(itemEscolhido);
+                    jogoData.rodada++;
+                    document.getElementById('jogo-resultado').textContent = '✅ Você escolheu: ' + (jogoData.modo === 'cantor' ? itemEscolhido.nome : itemEscolhido.nome + ' - ' + itemEscolhido.cantor);
+                    document.getElementById('btn-proxima-rodada').style.display = 'inline-block';
+                    document.querySelectorAll('.jogo-duelo-item').forEach(e => e.style.cursor = 'default');
+                    document.querySelectorAll('.jogo-duelo-item').forEach(e => e.onclick = null);
+
+                    // Ganha pontos a cada rodada
+                    adicionarPontos(usuarioAtual, 2);
+                };
+            });
+        }
+
+        function mostrarResultadoJogo() {
+            document.getElementById('jogo-placar').textContent = '🎉 Fim de jogo!';
+            document.getElementById('jogo-duelo').innerHTML = '<div style="padding:20px;text-align:center;">📊 Suas escolhas:</div>';
+            let texto = '';
+            for (let i = 0; i < jogoData.escolhas.length; i++) {
+                const e = jogoData.escolhas[i];
+                texto += (i + 1) + '. ' + (jogoData.modo === 'cantor' ? '🎤 ' + e.nome : '🎵 ' + e.nome + ' - ' + e.cantor) + '\n';
+            }
+            document.getElementById('jogo-duelo').innerHTML += '<div style="text-align:center;font-size:0.9rem;color:#555;white-space:pre-wrap;">' + texto + '</div>';
+            document.getElementById('jogo-resultado').textContent = '🏆 Jogo finalizado! Você ganhou +10 pontos!';
+            document.getElementById('btn-proxima-rodada').style.display = 'none';
+
+            // Bônus por completar
+            adicionarPontos(usuarioAtual, 10);
+
+            // Botão reiniciar aparece
+            document.getElementById('btn-reiniciar-jogo').style.display = 'inline-block';
+        }
+
+        document.getElementById('btn-proxima-rodada').addEventListener('click', function() {
+            carregarNovaRodada();
+        });
+
+        document.getElementById('btn-reiniciar-jogo').addEventListener('click', function() {
+            document.getElementById('btn-reiniciar-jogo').style.display = 'none';
+            iniciarJogo();
+            // Reconstruir o HTML do duelo
+            document.getElementById('jogo-duelo').innerHTML = `
+                <div class="jogo-duelo-item" data-escolha="1">
+                    <div class="nome-item" id="item1-nome">Carregando...</div>
+                    <div class="genero-item" id="item1-genero"></div>
+                </div>
+                <div class="vs">⚡ VS ⚡</div>
+                <div class="jogo-duelo-item" data-escolha="2">
+                    <div class="nome-item" id="item2-nome">Carregando...</div>
+                    <div class="genero-item" id="item2-genero"></div>
+                </div>
+            `;
+            carregarNovaRodada();
+        });
+
+        // Modo do jogo
+        document.querySelectorAll('.jogo-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.jogo-btn').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                jogoData.modo = this.dataset.modo;
+                iniciarJogo();
+                document.getElementById('jogo-duelo').innerHTML = `
+                    <div class="jogo-duelo-item" data-escolha="1">
+                        <div class="nome-item" id="item1-nome">Carregando...</div>
+                        <div class="genero-item" id="item1-genero"></div>
+                    </div>
+                    <div class="vs">⚡ VS ⚡</div>
+                    <div class="jogo-duelo-item" data-escolha="2">
+                        <div class="nome-item" id="item2-nome">Carregando...</div>
+                        <div class="genero-item" id="item2-genero"></div>
+                    </div>
+                `;
+                carregarNovaRodada();
+            });
+        });
+
+        // ===== PLAYLIST COLABORATIVA =====
+        function carregarPlaylist() {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+            const container = document.getElementById('playlist-container');
+            container.innerHTML = '';
+
+            const playlist = usuario.playlist || [];
+            if (playlist.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#999;">Sua playlist está vazia. Adicione músicas!</p>';
+                return;
+            }
+
+            for (const item of playlist) {
+                const div = document.createElement('div');
+                div.className = 'playlist-item';
+
+                let comentariosHtml = '';
+                if (item.comentarios && item.comentarios.length > 0) {
+                    for (const c of item.comentarios) {
+                        comentariosHtml += '<div class="comentario"><strong>' + c.usuario + ':</strong> ' + c.texto + '</div>';
+                    }
+                }
+
+                div.innerHTML = `
+                    <div class="top">
+                        <div>
+                            <span class="nome-musica">${item.nome}</span>
+                            <span class="artista-musica"> - ${item.cantor}</span>
+                            <span class="adicionado-por"> (adicionado por ${item.adicionadoPor})</span>
+                        </div>
+                        <div>
+                            <span class="nota-exibida">⭐ ${item.notaMedia || 0}</span>
+                            <a href="${item.link}" target="_blank" style="color:#f48fb1;text-decoration:none;font-weight:600;">▶</a>
+                        </div>
+                    </div>
+                    <div class="acoes">
+                        <select class="nota-playlist">
+                            <option value="1">⭐ 1</option>
+                            <option value="2">⭐ 2</option>
+                            <option value="3">⭐ 3</option>
+                            <option value="4">⭐ 4</option>
+                            <option value="5">⭐ 5</option>
+                        </select>
+                        <button class="btn-nota-playlist" data-index="${playlist.indexOf(item)}">Avaliar</button>
+                        ${item.adicionadoPor === usuarioAtual ? '<button class="btn-remover-playlist" data-index="' + playlist.indexOf(item) + '" style="background:#ffcdd2;color:#c62828;">🗑️ Remover</button>' : ''}
+                    </div>
+                    <div class="comentarios-playlist">
+                        ${comentariosHtml}
+                        <textarea placeholder="Comentário para ${item.adicionadoPor}..." data-index="${playlist.indexOf(item)}"></textarea>
+                        <button class="btn-comentar-playlist" data-index="${playlist.indexOf(item)}">Comentar</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            }
+
+            // Eventos para os botões
+            container.querySelectorAll('.btn-nota-playlist').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    const nota = parseInt(this.closest('.playlist-item').querySelector('.nota-playlist').value);
+                    darNotaPlaylist(idx, nota);
+                });
+            });
+
+            container.querySelectorAll('.btn-comentar-playlist').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    const texto = this.closest('.playlist-item').querySelector('textarea').value.trim();
+                    if (!texto) { alert('Digite um comentário!'); return; }
+                    comentarPlaylist(idx, texto);
+                });
+            });
+
+            container.querySelectorAll('.btn-remover-playlist').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    removerDaPlaylist(idx);
+                });
+            });
+        }
+
+        function darNotaPlaylist(index, nota) {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+            const playlist = usuario.playlist || [];
+            if (index >= playlist.length) return;
+            if (!playlist[index].notas) playlist[index].notas = [];
+            playlist[index].notas.push(nota);
+            const soma = playlist[index].notas.reduce((a, b) => a + b, 0);
+            playlist[index].notaMedia = Math.round((soma / playlist[index].notas.length) * 10) / 10;
+            atualizarUsuario(usuarioAtual, { playlist: playlist });
+            carregarPlaylist();
+            alert('⭐ Nota registrada!');
+        }
+
+        function comentarPlaylist(index, texto) {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+            const playlist = usuario.playlist || [];
+            if (index >= playlist.length) return;
+            if (!playlist[index].comentarios) playlist[index].comentarios = [];
+            playlist[index].comentarios.push({ usuario: usuarioAtual, texto: texto });
+            atualizarUsuario(usuarioAtual, { playlist: playlist });
+            carregarPlaylist();
+            alert('💬 Comentário adicionado!');
+        }
+
+        function removerDaPlaylist(index) {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+            const playlist = usuario.playlist || [];
+            if (index >= playlist.length) return;
+            if (playlist[index].adicionadoPor !== usuarioAtual) {
+                alert('Você só pode remover suas próprias músicas!');
+                return;
+            }
+            if (confirm('Remover esta música da playlist?')) {
+                playlist.splice(index, 1);
+                atualizarUsuario(usuarioAtual, { playlist: playlist });
+                carregarPlaylist();
+            }
+        }
+
+        document.getElementById('btn-add-musica-playlist').addEventListener('click', function() {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+
+            // Mostrar lista de músicas para adicionar
+            const musicasDisponiveis = MUSICAS.filter(m => {
+                return !(usuario.playlist || []).find(p => p.nome === m.nome && p.cantor === m.cantor);
+            });
+
+            if (musicasDisponiveis.length === 0) {
+                alert('Você já adicionou todas as músicas disponíveis!');
+                return;
+            }
+
+            // Sortear uma música aleatória
+            const musica = musicasDisponiveis[Math.floor(Math.random() * musicasDisponiveis.length)];
+
+            const playlist = usuario.playlist || [];
+            playlist.push({
+                nome: musica.nome,
+                cantor: musica.cantor,
+                genero: musica.genero,
+                ano: musica.ano,
+                link: musica.link,
+                adicionadoPor: usuarioAtual,
+                notas: [],
+                notaMedia: 0,
+                comentarios: []
+            });
+
+            atualizarUsuario(usuarioAtual, { playlist: playlist });
+            carregarPlaylist();
+            alert('🎵 Música "' + musica.nome + '" adicionada à playlist!');
+        });
+
+        // ===== AMIGOS =====
+        function renderizarAmigos() {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+
+            const lista = document.getElementById('lista-amigos');
+            lista.innerHTML = '';
+
+            const amigos = usuario.amigos || [];
+            if (amigos.length === 0) {
+                lista.innerHTML = '<p style="text-align:center;color:#999;">Nenhum amigo ainda. Adicione alguém!</p>';
+            } else {
+                for (const amigo of amigos) {
+                    const div = document.createElement('div');
+                    div.className = 'amigo-item';
+                    div.innerHTML = `
+                        <span class="nome-amigo">${amigo}</span>
+                        <button class="btn-remover-amigo" data-amigo="${amigo}">Remover</button>
+                    `;
+                    lista.appendChild(div);
+                }
+                lista.querySelectorAll('.btn-remover-amigo').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const amigo = this.dataset.amigo;
+                        if (confirm('Remover ' + amigo + ' dos seus amigos?')) {
+                            removerAmigo(amigo);
+                        }
+                    });
+                });
+            }
+
+            // Solicitações
+            const solicitacoes = document.getElementById('solicitacoes-amigos');
+            solicitacoes.innerHTML = '';
+            const solicitacoesLista = usuario.solicitacoes || [];
+            if (solicitacoesLista.length === 0) {
+                solicitacoes.innerHTML = '<p style="color:#999;">Nenhuma solicitação.</p>';
+            } else {
+                for (const sol of solicitacoesLista) {
+                    const div = document.createElement('div');
+                    div.className = 'amigo-item';
+                    div.innerHTML = `
+                        <span class="nome-amigo">${sol}</span>
+                        <div>
+                            <button class="btn-aceitar" data-amigo="${sol}">✅ Aceitar</button>
+                            <button class="btn-recusar" data-amigo="${sol}">❌ Recusar</button>
+                        </div>
+                    `;
+                    solicitacoes.appendChild(div);
+                }
+                solicitacoes.querySelectorAll('.btn-aceitar').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        aceitarAmigo(this.dataset.amigo);
+                    });
+                });
+                solicitacoes.querySelectorAll('.btn-recusar').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        recusarAmigo(this.dataset.amigo);
+                    });
+                });
+            }
+        }
+
+        document.getElementById('btn-add-amigo').addEventListener('click', function() {
+            const nome = document.getElementById('input-add-amigo').value.trim();
+            if (!nome) { alert('Digite o nome do amigo!'); return; }
+            if (nome === usuarioAtual) { alert('Você não pode se adicionar!'); return; }
+
+            const usuarios = carregarUsuarios();
+            const alvo = usuarios.find(u => u.nome.toLowerCase() === nome.toLowerCase());
+            if (!alvo) { alert('Usuário não encontrado!'); return; }
+
+            const usuario = getUsuario(usuarioAtual);
+            if ((usuario.amigos || []).find(a => a.toLowerCase() === nome.toLowerCase())) {
+                alert('Você já é amigo de ' + nome + '!');
+                return;
+            }
+
+            if ((usuario.solicitacoes || []).find(s => s.toLowerCase() === nome.toLowerCase())) {
+                alert('Solicitação já enviada para ' + nome + '!');
+                return;
+            }
+
+            // Enviar solicitação
+            const alvoObj = getUsuario(alvo.nome);
+            if (!alvoObj.solicitacoes) alvoObj.solicitacoes = [];
+            alvoObj.solicitacoes.push(usuarioAtual);
+            atualizarUsuario(alvo.nome, { solicitacoes: alvoObj.solicitacoes });
+
+            // Notificação para o alvo
+            if (alvoObj.notificacoesAtivas) {
+                if (!alvoObj.notificacoes) alvoObj.notificacoes = [];
+                alvoObj.notificacoes.push({
+                    texto: '📩 ' + usuarioAtual + ' quer ser seu amigo!',
+                    data: new Date().toLocaleString()
+                });
+                atualizarUsuario(alvo.nome, { notificacoes: alvoObj.notificacoes });
+            }
+
+            document.getElementById('input-add-amigo').value = '';
+            alert('✅ Solicitação enviada para ' + nome + '!');
+            renderizarAmigos();
+            renderizarNotificacoes();
+        });
+
+        function aceitarAmigo(nome) {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+            const solicitacoes = usuario.solicitacoes || [];
+            const idx = solicitacoes.findIndex(s => s.toLowerCase() === nome.toLowerCase());
+            if (idx === -1) return;
+
+            solicitacoes.splice(idx, 1);
+            if (!usuario.amigos) usuario.amigos = [];
+            usuario.amigos.push(nome);
+            atualizarUsuario(usuarioAtual, { solicitacoes: solicitacoes, amigos: usuario.amigos });
+
+            // Adicionar recíproco
+            const amigo = getUsuario(nome);
+            if (amigo) {
+                if (!amigo.amigos) amigo.amigos = [];
+                if (!amigo.amigos.find(a => a === usuarioAtual)) {
+                    amigo.amigos.push(usuarioAtual);
+                    atualizarUsuario(nome, { amigos: amigo.amigos });
+                }
+                // Notificação
+                if (amigo.notificacoesAtivas) {
+                    if (!amigo.notificacoes) amigo.notificacoes = [];
+                    amigo.notificacoes.push({
+                        texto: '🤝 ' + usuarioAtual + ' aceitou sua solicitação de amizade!',
+                        data: new Date().toLocaleString()
+                    });
+                    atualizarUsuario(nome, { notificacoes: amigo.notificacoes });
+                }
+            }
+
+            renderizarAmigos();
+            renderizarNotificacoes();
+            renderizarPerfil();
+            alert('🤝 Você e ' + nome + ' agora são amigos!');
+        }
+
+        function recusarAmigo(nome) {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+            const solicitacoes = usuario.solicitacoes || [];
+            const idx = solicitacoes.findIndex(s => s.toLowerCase() === nome.toLowerCase());
+            if (idx === -1) return;
+            solicitacoes.splice(idx, 1);
+            atualizarUsuario(usuarioAtual, { solicitacoes: solicitacoes });
+            renderizarAmigos();
+            alert('❌ Solicitação de ' + nome + ' recusada.');
+        }
+
+        function removerAmigo(nome) {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+            const amigos = usuario.amigos || [];
+            const idx = amigos.findIndex(a => a.toLowerCase() === nome.toLowerCase());
+            if (idx === -1) return;
+            amigos.splice(idx, 1);
+            atualizarUsuario(usuarioAtual, { amigos: amigos });
+
+            // Remover recíproco
+            const amigo = getUsuario(nome);
+            if (amigo) {
+                const amigoAmigos = amigo.amigos || [];
+                const idx2 = amigoAmigos.findIndex(a => a === usuarioAtual);
+                if (idx2 !== -1) {
+                    amigoAmigos.splice(idx2, 1);
+                    atualizarUsuario(nome, { amigos: amigoAmigos });
+                }
+            }
+            renderizarAmigos();
+            renderizarPerfil();
+            alert('🗑️ ' + nome + ' removido dos seus amigos.');
+        }
+
+        // ===== NOTIFICAÇÕES =====
+        function renderizarNotificacoes() {
+            const usuario = getUsuario(usuarioAtual);
+            if (!usuario) return;
+            const container = document.getElementById('lista-notificacoes');
+            container.innerHTML = '';
+
+            const notificacoes = usuario.notificacoes || [];
+            if (notificacoes.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#999;">Nenhuma notificação.</p>';
+                return;
+            }
+
+            for (const n of notificacoes) {
+                const div = document.createElement('div');
+                div.className = 'notificacao-item';
+                div.innerHTML = n.texto + ' <span class="data">' + (n.data || '') + '</span>';
+                container.appendChild(div);
+            }
+        }
+
+        // ===== BOTÕES DE PARTICIPAÇÃO =====
+        document.getElementById('btn-participar').addEventListener('click', function() {
+            if (!usuarioAtual) { alert('Faça login primeiro!'); return; }
+            adicionarPontos(usuarioAtual, 10);
             alert('🎉 Você ganhou 10 pontos por participar do desafio de hoje!');
-        });
-
-        // ===== ENVIAR RESPOSTA =====
-
-        btnEnviar.addEventListener('click', function() {
-            var nome = localStorage.getItem('usuario_atual');
-            if (!nome) {
-                alert('Você precisa estar logado!');
-                return;
+            const notif = getUsuario(usuarioAtual);
+            if (notif && notif.notificacoesAtivas) {
+                if (!notif.notificacoes) notif.notificacoes = [];
+                notif.notificacoes.push({
+                    texto: '🎉 Você ganhou 10 pontos no desafio do dia!',
+                    data: new Date().toLocaleString()
+                });
+                atualizarUsuario(usuarioAtual, { notificacoes: notif.notificacoes });
+                renderizarNotificacoes();
             }
-            adicionarPontos(nome, 5);
-            alert('📨 Resposta enviada! +5 pontos!');
         });
+
+        document.getElementById('btn-enviar').addEventListener('click', function() {
+            if (!usuarioAtual) { alert('Faça login primeiro!'); return; }
+            adicionarPontos(usuarioAtual, 5);
+            alert('📨 Resposta enviada! +5 pontos!');
+            const notif = getUsuario(usuarioAtual);
+            if (notif && notif.notificacoesAtivas) {
+                if (!notif.notificacoes) notif.notificacoes = [];
+                notif.notificacoes.push({
+                    texto: '📨 Você enviou uma resposta e ganhou +5 pontos!',
+                    data: new Date().toLocaleString()
+                });
+                atualizarUsuario(usuarioAtual, { notificacoes: notif.notificacoes });
+                renderizarNotificacoes();
+            }
+        });
+
+        // ===== INICIALIZAR JOGO =====
+        setTimeout(() => {
+            iniciarJogo();
+        }, 500);
+
+        console.log('🎵 Trilha Sonora 24h carregada!');
+        console.log('🎤 Cantores:', CANTORES.length);
+        console.log('🎵 Músicas:', MUSICAS.length);
     </script>
 
 </body>

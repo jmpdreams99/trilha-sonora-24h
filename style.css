@@ -28,7 +28,7 @@ body {
     padding: 50px 40px;
     border-radius: 40px;
     text-align: center;
-    max-width: 450px;
+    max-width: 500px;
     width: 100%;
     box-shadow: 0 20px 60px rgba(244, 143, 177, 0.2);
     border: 2px solid #f8bbd0;
@@ -36,8 +36,24 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .login-icon {
@@ -45,11 +61,6 @@ body {
     animation: pulse 2s infinite ease-in-out;
     display: block;
     margin-bottom: 8px;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
 }
 
 .login-box h1 {
@@ -66,13 +77,13 @@ body {
 .login-sub {
     color: #999;
     font-size: 1rem;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     font-weight: 500;
 }
 
 .campo {
     text-align: left;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 .campo label {
@@ -80,12 +91,13 @@ body {
     font-weight: 600;
     color: #d81b60;
     font-size: 0.9rem;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
-.campo input {
+.campo input,
+.campo select {
     width: 100%;
-    padding: 14px 18px;
+    padding: 12px 16px;
     border: 2px solid #f8bbd0;
     border-radius: 16px;
     font-size: 1rem;
@@ -95,9 +107,14 @@ body {
     color: #333;
 }
 
-.campo input:focus {
+.campo input:focus,
+.campo select:focus {
     border-color: #f48fb1;
     box-shadow: 0 0 0 4px rgba(244, 143, 177, 0.15);
+}
+
+.campo select {
+    cursor: pointer;
 }
 
 .erro {
@@ -135,20 +152,47 @@ body {
     color: #bbb;
 }
 
+.favoritos-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.favoritos-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #f8bbd0;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    background: #fff;
+    color: #333;
+}
+
+.favoritos-group select:focus {
+    border-color: #f48fb1;
+    box-shadow: 0 0 0 3px rgba(244, 143, 177, 0.15);
+}
+
+.sub-label {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 2px;
+}
+
 /* ===== CONTEÚDO PRINCIPAL ===== */
 #conteudo-principal {
     display: none;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 /* ===== HEADER ===== */
 header {
     text-align: center;
-    padding: 30px 24px 20px;
+    padding: 24px 24px 16px;
     background: #fff;
     border-radius: 30px;
-    margin: 0 auto 30px;
+    margin: 0 auto 24px;
     box-shadow: 0 4px 20px rgba(244, 143, 177, 0.1);
     border: 2px solid #f8bbd0;
 }
@@ -168,12 +212,12 @@ header {
 }
 
 .music-icon {
-    font-size: 40px;
+    font-size: 36px;
     animation: pulse 2s infinite ease-in-out;
 }
 
 header h1 {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: #d81b60;
 }
@@ -195,19 +239,23 @@ header h1 span {
 }
 
 .usuario-logado span {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
-.btn-sair {
-    background: #f8bbd0;
+.btn-sair,
+.btn-excluir {
     border: none;
-    color: #d81b60;
-    padding: 6px 16px;
+    padding: 6px 14px;
     border-radius: 50px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+}
+
+.btn-sair {
+    background: #f8bbd0;
+    color: #d81b60;
 }
 
 .btn-sair:hover {
@@ -217,14 +265,7 @@ header h1 span {
 
 .btn-excluir {
     background: #ffcdd2;
-    border: none;
     color: #c62828;
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.8rem;
 }
 
 .btn-excluir:hover {
@@ -233,9 +274,9 @@ header h1 span {
 }
 
 .subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #999;
-    margin-top: 6px;
+    margin-top: 4px;
     font-weight: 500;
     background: #fce4ec;
     display: inline-block;
@@ -243,20 +284,55 @@ header h1 span {
     border-radius: 50px;
 }
 
+/* ===== NAVEGAÇÃO ===== */
+.nav-tabs {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.nav-tab {
+    padding: 10px 24px;
+    border: 2px solid #f8bbd0;
+    border-radius: 50px;
+    background: #fff;
+    color: #d81b60;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.nav-tab:hover {
+    background: #fce4ec;
+}
+
+.nav-tab.active {
+    background: #d81b60;
+    color: #fff;
+    border-color: #d81b60;
+}
+
+/* ===== PÁGINAS ===== */
+.pagina {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.pagina.active {
+    display: block;
+}
+
 /* ===== DESAFIO DO DIA ===== */
 .desafio-dia {
     background: #fce4ec;
-    padding: 40px 30px;
+    padding: 30px 24px;
     border-radius: 28px;
-    margin: 0 auto 40px;
+    margin: 0 auto 24px;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(244, 143, 177, 0.1);
     border: 2px solid #f8bbd0;
-    transition: transform 0.3s ease;
-}
-
-.desafio-dia:hover {
-    transform: translateY(-4px);
 }
 
 .badge {
@@ -264,44 +340,42 @@ header h1 span {
     background: #d81b60;
     color: #fff;
     font-weight: 700;
-    font-size: 0.85rem;
-    padding: 6px 18px;
+    font-size: 0.8rem;
+    padding: 4px 16px;
     border-radius: 50px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .desafio-dia h2 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     color: #d81b60;
-    margin-bottom: 8px;
 }
 
 .tema {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #333;
-    margin-bottom: 8px;
 }
 
 .tema strong {
     background: #fff;
-    padding: 2px 16px;
+    padding: 2px 14px;
     border-radius: 30px;
     color: #d81b60;
 }
 
 .descricao {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #666;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .btn-participar {
     background: #fff;
     border: 2px solid #f48fb1;
-    padding: 14px 48px;
-    font-size: 1.1rem;
+    padding: 12px 40px;
+    font-size: 1rem;
     font-weight: 700;
     border-radius: 60px;
     color: #d81b60;
@@ -314,40 +388,28 @@ header h1 span {
     color: #fff;
     border-color: #d81b60;
     transform: scale(1.04);
-    box-shadow: 0 8px 28px rgba(216, 27, 96, 0.3);
 }
 
-/* ===== GRID DESAFIOS ===== */
-.desafios {
-    margin: 0 auto 40px;
-}
-
-.desafios h2 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 24px;
-    color: #d81b60;
-}
-
+/* ===== GRID CARDS ===== */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
 }
 
 .card {
     background: #fff;
-    padding: 24px 16px;
-    border-radius: 24px;
+    padding: 20px 14px;
+    border-radius: 20px;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(244, 143, 177, 0.08);
     border: 2px solid #f8bbd0;
     transition: all 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 30px rgba(244, 143, 177, 0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 30px rgba(244, 143, 177, 0.15);
     border-color: #f48fb1;
 }
 
@@ -357,32 +419,31 @@ header h1 span {
 }
 
 .card-icon {
-    font-size: 2.6rem;
-    margin-bottom: 8px;
+    font-size: 2.4rem;
+    margin-bottom: 6px;
 }
 
 .card h3 {
-    font-size: 1.05rem;
-    margin-bottom: 8px;
+    font-size: 1rem;
+    margin-bottom: 6px;
     color: #d81b60;
 }
 
 .card p {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     color: #888;
-    line-height: 1.4;
-    margin-bottom: 12px;
+    line-height: 1.3;
+    margin-bottom: 8px;
 }
 
 .tag {
     display: inline-block;
     background: #fce4ec;
-    padding: 4px 14px;
+    padding: 3px 12px;
     border-radius: 50px;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 600;
     color: #d81b60;
-    letter-spacing: 0.3px;
 }
 
 .card.destaque .tag {
@@ -392,25 +453,24 @@ header h1 span {
 
 /* ===== RANKING ===== */
 .ranking {
-    margin: 0 auto 40px;
     background: #fff;
-    padding: 30px 28px;
+    padding: 24px 20px;
     border-radius: 28px;
-    box-shadow: 0 4px 20px rgba(244, 143, 177, 0.08);
     border: 2px solid #f8bbd0;
+    margin-bottom: 24px;
 }
 
 .ranking h2 {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 1.6rem;
     color: #d81b60;
+    margin-bottom: 16px;
 }
 
 #ranking-lista {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .rank-item {
@@ -418,9 +478,8 @@ header h1 span {
     align-items: center;
     justify-content: space-between;
     background: #fce4ec;
-    padding: 12px 20px;
-    border-radius: 16px;
-    transition: background 0.2s;
+    padding: 10px 16px;
+    border-radius: 14px;
 }
 
 .rank-item:hover {
@@ -429,9 +488,9 @@ header h1 span {
 
 .posicao {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #d81b60;
-    width: 40px;
+    width: 36px;
 }
 
 .nome {
@@ -446,50 +505,48 @@ header h1 span {
     font-weight: 700;
     color: #d81b60;
     background: #fff;
-    padding: 2px 16px;
+    padding: 2px 14px;
     border-radius: 50px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .sem-participantes {
     text-align: center;
     color: #bbb;
-    font-size: 1rem;
-    padding: 20px;
-    font-weight: 500;
+    padding: 16px;
 }
 
 /* ===== PARTICIPAR ===== */
 .participar {
-    margin: 0 auto 40px;
     background: #fce4ec;
-    padding: 36px 28px;
+    padding: 28px 20px;
     border-radius: 28px;
     text-align: center;
     border: 2px solid #f8bbd0;
+    margin-bottom: 24px;
 }
 
 .participar h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #d81b60;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .passos {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     flex-wrap: wrap;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .passo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     background: #fff;
-    padding: 10px 22px;
-    border-radius: 60px;
+    padding: 8px 18px;
+    border-radius: 50px;
     font-weight: 500;
     color: #333;
     border: 2px solid #f8bbd0;
@@ -498,21 +555,21 @@ header h1 span {
 .numero {
     background: #f48fb1;
     color: #fff;
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .btn-enviar {
     background: #f48fb1;
     border: none;
-    padding: 16px 52px;
-    font-size: 1.2rem;
+    padding: 14px 44px;
+    font-size: 1.1rem;
     font-weight: 700;
     border-radius: 60px;
     color: #fff;
@@ -524,16 +581,572 @@ header h1 span {
 .btn-enviar:hover {
     background: #d81b60;
     transform: scale(1.04);
-    box-shadow: 0 8px 32px rgba(216, 27, 96, 0.3);
+}
+
+/* ===== JOGO ===== */
+.jogo-container {
+    background: #fce4ec;
+    padding: 30px 24px;
+    border-radius: 28px;
+    border: 2px solid #f8bbd0;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.jogo-container h2 {
+    color: #d81b60;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.jogo-container .sub {
+    color: #888;
+    margin-bottom: 16px;
+}
+
+.jogo-opcoes {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.jogo-btn {
+    padding: 12px 32px;
+    border: 2px solid #f48fb1;
+    border-radius: 50px;
+    background: #fff;
+    color: #d81b60;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.jogo-btn:hover {
+    background: #d81b60;
+    color: #fff;
+    border-color: #d81b60;
+}
+
+.jogo-btn.selected {
+    background: #d81b60;
+    color: #fff;
+    border-color: #d81b60;
+}
+
+.jogo-duelo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+}
+
+.jogo-duelo-item {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 20px;
+    border: 3px solid #f8bbd0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.jogo-duelo-item:hover {
+    border-color: #d81b60;
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(216, 27, 96, 0.15);
+}
+
+.jogo-duelo-item .vs {
+    font-size: 1.5rem;
+    color: #d81b60;
+    font-weight: 700;
+}
+
+.jogo-duelo-item .nome-item {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.jogo-duelo-item .genero-item {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.jogo-placar {
+    font-size: 1.2rem;
+    color: #d81b60;
+    font-weight: 700;
+    margin: 12px 0;
+}
+
+.jogo-resultado {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #d81b60;
+    padding: 16px;
+}
+
+/* ===== MÚSICA ALEATÓRIA ===== */
+.musica-aleatoria {
+    background: #fce4ec;
+    padding: 24px;
+    border-radius: 28px;
+    border: 2px solid #f8bbd0;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.musica-aleatoria h2 {
+    color: #d81b60;
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+}
+
+.musica-aleatoria .sub {
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.musica-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #f8bbd0;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.musica-card h3 {
+    color: #d81b60;
+    font-size: 1.2rem;
+}
+
+.musica-card .artista {
+    color: #666;
+    font-weight: 500;
+}
+
+.musica-card .genero {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.musica-card .link-musica {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 24px;
+    background: #f48fb1;
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.musica-card .link-musica:hover {
+    background: #d81b60;
+}
+
+.musica-card .nota-area {
+    margin-top: 10px;
+}
+
+.musica-card .nota-area select {
+    padding: 6px 12px;
+    border: 2px solid #f8bbd0;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    background: #fff;
+}
+
+.musica-card .nota-area button {
+    padding: 6px 16px;
+    background: #f48fb1;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.musica-card .nota-area button:hover {
+    background: #d81b60;
+}
+
+.musica-card .comentarios-area {
+    margin-top: 10px;
+}
+
+.musica-card .comentarios-area textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 2px solid #f8bbd0;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    resize: vertical;
+    min-height: 50px;
+}
+
+.musica-card .comentarios-area button {
+    margin-top: 6px;
+    padding: 6px 16px;
+    background: #f48fb1;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.musica-card .comentarios-area button:hover {
+    background: #d81b60;
+}
+
+/* ===== PLAYLIST COLABORATIVA ===== */
+.playlist-container {
+    background: #fce4ec;
+    padding: 24px;
+    border-radius: 28px;
+    border: 2px solid #f8bbd0;
+    margin-bottom: 24px;
+}
+
+.playlist-container h2 {
+    color: #d81b60;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.playlist-container .sub {
+    text-align: center;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.playlist-item {
+    background: #fff;
+    padding: 14px 18px;
+    border-radius: 16px;
+    border: 2px solid #f8bbd0;
+    margin-bottom: 10px;
+}
+
+.playlist-item .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.playlist-item .top .nome-musica {
+    font-weight: 600;
+    color: #d81b60;
+}
+
+.playlist-item .top .artista-musica {
+    color: #666;
+}
+
+.playlist-item .top .adicionado-por {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.playlist-item .acoes {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.playlist-item .acoes select {
+    padding: 4px 10px;
+    border: 2px solid #f8bbd0;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    background: #fff;
+}
+
+.playlist-item .acoes button {
+    padding: 4px 14px;
+    background: #f48fb1;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.playlist-item .acoes button:hover {
+    background: #d81b60;
+}
+
+.playlist-item .comentarios-playlist {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #f8bbd0;
+}
+
+.playlist-item .comentarios-playlist .comentario {
+    font-size: 0.85rem;
+    color: #555;
+    padding: 4px 0;
+}
+
+.playlist-item .comentarios-playlist .comentario strong {
+    color: #d81b60;
+}
+
+.playlist-item .comentarios-playlist textarea {
+    width: 100%;
+    padding: 6px 10px;
+    border: 2px solid #f8bbd0;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    resize: vertical;
+    min-height: 40px;
+    margin-top: 4px;
+}
+
+.playlist-item .comentarios-playlist button {
+    margin-top: 4px;
+    padding: 4px 14px;
+    background: #f48fb1;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.playlist-item .comentarios-playlist button:hover {
+    background: #d81b60;
+}
+
+.playlist-item .nota-exibida {
+    font-weight: 600;
+    color: #f48fb1;
+    font-size: 0.9rem;
+}
+
+/* ===== PERFIL ===== */
+.perfil-container {
+    background: #fce4ec;
+    padding: 24px;
+    border-radius: 28px;
+    border: 2px solid #f8bbd0;
+    margin-bottom: 24px;
+}
+
+.perfil-container h2 {
+    color: #d81b60;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.perfil-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.perfil-info .avatar {
+    font-size: 4rem;
+}
+
+.perfil-info .nome-perfil {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #d81b60;
+}
+
+.perfil-info .bio-perfil {
+    color: #666;
+    font-style: italic;
+}
+
+.perfil-info .detalhes {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.perfil-edit {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.perfil-edit input,
+.perfil-edit select {
+    padding: 10px 14px;
+    border: 2px solid #f8bbd0;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    background: #fff;
+    color: #333;
+}
+
+.perfil-edit input:focus,
+.perfil-edit select:focus {
+    border-color: #f48fb1;
+    box-shadow: 0 0 0 3px rgba(244, 143, 177, 0.15);
+}
+
+.perfil-edit button {
+    padding: 10px;
+    background: #f48fb1;
+    border: none;
+    border-radius: 14px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.perfil-edit button:hover {
+    background: #d81b60;
+}
+
+/* ===== AMIGOS ===== */
+.amigos-container {
+    background: #fce4ec;
+    padding: 24px;
+    border-radius: 28px;
+    border: 2px solid #f8bbd0;
+    margin-bottom: 24px;
+}
+
+.amigos-container h2 {
+    color: #d81b60;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.amigos-container .sub {
+    text-align: center;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.amigo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 10px 16px;
+    border-radius: 14px;
+    border: 2px solid #f8bbd0;
+    margin-bottom: 8px;
+}
+
+.amigo-item .nome-amigo {
+    font-weight: 600;
+    color: #333;
+}
+
+.amigo-item button {
+    padding: 4px 14px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-aceitar {
+    background: #4caf50;
+    color: #fff;
+}
+
+.btn-aceitar:hover {
+    background: #388e3c;
+}
+
+.btn-recusar {
+    background: #f44336;
+    color: #fff;
+}
+
+.btn-recusar:hover {
+    background: #c62828;
+}
+
+.btn-add-amigo {
+    background: #f48fb1;
+    color: #fff;
+}
+
+.btn-add-amigo:hover {
+    background: #d81b60;
+}
+
+.btn-remover-amigo {
+    background: #ffcdd2;
+    color: #c62828;
+}
+
+.btn-remover-amigo:hover {
+    background: #c62828;
+    color: #fff;
+}
+
+/* ===== NOTIFICAÇÕES ===== */
+.notificacoes-container {
+    background: #fce4ec;
+    padding: 20px;
+    border-radius: 28px;
+    border: 2px solid #f8bbd0;
+    margin-bottom: 24px;
+}
+
+.notificacoes-container h2 {
+    color: #d81b60;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.notificacao-item {
+    background: #fff;
+    padding: 10px 16px;
+    border-radius: 14px;
+    border: 2px solid #f8bbd0;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.notificacao-item .data {
+    color: #bbb;
+    font-size: 0.75rem;
 }
 
 /* ===== FOOTER ===== */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 16px;
     color: #bbb;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
 }
 
 /* ===== RESPONSIVO ===== */
@@ -542,27 +1155,39 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
-    .desafio-dia h2 {
-        font-size: 1.6rem;
-    }
-    .grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    .passos {
-        flex-direction: column;
-        align-items: center;
-    }
+
     .login-box {
         padding: 30px 20px;
     }
+
     .login-box h1 {
         font-size: 2rem;
     }
-    .usuario-logado {
-        justify-content: center;
+
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .favoritos-group {
+        grid-template-columns: 1fr;
+    }
+
+    .jogo-duelo {
+        gap: 16px;
+    }
+
+    .jogo-duelo-item {
+        padding: 14px 20px;
+        min-width: 80px;
+    }
+
+    .nav-tab {
+        padding: 8px 16px;
+        font-size: 0.8rem;
     }
 }
 
@@ -570,8 +1195,13 @@ footer {
     .grid {
         grid-template-columns: 1fr;
     }
-    .rank-item {
-        flex-wrap: wrap;
-        gap: 6px;
+
+    .passos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .jogo-duelo {
+        flex-direction: column;
     }
 }
