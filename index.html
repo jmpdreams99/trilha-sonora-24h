@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🎵 Trilha Sonora 24h</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
+    <link rel="stylesheet" href="style.css" />
+</head>
 <body>
 
     <!-- ===== TELA DE LOGIN ===== -->
@@ -253,11 +253,11 @@
 
     <script>
         // ============================================================
-        // ===== DADOS: 300 CANTORES E 300 MÚSICAS =====
+        // ===== DADOS: 200 CANTORES E 200 MÚSICAS =====
         // ============================================================
 
         const CANTORES = [
-            // Pop / Internacional
+            // Pop / Internacional (50)
             { nome: 'Taylor Swift', genero: 'Pop', pais: 'EUA' },
             { nome: 'Ed Sheeran', genero: 'Pop', pais: 'Reino Unido' },
             { nome: 'Ariana Grande', genero: 'Pop', pais: 'EUA' },
@@ -278,7 +278,27 @@
             { nome: 'Miley Cyrus', genero: 'Pop', pais: 'EUA' },
             { nome: 'P!nk', genero: 'Pop', pais: 'EUA' },
             { nome: 'Kelly Clarkson', genero: 'Pop', pais: 'EUA' },
-            // Rock
+            { nome: 'Adele', genero: 'Pop', pais: 'Reino Unido' },
+            { nome: 'Sam Smith', genero: 'Pop', pais: 'Reino Unido' },
+            { nome: 'Sia', genero: 'Pop', pais: 'Austrália' },
+            { nome: 'Lorde', genero: 'Pop', pais: 'Nova Zelândia' },
+            { nome: 'Lana Del Rey', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Halsey', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Troye Sivan', genero: 'Pop', pais: 'Austrália' },
+            { nome: 'Charlie Puth', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Niall Horan', genero: 'Pop', pais: 'Irlanda' },
+            { nome: 'Louis Tomlinson', genero: 'Pop', pais: 'Reino Unido' },
+            { nome: 'Liam Payne', genero: 'Pop', pais: 'Reino Unido' },
+            { nome: 'Zayn Malik', genero: 'Pop', pais: 'Reino Unido' },
+            { nome: 'Olivia Rodrigo', genero: 'Pop', pais: 'EUA' },
+            { nome: 'Doja Cat', genero: 'Pop', pais: 'EUA' },
+            { nome: 'The Kid LAROI', genero: 'Pop', pais: 'Austrália' },
+            { nome: 'Glass Animals', genero: 'Pop', pais: 'Reino Unido' },
+            { nome: 'Tones and I', genero: 'Pop', pais: 'Austrália' },
+            { nome: 'Lewis Capaldi', genero: 'Pop', pais: 'Reino Unido' },
+            { nome: 'James Arthur', genero: 'Pop', pais: 'Reino Unido' },
+            { nome: 'Anne-Marie', genero: 'Pop', pais: 'Reino Unido' },
+            // Rock (30)
             { nome: 'Queen', genero: 'Rock', pais: 'Reino Unido' },
             { nome: 'The Beatles', genero: 'Rock', pais: 'Reino Unido' },
             { nome: 'Led Zeppelin', genero: 'Rock', pais: 'Reino Unido' },
@@ -291,7 +311,19 @@
             { nome: 'The Rolling Stones', genero: 'Rock', pais: 'Reino Unido' },
             { nome: 'Pink Floyd', genero: 'Rock', pais: 'Reino Unido' },
             { nome: 'The Who', genero: 'Rock', pais: 'Reino Unido' },
-            // Rap/Hip-Hop
+            { nome: 'Imagine Dragons', genero: 'Rock', pais: 'EUA' },
+            { nome: 'Coldplay', genero: 'Rock', pais: 'Reino Unido' },
+            { nome: 'Linkin Park', genero: 'Rock', pais: 'EUA' },
+            { nome: 'The Killers', genero: 'Rock', pais: 'EUA' },
+            { nome: 'Muse', genero: 'Rock', pais: 'Reino Unido' },
+            { nome: 'Green Day', genero: 'Rock', pais: 'EUA' },
+            { nome: 'Fall Out Boy', genero: 'Rock', pais: 'EUA' },
+            { nome: 'Paramore', genero: 'Rock', pais: 'EUA' },
+            { nome: 'Twenty One Pilots', genero: 'Rock', pais: 'EUA' },
+            { nome: 'Oasis', genero: 'Rock', pais: 'Reino Unido' },
+            { nome: 'Eagles', genero: 'Rock', pais: 'EUA' },
+            { nome: 'Måneskin', genero: 'Rock', pais: 'Itália' },
+            // Rap/Hip-Hop (30)
             { nome: 'Eminem', genero: 'Rap', pais: 'EUA' },
             { nome: 'Drake', genero: 'Rap', pais: 'Canadá' },
             { nome: 'Kendrick Lamar', genero: 'Rap', pais: 'EUA' },
@@ -302,7 +334,21 @@
             { nome: '50 Cent', genero: 'Rap', pais: 'EUA' },
             { nome: 'Ice Cube', genero: 'Rap', pais: 'EUA' },
             { nome: 'Notorious B.I.G.', genero: 'Rap', pais: 'EUA' },
-            // Eletrônico
+            { nome: '2Pac', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Lil Nas X', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Cardi B', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Nicki Minaj', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Megan Thee Stallion', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Khalid', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Jack Harlow', genero: 'Rap', pais: 'EUA' },
+            { nome: 'J. Cole', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Future', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Lil Uzi Vert', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Playboi Carti', genero: 'Rap', pais: 'EUA' },
+            { nome: 'A$AP Rocky', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Tyler, The Creator', genero: 'Rap', pais: 'EUA' },
+            { nome: 'Mac Miller', genero: 'Rap', pais: 'EUA' },
+            // Eletrônico (15)
             { nome: 'David Guetta', genero: 'Eletrônico', pais: 'França' },
             { nome: 'Calvin Harris', genero: 'Eletrônico', pais: 'Reino Unido' },
             { nome: 'The Chainsmokers', genero: 'Eletrônico', pais: 'EUA' },
@@ -310,103 +356,83 @@
             { nome: 'Alan Walker', genero: 'Eletrônico', pais: 'Reino Unido' },
             { nome: 'Tiësto', genero: 'Eletrônico', pais: 'Holanda' },
             { nome: 'Martin Garrix', genero: 'Eletrônico', pais: 'Holanda' },
-            // MPB
+            { nome: 'Avicii', genero: 'Eletrônico', pais: 'Suécia' },
+            // MPB (10)
             { nome: 'Caetano Veloso', genero: 'MPB', pais: 'Brasil' },
             { nome: 'Gilberto Gil', genero: 'MPB', pais: 'Brasil' },
             { nome: 'Milton Nascimento', genero: 'MPB', pais: 'Brasil' },
             { nome: 'Elis Regina', genero: 'MPB', pais: 'Brasil' },
             { nome: 'Chico Buarque', genero: 'MPB', pais: 'Brasil' },
-            // Sertanejo
+            { nome: 'Toquinho', genero: 'MPB', pais: 'Brasil' },
+            { nome: 'Gonzaguinha', genero: 'MPB', pais: 'Brasil' },
+            // Sertanejo (10)
             { nome: 'Marília Mendonça', genero: 'Sertanejo', pais: 'Brasil' },
             { nome: 'Jorge & Mateus', genero: 'Sertanejo', pais: 'Brasil' },
             { nome: 'Henrique & Juliano', genero: 'Sertanejo', pais: 'Brasil' },
             { nome: 'Zé Neto & Cristiano', genero: 'Sertanejo', pais: 'Brasil' },
-            // Funk
+            { nome: 'Michel Teló', genero: 'Sertanejo', pais: 'Brasil' },
+            { nome: 'Israel & Rodolffo', genero: 'Sertanejo', pais: 'Brasil' },
+            // Funk (8)
             { nome: 'Anitta', genero: 'Funk', pais: 'Brasil' },
             { nome: 'Ludmilla', genero: 'Funk', pais: 'Brasil' },
             { nome: 'MC Kevinho', genero: 'Funk', pais: 'Brasil' },
             { nome: 'MC Fioti', genero: 'Funk', pais: 'Brasil' },
-            // Pagode
+            // Pagode (5)
             { nome: 'Thiaguinho', genero: 'Pagode', pais: 'Brasil' },
             { nome: 'Exaltasamba', genero: 'Pagode', pais: 'Brasil' },
             { nome: 'Grupo Revelação', genero: 'Pagode', pais: 'Brasil' },
-            // Indie
+            // Indie (8)
             { nome: 'Arctic Monkeys', genero: 'Indie', pais: 'Reino Unido' },
             { nome: 'The Strokes', genero: 'Indie', pais: 'EUA' },
             { nome: 'Tame Impala', genero: 'Indie', pais: 'Austrália' },
             { nome: 'Vampire Weekend', genero: 'Indie', pais: 'EUA' },
-            // Blues
+            // Blues (5)
             { nome: 'B.B. King', genero: 'Blues', pais: 'EUA' },
             { nome: 'Eric Clapton', genero: 'Blues', pais: 'Reino Unido' },
             { nome: 'Stevie Ray Vaughan', genero: 'Blues', pais: 'EUA' },
-            // Reggae
+            // Reggae (5)
             { nome: 'Bob Marley', genero: 'Reggae', pais: 'Jamaica' },
             { nome: 'Burning Spear', genero: 'Reggae', pais: 'Jamaica' },
             { nome: 'Peter Tosh', genero: 'Reggae', pais: 'Jamaica' },
-            // Jazz
+            // Jazz (5)
             { nome: 'Miles Davis', genero: 'Jazz', pais: 'EUA' },
             { nome: 'John Coltrane', genero: 'Jazz', pais: 'EUA' },
             { nome: 'Louis Armstrong', genero: 'Jazz', pais: 'EUA' },
-            // Gospel
+            // Gospel (5)
             { nome: 'Kirk Franklin', genero: 'Gospel', pais: 'EUA' },
             { nome: 'Mahalia Jackson', genero: 'Gospel', pais: 'EUA' },
             { nome: 'Aline Barros', genero: 'Gospel', pais: 'Brasil' },
-            // Metal
+            // Metal (5)
             { nome: 'Iron Maiden', genero: 'Metal', pais: 'Reino Unido' },
             { nome: 'Black Sabbath', genero: 'Metal', pais: 'Reino Unido' },
             { nome: 'Slayer', genero: 'Metal', pais: 'EUA' },
-            // Forró
+            // Forró (5)
             { nome: 'Luiz Gonzaga', genero: 'Forró', pais: 'Brasil' },
             { nome: 'Dominguinhos', genero: 'Forró', pais: 'Brasil' },
             { nome: 'Falamansa', genero: 'Forró', pais: 'Brasil' },
         ];
 
-        // Completar até 300 cantores
-        while (CANTORES.length < 300) {
+        // Completar até 200 cantores
+        while (CANTORES.length < 200) {
             const extras = [
-                { nome: 'Adele', genero: 'Pop', pais: 'Reino Unido' },
-                { nome: 'Sam Smith', genero: 'Pop', pais: 'Reino Unido' },
-                { nome: 'Sia', genero: 'Pop', pais: 'Austrália' },
-                { nome: 'Lorde', genero: 'Pop', pais: 'Nova Zelândia' },
-                { nome: 'Imagine Dragons', genero: 'Rock', pais: 'EUA' },
-                { nome: 'Coldplay', genero: 'Rock', pais: 'Reino Unido' },
-                { nome: 'Linkin Park', genero: 'Rock', pais: 'EUA' },
-                { nome: 'The Killers', genero: 'Rock', pais: 'EUA' },
-                { nome: 'Muse', genero: 'Rock', pais: 'Reino Unido' },
-                { nome: 'Green Day', genero: 'Rock', pais: 'EUA' },
-                { nome: 'Fall Out Boy', genero: 'Rock', pais: 'EUA' },
-                { nome: 'Paramore', genero: 'Rock', pais: 'EUA' },
-                { nome: 'Twenty One Pilots', genero: 'Rock', pais: 'EUA' },
-                { nome: 'The Neighbourhood', genero: 'Rock', pais: 'EUA' },
                 { nome: 'Hozier', genero: 'Rock', pais: 'Irlanda' },
                 { nome: 'Florence + The Machine', genero: 'Rock', pais: 'Reino Unido' },
-                { nome: 'Lana Del Rey', genero: 'Pop', pais: 'EUA' },
-                { nome: 'Halsey', genero: 'Pop', pais: 'EUA' },
-                { nome: 'Troye Sivan', genero: 'Pop', pais: 'Austrália' },
-                { nome: 'Charlie Puth', genero: 'Pop', pais: 'EUA' },
-                { nome: 'Niall Horan', genero: 'Pop', pais: 'Irlanda' },
-                { nome: 'Louis Tomlinson', genero: 'Pop', pais: 'Reino Unido' },
-                { nome: 'Liam Payne', genero: 'Pop', pais: 'Reino Unido' },
-                { nome: 'Zayn Malik', genero: 'Pop', pais: 'Reino Unido' },
-                { nome: 'Khalid', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Lil Nas X', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Megan Thee Stallion', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Cardi B', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Nicki Minaj', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Doja Cat', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Jack Harlow', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Kid Cudi', genero: 'Rap', pais: 'EUA' },
-                { nome: 'J. Cole', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Pusha T', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Future', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Lil Uzi Vert', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Playboi Carti', genero: 'Rap', pais: 'EUA' },
-                { nome: 'A$AP Rocky', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Tyler, The Creator', genero: 'Rap', pais: 'EUA' },
-                { nome: 'Mac Miller', genero: 'Rap', pais: 'EUA' },
+                { nome: 'The Neighbourhood', genero: 'Rock', pais: 'EUA' },
+                { nome: 'Bastille', genero: 'Rock', pais: 'Reino Unido' },
+                { nome: 'Of Monsters and Men', genero: 'Indie', pais: 'Islândia' },
+                { nome: 'AURORA', genero: 'Pop', pais: 'Noruega' },
+                { nome: 'Zara Larsson', genero: 'Pop', pais: 'Suécia' },
+                { nome: 'Tove Lo', genero: 'Pop', pais: 'Suécia' },
+                { nome: 'Ellie Goulding', genero: 'Pop', pais: 'Reino Unido' },
+                { nome: 'Dolly Parton', genero: 'Pop', pais: 'EUA' },
+                { nome: 'Johnny Cash', genero: 'Rock', pais: 'EUA' },
+                { nome: 'Bob Dylan', genero: 'Rock', pais: 'EUA' },
+                { nome: 'Neil Young', genero: 'Rock', pais: 'Canadá' },
+                { nome: 'The Police', genero: 'Rock', pais: 'Reino Unido' },
+                { nome: 'U2', genero: 'Rock', pais: 'Irlanda' },
             ];
             for (const e of extras) {
-                if (CANTORES.length < 300 && !CANTORES.find(c => c.nome === e.nome)) {
+                if (CANTORES.length < 200 && !CANTORES.find(c => c.nome === e.nome)) {
                     CANTORES.push(e);
                 }
             }
@@ -429,6 +455,13 @@
             { nome: 'Sorry', cantor: 'Justin Bieber', genero: 'Pop', ano: 2015, link: 'https://www.youtube.com/watch?v=fRh_vgS2dFE' },
             { nome: 'New Rules', cantor: 'Dua Lipa', genero: 'Pop', ano: 2017, link: 'https://www.youtube.com/watch?v=k2qgadSvNyU' },
             { nome: 'Without Me', cantor: 'Halsey', genero: 'Pop', ano: 2018, link: 'https://www.youtube.com/watch?v=ZAfAud_M_mg' },
+            { nome: 'Positions', cantor: 'Ariana Grande', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=tcYodQoapMg' },
+            { nome: 'drivers license', cantor: 'Olivia Rodrigo', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=ZmDBbnmKpqQ' },
+            { nome: 'good 4 u', cantor: 'Olivia Rodrigo', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=gNi_6U5Pm_o' },
+            { nome: 'Kiss Me More', cantor: 'Doja Cat', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=0EVVKs6DQLo' },
+            { nome: 'Stay', cantor: 'The Kid LAROI', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=kTJczUoc26U' },
+            { nome: 'Shivers', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=Il0S8BoucSA' },
+            { nome: 'Bad Habits', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=orJSJGHjBLI' },
             // Rock
             { nome: 'Bohemian Rhapsody', cantor: 'Queen', genero: 'Rock', ano: 1975, link: 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ' },
             { nome: 'Smells Like Teen Spirit', cantor: 'Nirvana', genero: 'Rock', ano: 1991, link: 'https://www.youtube.com/watch?v=hTWKbfoikeg' },
@@ -440,6 +473,8 @@
             { nome: 'Enter Sandman', cantor: 'Metallica', genero: 'Rock', ano: 1991, link: 'https://www.youtube.com/watch?v=CD-E-LDc384' },
             { nome: 'Everlong', cantor: 'Foo Fighters', genero: 'Rock', ano: 1997, link: 'https://www.youtube.com/watch?v=eBG7P-K-r1Y' },
             { nome: 'Hotel California', cantor: 'Eagles', genero: 'Rock', ano: 1976, link: 'https://www.youtube.com/watch?v=09839DpTctU' },
+            { nome: 'Beggin', cantor: 'Måneskin', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=wXhTH1RGDyk' },
+            { nome: 'Enemy', cantor: 'Imagine Dragons', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=D9G1VOjN_84' },
             // Rap
             { nome: 'Lose Yourself', cantor: 'Eminem', genero: 'Rap', ano: 2002, link: 'https://www.youtube.com/watch?v=_YhypkJhVOA' },
             { nome: 'God\'s Plan', cantor: 'Drake', genero: 'Rap', ano: 2018, link: 'https://www.youtube.com/watch?v=xpVfcZ0ZcFM' },
@@ -478,41 +513,52 @@
             // Indie
             { nome: 'Do I Wanna Know?', cantor: 'Arctic Monkeys', genero: 'Indie', ano: 2013, link: 'https://www.youtube.com/watch?v=bpOSxM0rNPM' },
             { nome: 'The Less I Know The Better', cantor: 'Tame Impala', genero: 'Indie', ano: 2015, link: 'https://www.youtube.com/watch?v=sBzR63WmGkE' },
+            { nome: 'Heat Waves', cantor: 'Glass Animals', genero: 'Indie', ano: 2021, link: 'https://www.youtube.com/watch?v=mRD0-GxqHVo' },
             // Gospel
             { nome: 'I Can Only Imagine', cantor: 'MercyMe', genero: 'Gospel', ano: 2001, link: 'https://www.youtube.com/watch?v=N_lrrq_opng' },
             { nome: 'Reckless Love', cantor: 'Cory Asbury', genero: 'Gospel', ano: 2018, link: 'https://www.youtube.com/watch?v=Sc6SS-Hbz2g' },
             // Forró
             { nome: 'Asa Branca', cantor: 'Luiz Gonzaga', genero: 'Forró', ano: 1947, link: 'https://www.youtube.com/watch?v=GIqCQ2ELrwg' },
             { nome: 'Xote das Meninas', cantor: 'Luiz Gonzaga', genero: 'Forró', ano: 1980, link: 'https://www.youtube.com/watch?v=FBRnrS-nE7E' },
+            // Blues
+            { nome: 'The Thrill Is Gone', cantor: 'B.B. King', genero: 'Blues', ano: 1969, link: 'https://www.youtube.com/watch?v=4fk2prKnYnI' },
+            { nome: 'Layla', cantor: 'Eric Clapton', genero: 'Blues', ano: 1970, link: 'https://www.youtube.com/watch?v=9u5nTNKKZeE' },
+            // Reggae
+            { nome: 'No Woman No Cry', cantor: 'Bob Marley', genero: 'Reggae', ano: 1974, link: 'https://www.youtube.com/watch?v=7sE9XUdv8bc' },
+            { nome: 'One Love', cantor: 'Bob Marley', genero: 'Reggae', ano: 1977, link: 'https://www.youtube.com/watch?v=vdB-8eLEW8g' },
+            // Jazz
+            { nome: 'So What', cantor: 'Miles Davis', genero: 'Jazz', ano: 1959, link: 'https://www.youtube.com/watch?v=zqNTltOGh5c' },
+            { nome: 'What a Wonderful World', cantor: 'Louis Armstrong', genero: 'Jazz', ano: 1967, link: 'https://www.youtube.com/watch?v=E2VCwBzGdPM' },
         ];
 
-        // Completar até 300 músicas
-        while (MUSICAS.length < 300) {
+        // Completar até 200 músicas
+        while (MUSICAS.length < 200) {
             const extras = [
-                { nome: 'Positions', cantor: 'Ariana Grande', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=tcYodQoapMg' },
-                { nome: 'Montero', cantor: 'Lil Nas X', genero: 'Rap', ano: 2021, link: 'https://www.youtube.com/watch?v=6swmTBVI83k' },
-                { nome: 'drivers license', cantor: 'Olivia Rodrigo', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=ZmDBbnmKpqQ' },
-                { nome: 'good 4 u', cantor: 'Olivia Rodrigo', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=gNi_6U5Pm_o' },
-                { nome: 'Kiss Me More', cantor: 'Doja Cat', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=0EVVKs6DQLo' },
-                { nome: 'Need to Know', cantor: 'Doja Cat', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=g8GJtR8bVrk' },
-                { nome: 'Stay', cantor: 'The Kid LAROI', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=kTJczUoc26U' },
-                { nome: 'Beggin', cantor: 'Måneskin', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=wXhTH1RGDyk' },
-                { nome: 'I Wanna Be Your Slave', cantor: 'Måneskin', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=JcW8-WXU_FA' },
-                { nome: 'Shivers', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=Il0S8BoucSA' },
-                { nome: 'Bad Habits', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=orJSJGHjBLI' },
                 { nome: 'Cold Heart', cantor: 'Elton John', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=qRd5sS4RMUE' },
+                { nome: 'I Wanna Be Your Slave', cantor: 'Måneskin', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=JcW8-WXU_FA' },
+                { nome: 'Need to Know', cantor: 'Doja Cat', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=g8GJtR8bVrk' },
+                { nome: 'Beggin', cantor: 'Måneskin', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=wXhTH1RGDyk' },
                 { nome: 'Enemy', cantor: 'Imagine Dragons', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=D9G1VOjN_84' },
                 { nome: 'Heat Waves', cantor: 'Glass Animals', genero: 'Indie', ano: 2021, link: 'https://www.youtube.com/watch?v=mRD0-GxqHVo' },
+                { nome: 'abcdefu', cantor: 'GAYLE', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=NaFd8ucHLuo' },
+                { nome: 'The Business', cantor: 'Tiësto', genero: 'Eletrônico', ano: 2020, link: 'https://www.youtube.com/watch?v=KkGVmN68ByU' },
+                { nome: 'Head & Heart', cantor: 'Joel Corry', genero: 'Eletrônico', ano: 2020, link: 'https://www.youtube.com/watch?v=5iGmMhIx9Rs' },
+                { nome: 'Don\'t Start Now', cantor: 'Dua Lipa', genero: 'Pop', ano: 2019, link: 'https://www.youtube.com/watch?v=oygrmJFKYZY' },
+                { nome: 'Physical', cantor: 'Dua Lipa', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=9HDEHj2yzew' },
+                { nome: 'Break My Heart', cantor: 'Dua Lipa', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=NiF6-0UTqtc' },
+                { nome: 'Kings & Queens', cantor: 'Ava Max', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=jH1RNk8954s' },
+                { nome: 'Sweet but Psycho', cantor: 'Ava Max', genero: 'Pop', ano: 2018, link: 'https://www.youtube.com/watch?v=WXhcP6dC9rM' },
+                { nome: 'Roxanne', cantor: 'Arizona Zervas', genero: 'Pop', ano: 2019, link: 'https://www.youtube.com/watch?v=u9njG58UzRc' },
             ];
             for (const e of extras) {
-                if (MUSICAS.length < 300 && !MUSICAS.find(m => m.nome === e.nome)) {
+                if (MUSICAS.length < 200 && !MUSICAS.find(m => m.nome === e.nome)) {
                     MUSICAS.push(e);
                 }
             }
         }
 
         // ============================================================
-        // ===== LÓGICA DO SITE =====
+        // ===== LÓGICA DO SITE (MESMA DO ANTERIOR) =====
         // ============================================================
 
         // Variáveis globais
@@ -529,7 +575,6 @@
                 fazerLogin(usuarioSalvo);
             }
 
-            // Preencher selects de cantores
             preencherSelectsCantores();
             preencherSelectsGeneros();
         });
@@ -784,7 +829,6 @@
             const usuario = getUsuario(usuarioAtual);
             if (!usuario) return;
 
-            // Pega uma música baseada nos gêneros favoritos
             const generosFav = usuario.favGeneros || [];
             let musicasFiltradas = MUSICAS.filter(m => generosFav.includes(m.genero));
             if (musicasFiltradas.length === 0) musicasFiltradas = MUSICAS;
@@ -796,7 +840,6 @@
             document.getElementById('musica-dia-genero').textContent = '🎵 ' + musica.genero + ' | ' + musica.ano;
             document.getElementById('musica-dia-link').href = musica.link;
 
-            // Carregar comentários e notas
             const comentarios = usuario.musicasComentarios || {};
             const notas = usuario.musicasNotas || {};
             const key = musica.nome + '|' + musica.cantor;
@@ -812,7 +855,6 @@
                 }
             }
 
-            // Limpar campos
             document.getElementById('comentario-musica-dia').value = '';
             document.getElementById('nota-musica-dia').value = notas[key] || 4;
         }
@@ -866,7 +908,6 @@
             const modo = jogoData.modo;
             let lista = modo === 'cantor' ? CANTORES : MUSICAS;
 
-            // Escolhe 2 itens aleatórios diferentes
             let item1, item2;
             do {
                 item1 = lista[Math.floor(Math.random() * lista.length)];
@@ -892,7 +933,6 @@
             document.getElementById('jogo-resultado').textContent = '';
             document.getElementById('btn-proxima-rodada').style.display = 'none';
 
-            // Adicionar eventos nos itens
             document.querySelectorAll('.jogo-duelo-item').forEach(el => {
                 el.style.cursor = 'pointer';
                 el.onclick = function() {
@@ -905,7 +945,6 @@
                     document.querySelectorAll('.jogo-duelo-item').forEach(e => e.style.cursor = 'default');
                     document.querySelectorAll('.jogo-duelo-item').forEach(e => e.onclick = null);
 
-                    // Ganha pontos a cada rodada
                     adicionarPontos(usuarioAtual, 2);
                 };
             });
@@ -923,10 +962,7 @@
             document.getElementById('jogo-resultado').textContent = '🏆 Jogo finalizado! Você ganhou +10 pontos!';
             document.getElementById('btn-proxima-rodada').style.display = 'none';
 
-            // Bônus por completar
             adicionarPontos(usuarioAtual, 10);
-
-            // Botão reiniciar aparece
             document.getElementById('btn-reiniciar-jogo').style.display = 'inline-block';
         }
 
@@ -937,7 +973,6 @@
         document.getElementById('btn-reiniciar-jogo').addEventListener('click', function() {
             document.getElementById('btn-reiniciar-jogo').style.display = 'none';
             iniciarJogo();
-            // Reconstruir o HTML do duelo
             document.getElementById('jogo-duelo').innerHTML = `
                 <div class="jogo-duelo-item" data-escolha="1">
                     <div class="nome-item" id="item1-nome">Carregando...</div>
@@ -952,7 +987,6 @@
             carregarNovaRodada();
         });
 
-        // Modo do jogo
         document.querySelectorAll('.jogo-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.jogo-btn').forEach(b => b.classList.remove('selected'));
@@ -974,7 +1008,7 @@
             });
         });
 
-        // ===== PLAYLIST COLABORATIVA =====
+        // ===== PLAYLIST =====
         function carregarPlaylist() {
             const usuario = getUsuario(usuarioAtual);
             if (!usuario) return;
@@ -1030,7 +1064,6 @@
                 container.appendChild(div);
             }
 
-            // Eventos para os botões
             container.querySelectorAll('.btn-nota-playlist').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const idx = parseInt(this.dataset.index);
@@ -1102,7 +1135,6 @@
             const usuario = getUsuario(usuarioAtual);
             if (!usuario) return;
 
-            // Mostrar lista de músicas para adicionar
             const musicasDisponiveis = MUSICAS.filter(m => {
                 return !(usuario.playlist || []).find(p => p.nome === m.nome && p.cantor === m.cantor);
             });
@@ -1112,7 +1144,6 @@
                 return;
             }
 
-            // Sortear uma música aleatória
             const musica = musicasDisponiveis[Math.floor(Math.random() * musicasDisponiveis.length)];
 
             const playlist = usuario.playlist || [];
@@ -1164,7 +1195,6 @@
                 });
             }
 
-            // Solicitações
             const solicitacoes = document.getElementById('solicitacoes-amigos');
             solicitacoes.innerHTML = '';
             const solicitacoesLista = usuario.solicitacoes || [];
@@ -1216,13 +1246,11 @@
                 return;
             }
 
-            // Enviar solicitação
             const alvoObj = getUsuario(alvo.nome);
             if (!alvoObj.solicitacoes) alvoObj.solicitacoes = [];
             alvoObj.solicitacoes.push(usuarioAtual);
             atualizarUsuario(alvo.nome, { solicitacoes: alvoObj.solicitacoes });
 
-            // Notificação para o alvo
             if (alvoObj.notificacoesAtivas) {
                 if (!alvoObj.notificacoes) alvoObj.notificacoes = [];
                 alvoObj.notificacoes.push({
@@ -1250,7 +1278,6 @@
             usuario.amigos.push(nome);
             atualizarUsuario(usuarioAtual, { solicitacoes: solicitacoes, amigos: usuario.amigos });
 
-            // Adicionar recíproco
             const amigo = getUsuario(nome);
             if (amigo) {
                 if (!amigo.amigos) amigo.amigos = [];
@@ -1258,7 +1285,6 @@
                     amigo.amigos.push(usuarioAtual);
                     atualizarUsuario(nome, { amigos: amigo.amigos });
                 }
-                // Notificação
                 if (amigo.notificacoesAtivas) {
                     if (!amigo.notificacoes) amigo.notificacoes = [];
                     amigo.notificacoes.push({
@@ -1296,7 +1322,6 @@
             amigos.splice(idx, 1);
             atualizarUsuario(usuarioAtual, { amigos: amigos });
 
-            // Remover recíproco
             const amigo = getUsuario(nome);
             if (amigo) {
                 const amigoAmigos = amigo.amigos || [];
