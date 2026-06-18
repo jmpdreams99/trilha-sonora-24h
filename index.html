@@ -17,8 +17,9 @@
 
             <form id="form-login">
                 <div class="campo">
-                    <label>📧 Seu e-mail</label>
-                    <input type="email" id="email-usuario" placeholder="exemplo@email.com" required />
+                    <label>📧 Seu Gmail</label>
+                    <input type="email" id="email-usuario" placeholder="exemplo@gmail.com" required />
+                    <span id="erro-email" class="erro"></span>
                 </div>
 
                 <div class="campo">
@@ -162,6 +163,7 @@
         var formLogin = document.getElementById('form-login');
         var inputEmail = document.getElementById('email-usuario');
         var inputNome = document.getElementById('nome-usuario');
+        var erroEmail = document.getElementById('erro-email');
         var erroNome = document.getElementById('erro-nome');
         var nomeExibido = document.getElementById('nome-exibido');
         var btnSair = document.getElementById('btn-sair');
@@ -170,7 +172,7 @@
         var btnParticipar = document.getElementById('btn-participar');
         var btnEnviar = document.getElementById('btn-enviar');
 
-        // ===== FUNÇÕES DO RANKING =====
+        // ===== FUNÇÕES =====
 
         function carregarUsuarios() {
             var dados = localStorage.getItem('usuarios_trilha');
@@ -253,8 +255,6 @@
             renderizarRanking();
         }
 
-        // ===== FUNÇÃO DE LOGIN =====
-
         function fazerLogin(nome) {
             var usuarios = carregarUsuarios();
             var usuario = null;
@@ -282,6 +282,21 @@
             renderizarRanking();
         }
 
+        // ===== FUNÇÃO PARA VALIDAR GMAIL =====
+
+        function validarGmail(email) {
+            // Verifica se termina com @gmail.com
+            if (!email.endsWith('@gmail.com')) {
+                return false;
+            }
+            // Verifica se tem algo antes do @
+            var partes = email.split('@');
+            if (partes.length !== 2 || partes[0].length === 0) {
+                return false;
+            }
+            return true;
+        }
+
         // ===== EVENTO DE LOGIN =====
 
         formLogin.addEventListener('submit', function(e) {
@@ -291,13 +306,24 @@
             var nome = inputNome.value.trim();
 
             // Validações
+            erroEmail.style.display = 'none';
+            erroNome.style.display = 'none';
+
             if (email === '') {
-                alert('Digite seu e-mail!');
+                erroEmail.textContent = '❌ Digite seu e-mail!';
+                erroEmail.style.display = 'block';
+                return;
+            }
+
+            if (!validarGmail(email)) {
+                erroEmail.textContent = '❌ Use apenas e-mails @gmail.com!';
+                erroEmail.style.display = 'block';
                 return;
             }
 
             if (nome.length < 2) {
-                alert('Digite um nome com pelo menos 2 caracteres!');
+                erroNome.textContent = '❌ Digite um nome com pelo menos 2 caracteres!';
+                erroNome.style.display = 'block';
                 return;
             }
 
@@ -311,6 +337,7 @@
                 }
             }
 
+            erroEmail.style.display = 'none';
             erroNome.style.display = 'none';
 
             // Salva o novo usuário
@@ -345,6 +372,7 @@
                 conteudo.style.display = 'none';
                 inputNome.value = '';
                 inputEmail.value = '';
+                erroEmail.style.display = 'none';
                 erroNome.style.display = 'none';
             }
         });
@@ -356,34 +384,33 @@
             if (!nome) return;
 
             if (confirm('⚠️ Tem certeza que quer EXCLUIR sua conta permanentemente?\n\nTodos os seus pontos serão perdidos!')) {
-                if (confirm('Digite "SIM" para confirmar a exclusão.')) {
-                    var confirmacao = prompt('Digite SIM para confirmar:');
-                    if (confirmacao && confirmacao.toUpperCase() === 'SIM') {
-                        var usuarios = carregarUsuarios();
-                        var novosUsuarios = [];
+                var confirmacao = prompt('Digite "SIM" para confirmar a exclusão:');
+                if (confirmacao && confirmacao.toUpperCase() === 'SIM') {
+                    var usuarios = carregarUsuarios();
+                    var novosUsuarios = [];
 
-                        for (var i = 0; i < usuarios.length; i++) {
-                            if (usuarios[i].nome !== nome) {
-                                novosUsuarios.push(usuarios[i]);
-                            }
+                    for (var i = 0; i < usuarios.length; i++) {
+                        if (usuarios[i].nome !== nome) {
+                            novosUsuarios.push(usuarios[i]);
                         }
-
-                        salvarUsuarios(novosUsuarios);
-
-                        localStorage.removeItem('usuario_atual');
-                        localStorage.removeItem('email_atual');
-
-                        telaLogin.style.display = 'flex';
-                        conteudo.style.display = 'none';
-                        inputNome.value = '';
-                        inputEmail.value = '';
-                        erroNome.style.display = 'none';
-
-                        alert('🗑️ Conta excluída com sucesso!');
-                        renderizarRanking();
-                    } else {
-                        alert('❌ Confirmação incorreta. Exclusão cancelada.');
                     }
+
+                    salvarUsuarios(novosUsuarios);
+
+                    localStorage.removeItem('usuario_atual');
+                    localStorage.removeItem('email_atual');
+
+                    telaLogin.style.display = 'flex';
+                    conteudo.style.display = 'none';
+                    inputNome.value = '';
+                    inputEmail.value = '';
+                    erroEmail.style.display = 'none';
+                    erroNome.style.display = 'none';
+
+                    alert('🗑️ Conta excluída com sucesso!');
+                    renderizarRanking();
+                } else {
+                    alert('❌ Confirmação incorreta. Exclusão cancelada.');
                 }
             }
         });
