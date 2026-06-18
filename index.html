@@ -8,21 +8,19 @@
 </head>
 <body>
 
-    <!-- ===== TELA DE LOGIN ===== -->
+    <!-- TELA DE LOGIN -->
     <div id="tela-login">
         <div class="login-box">
             <div class="login-icon">🎵</div>
             <h1>Trilha Sonora <span>24h</span></h1>
             <p class="login-sub">Entre com seu nome e comece o desafio!</p>
-            <form id="form-login">
-                <input type="text" id="nome-usuario" placeholder="Digite seu nome" maxlength="20" required />
-                <button type="submit">Entrar na Trilha 🎶</button>
-            </form>
+            <input type="text" id="nome-usuario" placeholder="Digite seu nome" maxlength="20" />
+            <button id="btn-entrar">Entrar na Trilha 🎶</button>
             <p class="login-aviso">⚡ Seu nome aparecerá no ranking!</p>
         </div>
     </div>
 
-    <!-- ===== CONTEÚDO PRINCIPAL (oculto até login) ===== -->
+    <!-- CONTEÚDO PRINCIPAL -->
     <div id="conteudo-principal" style="display: none;">
 
         <header>
@@ -49,7 +47,7 @@
                 <p class="descricao">
                     Indique uma música que transmita essa emoção e explique o porquê!
                 </p>
-                <button class="btn-participar">Participar</button>
+                <button class="btn-participar" id="btn-participar">Participar</button>
             </section>
 
             <!-- CARDS DOS DESAFIOS -->
@@ -95,11 +93,10 @@
                 </div>
             </section>
 
-            <!-- RANKING DINÂMICO -->
+            <!-- RANKING -->
             <section class="ranking">
                 <h2>🏆 Ranking da Semana</h2>
-                <div class="ranking-lista" id="ranking-lista">
-                    <!-- Os itens serão inseridos via JavaScript -->
+                <div id="ranking-lista">
                     <p class="sem-participantes">Nenhum participante ainda. Seja o primeiro! 🎶</p>
                 </div>
             </section>
@@ -121,7 +118,7 @@
                         <p>Poste e ganhe pontos!</p>
                     </div>
                 </div>
-                <button class="btn-enviar">Enviar minha resposta</button>
+                <button class="btn-enviar" id="btn-enviar">Enviar minha resposta</button>
             </section>
 
         </main>
@@ -133,48 +130,37 @@
     </div>
 
     <script>
-        // ===== GERENCIAMENTO DE USUÁRIOS E RANKING =====
+        // ===== VARIAVEIS GLOBAIS =====
+        var usuarioAtual = '';
+        var ranking = [];
 
-        // Chave para salvar no localStorage
-        const STORAGE_KEY = 'trilha_sonora_ranking';
+        // ===== ELEMENTOS =====
+        var telaLogin = document.getElementById('tela-login');
+        var conteudo = document.getElementById('conteudo-principal');
+        var inputNome = document.getElementById('nome-usuario');
+        var btnEntrar = document.getElementById('btn-entrar');
+        var nomeExibido = document.getElementById('nome-exibido');
+        var btnSair = document.getElementById('btn-sair');
+        var rankingLista = document.getElementById('ranking-lista');
+        var btnParticipar = document.getElementById('btn-participar');
+        var btnEnviar = document.getElementById('btn-enviar');
 
-        // Elementos
-        const telaLogin = document.getElementById('tela-login');
-        const conteudo = document.getElementById('conteudo-principal');
-        const formLogin = document.getElementById('form-login');
-        const inputNome = document.getElementById('nome-usuario');
-        const nomeExibido = document.getElementById('nome-exibido');
-        const btnSair = document.getElementById('btn-sair');
-        const rankingLista = document.getElementById('ranking-lista');
+        // ===== FUNCOES =====
 
-        // ===== FUNÇÕES DO RANKING =====
-
-        function getRanking() {
-            const dados = localStorage.getItem(STORAGE_KEY);
-            return dados ? JSON.parse(dados) : [];
-        }
-
-        function salvarRanking(ranking) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(ranking));
-        }
-
-        function adicionarParticipante(nome, pontos = 0) {
-            const ranking = getRanking();
-            // Verifica se o usuário já existe
-            const existente = ranking.find(item => item.nome.toLowerCase() === nome.toLowerCase());
-            if (existente) {
-                existente.pontos += pontos;
+        function carregarRanking() {
+            var dados = localStorage.getItem('ranking_trilha');
+            if (dados) {
+                ranking = JSON.parse(dados);
             } else {
-                ranking.push({ nome: nome, pontos: pontos });
+                ranking = [];
             }
-            // Ordena do maior para o menor
-            ranking.sort((a, b) => b.pontos - a.pontos);
-            salvarRanking(ranking);
-            renderizarRanking();
+        }
+
+        function salvarRanking() {
+            localStorage.setItem('ranking_trilha', JSON.stringify(ranking));
         }
 
         function renderizarRanking() {
-            const ranking = getRanking();
             rankingLista.innerHTML = '';
 
             if (ranking.length === 0) {
@@ -182,84 +168,141 @@
                 return;
             }
 
-            ranking.forEach((item, index) => {
-                const div = document.createElement('div');
-                div.className = 'rank-item';
-                const medalhas = ['🥇', '🥈', '🥉'];
-                const posicao = index < 3 ? medalhas[index] : `${index + 1}º`;
-                div.innerHTML = `
-                    <span class="posicao">${posicao}</span>
-                    <span class="nome">${item.nome}</span>
-                    <span class="pontos">${item.pontos} pts</span>
-                `;
-                rankingLista.appendChild(div);
+            // Ordena do maior para o menor
+            ranking.sort(function(a, b) {
+                return b.pontos - a.pontos;
             });
+
+            for (var i = 0; i < ranking.length; i++) {
+                var item = ranking[i];
+                var div = document.createElement('div');
+                div.className = 'rank-item';
+
+                var posicao = '';
+                if (i === 0) posicao = '🥇';
+                else if (i === 1) posicao = '🥈';
+                else if (i === 2) posicao = '🥉';
+                else posicao = (i + 1) + 'º';
+
+                div.innerHTML = '<span class="posicao">' + posicao + '</span>' +
+                                '<span class="nome">' + item.nome + '</span>' +
+                                '<span class="pontos">' + item.pontos + ' pts</span>';
+
+                rankingLista.appendChild(div);
+            }
         }
 
-        // ===== LOGIN =====
+        function adicionarPontos(nome, pontos) {
+            carregarRanking();
+            var encontrou = false;
 
-        formLogin.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nome = inputNome.value.trim();
+            for (var i = 0; i < ranking.length; i++) {
+                if (ranking[i].nome.toLowerCase() === nome.toLowerCase()) {
+                    ranking[i].pontos += pontos;
+                    encontrou = true;
+                    break;
+                }
+            }
+
+            if (!encontrou) {
+                ranking.push({ nome: nome, pontos: pontos });
+            }
+
+            salvarRanking();
+            renderizarRanking();
+        }
+
+        function entrar(nome) {
             if (nome.length < 2) {
                 alert('Digite um nome com pelo menos 2 caracteres!');
                 return;
             }
-            // Salva o nome do usuário atual
+
+            usuarioAtual = nome;
             localStorage.setItem('usuario_atual', nome);
-            nomeExibido.textContent = `👤 ${nome}`;
+
+            nomeExibido.textContent = '👤 ' + nome;
+
             telaLogin.style.display = 'none';
             conteudo.style.display = 'block';
 
-            // Adiciona o usuário ao ranking com 0 pontos (se não existir)
-            const ranking = getRanking();
-            const existe = ranking.some(item => item.nome.toLowerCase() === nome.toLowerCase());
-            if (!existe) {
-                ranking.push({ nome: nome, pontos: 0 });
-                salvarRanking(ranking);
-            }
+            carregarRanking();
             renderizarRanking();
 
-            // Pequena animação de boas-vindas
-            alert(`🎵 Bem-vindo(a), ${nome}! Pronto para o desafio de hoje?`);
-        });
+            // Adiciona o usuário no ranking se não existir
+            var existe = false;
+            for (var i = 0; i < ranking.length; i++) {
+                if (ranking[i].nome.toLowerCase() === nome.toLowerCase()) {
+                    existe = true;
+                    break;
+                }
+            }
+            if (!existe) {
+                ranking.push({ nome: nome, pontos: 0 });
+                salvarRanking();
+                renderizarRanking();
+            }
 
-        // ===== SAIR =====
+            alert('🎵 Bem-vindo(a), ' + nome + '! Pronto para o desafio de hoje?');
+        }
 
-        btnSair.addEventListener('click', function() {
+        function sair() {
             if (confirm('Tem certeza que quer sair?')) {
                 localStorage.removeItem('usuario_atual');
+                usuarioAtual = '';
                 telaLogin.style.display = 'flex';
                 conteudo.style.display = 'none';
                 inputNome.value = '';
             }
+        }
+
+        // ===== EVENTOS =====
+
+        btnEntrar.addEventListener('click', function() {
+            var nome = inputNome.value.trim();
+            entrar(nome);
         });
 
-        // ===== SIMULAÇÃO DE PARTICIPAÇÃO (pontos) =====
+        inputNome.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                var nome = inputNome.value.trim();
+                entrar(nome);
+            }
+        });
 
-        document.querySelector('.btn-participar').addEventListener('click', function() {
-            const usuario = localStorage.getItem('usuario_atual');
-            if (!usuario) return;
-            // Adiciona 10 pontos ao participar
-            adicionarParticipante(usuario, 10);
+        btnSair.addEventListener('click', sair);
+
+        btnParticipar.addEventListener('click', function() {
+            var nome = localStorage.getItem('usuario_atual');
+            if (!nome) {
+                alert('Você precisa estar logado!');
+                return;
+            }
+            adicionarPontos(nome, 10);
             alert('🎉 Você ganhou 10 pontos por participar do desafio de hoje!');
         });
 
-        document.querySelector('.btn-enviar').addEventListener('click', function() {
-            const usuario = localStorage.getItem('usuario_atual');
-            if (!usuario) return;
-            adicionarParticipante(usuario, 5);
+        btnEnviar.addEventListener('click', function() {
+            var nome = localStorage.getItem('usuario_atual');
+            if (!nome) {
+                alert('Você precisa estar logado!');
+                return;
+            }
+            adicionarPontos(nome, 5);
             alert('📨 Resposta enviada! +5 pontos!');
         });
 
-        // ===== VERIFICA SESSÃO AO CARREGAR =====
+        // ===== VERIFICA SESSÃO =====
 
         window.addEventListener('load', function() {
-            const usuarioSalvo = localStorage.getItem('usuario_atual');
+            var usuarioSalvo = localStorage.getItem('usuario_atual');
+
             if (usuarioSalvo) {
-                nomeExibido.textContent = `👤 ${usuarioSalvo}`;
+                usuarioAtual = usuarioSalvo;
+                nomeExibido.textContent = '👤 ' + usuarioSalvo;
                 telaLogin.style.display = 'none';
                 conteudo.style.display = 'block';
+                carregarRanking();
                 renderizarRanking();
             } else {
                 telaLogin.style.display = 'flex';
