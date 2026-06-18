@@ -7,129 +7,266 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <span class="music-icon">🎵</span>
+
+    <!-- ===== TELA DE LOGIN ===== -->
+    <div id="tela-login">
+        <div class="login-box">
+            <div class="login-icon">🎵</div>
             <h1>Trilha Sonora <span>24h</span></h1>
+            <p class="login-sub">Entre com seu nome e comece o desafio!</p>
+            <form id="form-login">
+                <input type="text" id="nome-usuario" placeholder="Digite seu nome" maxlength="20" required />
+                <button type="submit">Entrar na Trilha 🎶</button>
+            </form>
+            <p class="login-aviso">⚡ Seu nome aparecerá no ranking!</p>
         </div>
-        <p class="subtitle">Um desafio musical a cada dia!</p>
-    </header>
+    </div>
 
-    <main>
-        <!-- DESAFIO DO DIA -->
-        <section class="desafio-dia">
-            <div class="badge">🔥 Desafio de hoje</div>
-            <h2>Qual é a Emoção?</h2>
-            <p class="tema">A palavra de hoje é: <strong>"SAUDADE"</strong></p>
-            <p class="descricao">
-                Indique uma música que transmita essa emoção e explique o porquê!
-            </p>
-            <button class="btn-participar">Participar</button>
-        </section>
+    <!-- ===== CONTEÚDO PRINCIPAL (oculto até login) ===== -->
+    <div id="conteudo-principal" style="display: none;">
 
-        <!-- CARDS DOS DESAFIOS -->
-        <section class="desafios">
-            <h2>Os 5 Desafios Musicais</h2>
-            <div class="grid">
-
-                <!-- Card 1 -->
-                <div class="card">
-                    <div class="card-icon">🎶</div>
-                    <h3>Trilha Sonora da Minha Vida</h3>
-                    <p>A cada dia, um tema novo. Poste uma música que representa aquele momento da sua vida.</p>
-                    <span class="tag">diário</span>
+        <header>
+            <div class="header-top">
+                <div class="logo">
+                    <span class="music-icon">🎵</span>
+                    <h1>Trilha Sonora <span>24h</span></h1>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="card">
-                    <div class="card-icon">🔍</div>
-                    <h3>Desafio da Letra</h3>
-                    <p>Descubra qual música é a partir de um trecho misterioso. Quem acertar primeiro ganha pontos!</p>
-                    <span class="tag">quiz</span>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="card">
-                    <div class="card-icon">🎨</div>
-                    <h3>Crie uma Capa de Álbum</h3>
-                    <p>Pegue uma música aleatória e crie uma capa de álbum imaginária para ela.</p>
-                    <span class="tag">criativo</span>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="card">
-                    <div class="card-icon">💭</div>
-                    <h3>Qual é a Emoção?</h3>
-                    <p>Recomende uma música para uma palavra do dia e justifique sua escolha.</p>
-                    <span class="tag">reflexão</span>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="card destaque">
-                    <div class="card-icon">🤝</div>
-                    <h3>Dueto Impossível</h3>
-                    <p>Dois artistas completamente diferentes se encontram. Qual seria a música? Vote na melhor ideia!</p>
-                    <span class="tag">⭐ melhor</span>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- RANKING -->
-        <section class="ranking">
-            <h2>🏆 Ranking da Semana</h2>
-            <div class="ranking-lista">
-                <div class="rank-item">
-                    <span class="posicao">1º</span>
-                    <span class="nome">Ana C.</span>
-                    <span class="pontos">320 pts</span>
-                </div>
-                <div class="rank-item">
-                    <span class="posicao">2º</span>
-                    <span class="nome">Lucas M.</span>
-                    <span class="pontos">280 pts</span>
-                </div>
-                <div class="rank-item">
-                    <span class="posicao">3º</span>
-                    <span class="nome">Marina S.</span>
-                    <span class="pontos">245 pts</span>
-                </div>
-                <div class="rank-item">
-                    <span class="posicao">4º</span>
-                    <span class="nome">Rafael T.</span>
-                    <span class="pontos">210 pts</span>
-                </div>
-                <div class="rank-item">
-                    <span class="posicao">5º</span>
-                    <span class="nome">Júlia R.</span>
-                    <span class="pontos">190 pts</span>
+                <div class="usuario-logado">
+                    <span id="nome-exibido">👤 Usuário</span>
+                    <button id="btn-sair">Sair</button>
                 </div>
             </div>
-        </section>
+            <p class="subtitle">Um desafio musical a cada dia!</p>
+        </header>
 
-        <!-- PARTICIPAR -->
-        <section class="participar">
-            <h2>Como participar?</h2>
-            <div class="passos">
-                <div class="passo">
-                    <span class="numero">1</span>
-                    <p>Escolha um dos desafios</p>
-                </div>
-                <div class="passo">
-                    <span class="numero">2</span>
-                    <p>Crie sua resposta criativa</p>
-                </div>
-                <div class="passo">
-                    <span class="numero">3</span>
-                    <p>Poste e ganhe pontos!</p>
-                </div>
-            </div>
-            <button class="btn-enviar">Enviar minha resposta</button>
-        </section>
-    </main>
+        <main>
 
-    <footer>
-        <p>🎵 Trilha Sonora 24h — Feito com ♥ pela galera da escola</p>
-    </footer>
+            <!-- DESAFIO DO DIA -->
+            <section class="desafio-dia">
+                <div class="badge">🔥 Desafio de hoje</div>
+                <h2>Qual é a Emoção?</h2>
+                <p class="tema">A palavra de hoje é: <strong>"SAUDADE"</strong></p>
+                <p class="descricao">
+                    Indique uma música que transmita essa emoção e explique o porquê!
+                </p>
+                <button class="btn-participar">Participar</button>
+            </section>
+
+            <!-- CARDS DOS DESAFIOS -->
+            <section class="desafios">
+                <h2>🎯 Os 5 Desafios Musicais</h2>
+                <div class="grid">
+
+                    <div class="card">
+                        <div class="card-icon">🎶</div>
+                        <h3>Trilha Sonora da Minha Vida</h3>
+                        <p>A cada dia, um tema novo. Poste uma música que representa aquele momento.</p>
+                        <span class="tag">diário</span>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🔍</div>
+                        <h3>Desafio da Letra</h3>
+                        <p>Descubra qual música é a partir de um trecho misterioso. Quem acertar primeiro ganha pontos!</p>
+                        <span class="tag">quiz</span>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🎨</div>
+                        <h3>Crie uma Capa de Álbum</h3>
+                        <p>Pegue uma música aleatória e crie uma capa de álbum imaginária para ela.</p>
+                        <span class="tag">criativo</span>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">💭</div>
+                        <h3>Qual é a Emoção?</h3>
+                        <p>Recomende uma música para uma palavra do dia e justifique sua escolha.</p>
+                        <span class="tag">reflexão</span>
+                    </div>
+
+                    <div class="card destaque">
+                        <div class="card-icon">🤝</div>
+                        <h3>Dueto Impossível</h3>
+                        <p>Dois artistas completamente diferentes se encontram. Vote na melhor ideia!</p>
+                        <span class="tag">⭐ melhor</span>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- RANKING DINÂMICO -->
+            <section class="ranking">
+                <h2>🏆 Ranking da Semana</h2>
+                <div class="ranking-lista" id="ranking-lista">
+                    <!-- Os itens serão inseridos via JavaScript -->
+                    <p class="sem-participantes">Nenhum participante ainda. Seja o primeiro! 🎶</p>
+                </div>
+            </section>
+
+            <!-- PARTICIPAR -->
+            <section class="participar">
+                <h2>Como participar?</h2>
+                <div class="passos">
+                    <div class="passo">
+                        <span class="numero">1</span>
+                        <p>Escolha um dos desafios</p>
+                    </div>
+                    <div class="passo">
+                        <span class="numero">2</span>
+                        <p>Crie sua resposta criativa</p>
+                    </div>
+                    <div class="passo">
+                        <span class="numero">3</span>
+                        <p>Poste e ganhe pontos!</p>
+                    </div>
+                </div>
+                <button class="btn-enviar">Enviar minha resposta</button>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>🎵 Trilha Sonora 24h — Feito com ♥ pela galera da escola</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // ===== GERENCIAMENTO DE USUÁRIOS E RANKING =====
+
+        // Chave para salvar no localStorage
+        const STORAGE_KEY = 'trilha_sonora_ranking';
+
+        // Elementos
+        const telaLogin = document.getElementById('tela-login');
+        const conteudo = document.getElementById('conteudo-principal');
+        const formLogin = document.getElementById('form-login');
+        const inputNome = document.getElementById('nome-usuario');
+        const nomeExibido = document.getElementById('nome-exibido');
+        const btnSair = document.getElementById('btn-sair');
+        const rankingLista = document.getElementById('ranking-lista');
+
+        // ===== FUNÇÕES DO RANKING =====
+
+        function getRanking() {
+            const dados = localStorage.getItem(STORAGE_KEY);
+            return dados ? JSON.parse(dados) : [];
+        }
+
+        function salvarRanking(ranking) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(ranking));
+        }
+
+        function adicionarParticipante(nome, pontos = 0) {
+            const ranking = getRanking();
+            // Verifica se o usuário já existe
+            const existente = ranking.find(item => item.nome.toLowerCase() === nome.toLowerCase());
+            if (existente) {
+                existente.pontos += pontos;
+            } else {
+                ranking.push({ nome: nome, pontos: pontos });
+            }
+            // Ordena do maior para o menor
+            ranking.sort((a, b) => b.pontos - a.pontos);
+            salvarRanking(ranking);
+            renderizarRanking();
+        }
+
+        function renderizarRanking() {
+            const ranking = getRanking();
+            rankingLista.innerHTML = '';
+
+            if (ranking.length === 0) {
+                rankingLista.innerHTML = '<p class="sem-participantes">Nenhum participante ainda. Seja o primeiro! 🎶</p>';
+                return;
+            }
+
+            ranking.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'rank-item';
+                const medalhas = ['🥇', '🥈', '🥉'];
+                const posicao = index < 3 ? medalhas[index] : `${index + 1}º`;
+                div.innerHTML = `
+                    <span class="posicao">${posicao}</span>
+                    <span class="nome">${item.nome}</span>
+                    <span class="pontos">${item.pontos} pts</span>
+                `;
+                rankingLista.appendChild(div);
+            });
+        }
+
+        // ===== LOGIN =====
+
+        formLogin.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = inputNome.value.trim();
+            if (nome.length < 2) {
+                alert('Digite um nome com pelo menos 2 caracteres!');
+                return;
+            }
+            // Salva o nome do usuário atual
+            localStorage.setItem('usuario_atual', nome);
+            nomeExibido.textContent = `👤 ${nome}`;
+            telaLogin.style.display = 'none';
+            conteudo.style.display = 'block';
+
+            // Adiciona o usuário ao ranking com 0 pontos (se não existir)
+            const ranking = getRanking();
+            const existe = ranking.some(item => item.nome.toLowerCase() === nome.toLowerCase());
+            if (!existe) {
+                ranking.push({ nome: nome, pontos: 0 });
+                salvarRanking(ranking);
+            }
+            renderizarRanking();
+
+            // Pequena animação de boas-vindas
+            alert(`🎵 Bem-vindo(a), ${nome}! Pronto para o desafio de hoje?`);
+        });
+
+        // ===== SAIR =====
+
+        btnSair.addEventListener('click', function() {
+            if (confirm('Tem certeza que quer sair?')) {
+                localStorage.removeItem('usuario_atual');
+                telaLogin.style.display = 'flex';
+                conteudo.style.display = 'none';
+                inputNome.value = '';
+            }
+        });
+
+        // ===== SIMULAÇÃO DE PARTICIPAÇÃO (pontos) =====
+
+        document.querySelector('.btn-participar').addEventListener('click', function() {
+            const usuario = localStorage.getItem('usuario_atual');
+            if (!usuario) return;
+            // Adiciona 10 pontos ao participar
+            adicionarParticipante(usuario, 10);
+            alert('🎉 Você ganhou 10 pontos por participar do desafio de hoje!');
+        });
+
+        document.querySelector('.btn-enviar').addEventListener('click', function() {
+            const usuario = localStorage.getItem('usuario_atual');
+            if (!usuario) return;
+            adicionarParticipante(usuario, 5);
+            alert('📨 Resposta enviada! +5 pontos!');
+        });
+
+        // ===== VERIFICA SESSÃO AO CARREGAR =====
+
+        window.addEventListener('load', function() {
+            const usuarioSalvo = localStorage.getItem('usuario_atual');
+            if (usuarioSalvo) {
+                nomeExibido.textContent = `👤 ${usuarioSalvo}`;
+                telaLogin.style.display = 'none';
+                conteudo.style.display = 'block';
+                renderizarRanking();
+            } else {
+                telaLogin.style.display = 'flex';
+                conteudo.style.display = 'none';
+            }
+        });
+    </script>
+
 </body>
 </html>

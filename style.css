@@ -7,36 +7,48 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(145deg, #fce4ec, #e1f5fe);
+    background: linear-gradient(135deg, #fce4ec, #e1f5fe);
     min-height: 100vh;
     padding: 20px;
     color: #333;
 }
 
-/* ===== HEADER ===== */
-header {
-    text-align: center;
-    padding: 40px 20px 20px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 30px;
-    max-width: 1000px;
-    margin: 0 auto 30px;
-    box-shadow: 0 8px 32px rgba(255, 182, 193, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.7);
-}
-
-.logo {
+/* ===== TELA DE LOGIN ===== */
+#tela-login {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    align-items: center;
+    min-height: 90vh;
+    animation: fadeIn 0.6s ease;
 }
 
-.music-icon {
-    font-size: 48px;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    padding: 50px 40px;
+    border-radius: 40px;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(244, 143, 177, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    transition: transform 0.3s ease;
+}
+
+.login-box:hover {
+    transform: scale(1.01);
+}
+
+.login-icon {
+    font-size: 64px;
     animation: pulse 2s infinite ease-in-out;
+    display: block;
+    margin-bottom: 8px;
 }
 
 @keyframes pulse {
@@ -44,8 +56,111 @@ header {
     50% { transform: scale(1.1); }
 }
 
+.login-box h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f48fb1, #81d4fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+}
+
+.login-box h1 span {
+    background: linear-gradient(135deg, #81d4fa, #f48fb1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.login-sub {
+    color: #7a7a8a;
+    font-size: 1rem;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+#form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#form-login input {
+    padding: 16px 20px;
+    border: 2px solid #f8bbd0;
+    border-radius: 60px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+#form-login input:focus {
+    border-color: #81d4fa;
+    box-shadow: 0 0 0 4px rgba(129, 212, 250, 0.25);
+    background: #fff;
+}
+
+#form-login button {
+    padding: 16px;
+    background: linear-gradient(135deg, #f48fb1, #81d4fa);
+    border: none;
+    border-radius: 60px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(244, 143, 177, 0.3);
+}
+
+#form-login button:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 32px rgba(129, 212, 250, 0.4);
+}
+
+.login-aviso {
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* ===== HEADER PRINCIPAL ===== */
+header {
+    text-align: center;
+    padding: 30px 24px 20px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    max-width: 1000px;
+    margin: 0 auto 30px;
+    box-shadow: 0 8px 32px rgba(255, 182, 193, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.music-icon {
+    font-size: 40px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
 header h1 {
-    font-size: 3rem;
+    font-size: 2.4rem;
     font-weight: 700;
     background: linear-gradient(135deg, #f48fb1, #81d4fa);
     -webkit-background-clip: text;
@@ -60,12 +175,40 @@ header h1 span {
     background-clip: text;
 }
 
+.usuario-logado {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 6px 16px 6px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    color: #4a148c;
+}
+
+#btn-sair {
+    background: #ff6b8a;
+    border: none;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+#btn-sair:hover {
+    background: #d81b60;
+    transform: scale(1.05);
+}
+
 .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #7a7a8a;
     margin-top: 6px;
     font-weight: 500;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.4);
     display: inline-block;
     padding: 4px 24px;
     border-radius: 50px;
@@ -135,7 +278,7 @@ header h1 span {
     border-radius: 60px;
     color: #d81b60;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     transition: all 0.3s ease;
 }
 
@@ -146,7 +289,7 @@ header h1 span {
     box-shadow: 0 8px 28px rgba(216, 27, 96, 0.35);
 }
 
-/* ===== GRID DE DESAFIOS ===== */
+/* ===== GRID DESAFIOS ===== */
 .desafios {
     max-width: 1000px;
     margin: 0 auto 40px;
@@ -161,24 +304,24 @@ header h1 span {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
 }
 
 .card {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(6px);
-    padding: 24px 18px;
+    padding: 24px 16px;
     border-radius: 24px;
     text-align: center;
-    box-shadow: 0 6px 24px rgba(255, 182, 193, 0.2);
+    box-shadow: 0 6px 24px rgba(255, 182, 193, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.6);
     transition: all 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 36px rgba(129, 212, 250, 0.3);
+    box-shadow: 0 12px 36px rgba(129, 212, 250, 0.25);
     background: rgba(255, 255, 255, 0.9);
 }
 
@@ -193,13 +336,13 @@ header h1 span {
 }
 
 .card h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     margin-bottom: 8px;
     color: #1a237e;
 }
 
 .card p {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     color: #555;
     line-height: 1.4;
     margin-bottom: 12px;
@@ -210,7 +353,7 @@ header h1 span {
     background: #e1f5fe;
     padding: 4px 14px;
     border-radius: 50px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: #0277bd;
     letter-spacing: 0.3px;
@@ -271,6 +414,8 @@ header h1 span {
     font-weight: 600;
     color: #1a237e;
     flex: 1;
+    text-align: left;
+    padding-left: 8px;
 }
 
 .pontos {
@@ -280,6 +425,14 @@ header h1 span {
     padding: 2px 16px;
     border-radius: 50px;
     font-size: 0.9rem;
+}
+
+.sem-participantes {
+    text-align: center;
+    color: #888;
+    font-size: 1rem;
+    padding: 20px;
+    font-weight: 500;
 }
 
 /* ===== COMO PARTICIPAR ===== */
@@ -363,8 +516,12 @@ footer {
 
 /* ===== RESPONSIVO ===== */
 @media (max-width: 600px) {
+    .header-top {
+        flex-direction: column;
+        align-items: center;
+    }
     header h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     .desafio-dia h2 {
         font-size: 1.6rem;
@@ -375,6 +532,12 @@ footer {
     .passos {
         flex-direction: column;
         align-items: center;
+    }
+    .login-box {
+        padding: 30px 20px;
+    }
+    .login-box h1 {
+        font-size: 2rem;
     }
 }
 
