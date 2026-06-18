@@ -120,16 +120,27 @@ header h1 span { color:#f48fb1; }
 }
 .btn-participar:hover { background:#d81b60; color:#fff; border-color:#d81b60; transform:scale(1.04); }
 
-/* ===== GRID ===== */
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:16px; margin-bottom:24px; }
-.card { background:#fff; padding:20px 14px; border-radius:20px; text-align:center; border:2px solid #f8bbd0; transition:all 0.3s; }
-.card:hover { transform:translateY(-6px); box-shadow:0 8px 30px rgba(244,143,177,0.15); border-color:#f48fb1; }
-.card.destaque { border:2px solid #d81b60; background:#fce4ec; }
-.card-icon { font-size:2.4rem; margin-bottom:6px; }
-.card h3 { font-size:1rem; margin-bottom:6px; color:#d81b60; }
-.card p { font-size:0.82rem; color:#888; line-height:1.3; margin-bottom:8px; }
-.tag { display:inline-block; background:#fce4ec; padding:3px 12px; border-radius:50px; font-size:0.65rem; font-weight:600; color:#d81b60; }
-.card.destaque .tag { background:#d81b60; color:#fff; }
+/* ===== PLAYLIST ===== */
+.playlist-container { background:#fce4ec; padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; }
+.playlist-container h2 { color:#d81b60; font-size:1.6rem; text-align:center; margin-bottom:4px; }
+.playlist-container .sub { text-align:center; color:#888; margin-bottom:12px; }
+
+.playlist-item { background:#fff; padding:14px 18px; border-radius:16px; border:2px solid #f8bbd0; margin-bottom:10px; }
+.playlist-item .top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+.playlist-item .top .nome-musica { font-weight:600; color:#d81b60; }
+.playlist-item .top .artista-musica { color:#666; }
+.playlist-item .top .adicionado-por { color:#999; font-size:0.8rem; }
+.playlist-item .acoes { margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.playlist-item .acoes select { padding:4px 10px; border:2px solid #f8bbd0; border-radius:10px; font-size:0.8rem; background:#fff; }
+.playlist-item .acoes button { padding:4px 14px; background:#f48fb1; border:none; border-radius:10px; color:#fff; font-weight:600; font-size:0.8rem; cursor:pointer; }
+.playlist-item .acoes button:hover { background:#d81b60; }
+.playlist-item .comentarios-playlist { margin-top:8px; padding-top:8px; border-top:1px solid #f8bbd0; }
+.playlist-item .comentarios-playlist .comentario { font-size:0.85rem; color:#555; padding:4px 0; }
+.playlist-item .comentarios-playlist .comentario strong { color:#d81b60; }
+.playlist-item .comentarios-playlist textarea { width:100%; padding:6px 10px; border:2px solid #f8bbd0; border-radius:10px; font-size:0.8rem; resize:vertical; min-height:40px; margin-top:4px; }
+.playlist-item .comentarios-playlist button { margin-top:4px; padding:4px 14px; background:#f48fb1; border:none; border-radius:10px; color:#fff; font-weight:600; font-size:0.8rem; cursor:pointer; }
+.playlist-item .comentarios-playlist button:hover { background:#d81b60; }
+.playlist-item .nota-exibida { font-weight:600; color:#f48fb1; font-size:0.9rem; }
 
 /* ===== RANKING ===== */
 .ranking { background:#fff; padding:24px 20px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; }
@@ -198,28 +209,6 @@ header h1 span { color:#f48fb1; }
 .musica-card .comentarios-area button { margin-top:6px; padding:6px 16px; background:#f48fb1; border:none; border-radius:12px; color:#fff; font-weight:600; cursor:pointer; }
 .musica-card .comentarios-area button:hover { background:#d81b60; }
 
-/* ===== PLAYLIST ===== */
-.playlist-container { background:#fce4ec; padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; }
-.playlist-container h2 { color:#d81b60; font-size:1.6rem; text-align:center; margin-bottom:4px; }
-.playlist-container .sub { text-align:center; color:#888; margin-bottom:12px; }
-
-.playlist-item { background:#fff; padding:14px 18px; border-radius:16px; border:2px solid #f8bbd0; margin-bottom:10px; }
-.playlist-item .top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
-.playlist-item .top .nome-musica { font-weight:600; color:#d81b60; }
-.playlist-item .top .artista-musica { color:#666; }
-.playlist-item .top .adicionado-por { color:#999; font-size:0.8rem; }
-.playlist-item .acoes { margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
-.playlist-item .acoes select { padding:4px 10px; border:2px solid #f8bbd0; border-radius:10px; font-size:0.8rem; background:#fff; }
-.playlist-item .acoes button { padding:4px 14px; background:#f48fb1; border:none; border-radius:10px; color:#fff; font-weight:600; font-size:0.8rem; cursor:pointer; }
-.playlist-item .acoes button:hover { background:#d81b60; }
-.playlist-item .comentarios-playlist { margin-top:8px; padding-top:8px; border-top:1px solid #f8bbd0; }
-.playlist-item .comentarios-playlist .comentario { font-size:0.85rem; color:#555; padding:4px 0; }
-.playlist-item .comentarios-playlist .comentario strong { color:#d81b60; }
-.playlist-item .comentarios-playlist textarea { width:100%; padding:6px 10px; border:2px solid #f8bbd0; border-radius:10px; font-size:0.8rem; resize:vertical; min-height:40px; margin-top:4px; }
-.playlist-item .comentarios-playlist button { margin-top:4px; padding:4px 14px; background:#f48fb1; border:none; border-radius:10px; color:#fff; font-weight:600; font-size:0.8rem; cursor:pointer; }
-.playlist-item .comentarios-playlist button:hover { background:#d81b60; }
-.playlist-item .nota-exibida { font-weight:600; color:#f48fb1; font-size:0.9rem; }
-
 /* ===== PERFIL ===== */
 .perfil-container { background:#fce4ec; padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; }
 .perfil-container h2 { color:#d81b60; font-size:1.6rem; text-align:center; margin-bottom:4px; }
@@ -268,14 +257,12 @@ footer { text-align:center; padding:16px; color:#bbb; font-weight:500; font-size
     header h1 { font-size:1.8rem; }
     .login-box { padding:30px 20px; }
     .login-box h1 { font-size:2rem; }
-    .grid { grid-template-columns:1fr 1fr; }
     .favoritos-group { grid-template-columns:1fr; }
     .jogo-duelo { gap:16px; }
     .jogo-duelo-item { padding:14px 20px; min-width:80px; }
     .nav-tab { padding:8px 16px; font-size:0.8rem; }
 }
 @media (max-width:420px) {
-    .grid { grid-template-columns:1fr; }
     .passos { flex-direction:column; align-items:center; }
     .jogo-duelo { flex-direction:column; }
 }

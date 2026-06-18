@@ -101,14 +101,15 @@
                 <button class="btn-participar" id="btn-participar">Participar</button>
             </section>
 
-            <section class="desafios">
-                <h2 style="color:#d81b60;font-size:1.6rem;text-align:center;margin-bottom:16px;">🎯 Os 5 Desafios Musicais</h2>
-                <div class="grid">
-                    <div class="card"><div class="card-icon">🎶</div><h3>Trilha Sonora da Minha Vida</h3><p>A cada dia, um tema novo.</p><span class="tag">diário</span></div>
-                    <div class="card"><div class="card-icon">🔍</div><h3>Desafio da Letra</h3><p>Descubra a música pelo trecho.</p><span class="tag">quiz</span></div>
-                    <div class="card"><div class="card-icon">🎨</div><h3>Crie uma Capa de Álbum</h3><p>Crie uma capa para uma música.</p><span class="tag">criativo</span></div>
-                    <div class="card"><div class="card-icon">💭</div><h3>Qual é a Emoção?</h3><p>Recomende uma música para a palavra.</p><span class="tag">reflexão</span></div>
-                    <div class="card destaque"><div class="card-icon">🤝</div><h3>Dueto Impossível</h3><p>Vote na melhor ideia!</p><span class="tag">⭐ melhor</span></div>
+            <!-- PLAYLIST NA PÁGINA INICIAL -->
+            <section class="playlist-container">
+                <h2>🎧 Playlist Colaborativa</h2>
+                <p class="sub">Adicione músicas e veja o que seus amigos estão ouvindo!</p>
+                <div id="playlist-container-inicio">
+                    <p style="text-align:center;color:#999;">Sua playlist está vazia. Adicione músicas!</p>
+                </div>
+                <div style="margin-top:16px;text-align:center;">
+                    <button class="btn-participar" id="btn-add-musica-playlist-inicio">➕ Adicionar Música à Playlist</button>
                 </div>
             </section>
 
@@ -246,7 +247,7 @@
         </div>
 
         <footer>
-            <p>🎵 Trilha Sonora 24h — Feito com ♥ pela galera da escola</p>
+            <p>🎵 Trilha Sonora 24h — Música é a trilha da sua história! 🎶</p>
         </footer>
 
     </div>
@@ -636,6 +637,7 @@
             renderizarNotificacoes();
             carregarMusicaDoDia();
             carregarPlaylist();
+            carregarPlaylistInicio();
             iniciarJogo();
         }
 
@@ -846,7 +848,7 @@
             container.innerHTML = '';
             const playlist = u.playlist || [];
             if (playlist.length === 0) {
-                container.innerHTML = '<p style="text-align:center;color:#999;">Sua playlist está vazia.</p>';
+                container.innerHTML = '<p style="text-align:center;color:#999;">Sua playlist está vazia. Adicione músicas!</p>';
                 return;
             }
             for (const item of playlist) {
@@ -855,7 +857,7 @@
                 div.innerHTML = `
                     <div class="top">
                         <div><span class="nome-musica">${item.nome}</span> <span class="artista-musica">- ${item.cantor}</span> <span class="adicionado-por">(por ${item.adicionadoPor})</span></div>
-                        <div><span class="nota-exibida">⭐ ${item.notaMedia || 0}</span> <a href="${item.link}" target="_blank" style="color:#f48fb1;text-decoration:none;">▶</a></div>
+                        <div><span class="nota-exibida">⭐ ${item.notaMedia || 0}</span> <a href="${item.link}" target="_blank" style="color:#f48fb1;text-decoration:none;font-weight:600;">▶</a></div>
                     </div>
                     <div class="acoes">
                         <select class="nota-playlist"><option value="1">⭐1</option><option value="2">⭐2</option><option value="3">⭐3</option><option value="4">⭐4</option><option value="5">⭐5</option></select>
@@ -883,6 +885,7 @@
                     p[idx].notaMedia = Math.round((p[idx].notas.reduce((a,b) => a + b, 0) / p[idx].notas.length) * 10) / 10;
                     atualizarUsuario(usuarioAtual, { playlist: p });
                     carregarPlaylist();
+                    carregarPlaylistInicio();
                     alert('⭐ Nota registrada!');
                 });
             });
@@ -899,6 +902,7 @@
                     p[idx].comentarios.push({ usuario: usuarioAtual, texto });
                     atualizarUsuario(usuarioAtual, { playlist: p });
                     carregarPlaylist();
+                    carregarPlaylistInicio();
                     alert('💬 Comentário adicionado!');
                 });
             });
@@ -910,9 +914,41 @@
                     const p = u2.playlist || [];
                     if (idx >= p.length) return;
                     if (p[idx].adicionadoPor !== usuarioAtual) { alert('Só pode remover suas músicas!'); return; }
-                    if (confirm('Remover?')) { p.splice(idx, 1); atualizarUsuario(usuarioAtual, { playlist: p }); carregarPlaylist(); }
+                    if (confirm('Remover?')) { p.splice(idx, 1); atualizarUsuario(usuarioAtual, { playlist: p }); carregarPlaylist(); carregarPlaylistInicio(); }
                 });
             });
+        }
+
+        // PLAYLIST NA PÁGINA INICIAL
+        function carregarPlaylistInicio() {
+            const u = getUsuario(usuarioAtual);
+            if (!u) return;
+            const container = document.getElementById('playlist-container-inicio');
+            container.innerHTML = '';
+            const playlist = u.playlist || [];
+            if (playlist.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#999;">Sua playlist está vazia. Adicione músicas!</p>';
+                return;
+            }
+            // Mostrar apenas as 3 primeiras músicas
+            const mostrar = playlist.slice(0, 3);
+            for (const item of mostrar) {
+                const div = document.createElement('div');
+                div.className = 'playlist-item';
+                div.innerHTML = `
+                    <div class="top">
+                        <div><span class="nome-musica">${item.nome}</span> <span class="artista-musica">- ${item.cantor}</span></div>
+                        <div><span class="nota-exibida">⭐ ${item.notaMedia || 0}</span> <a href="${item.link}" target="_blank" style="color:#f48fb1;text-decoration:none;font-weight:600;">▶</a></div>
+                    </div>
+                `;
+                container.appendChild(div);
+            }
+            if (playlist.length > 3) {
+                const p = document.createElement('p');
+                p.style.cssText = 'text-align:center;color:#999;font-size:0.85rem;margin-top:8px;';
+                p.textContent = '📚 + ' + (playlist.length - 3) + ' músicas na playlist completa!';
+                container.appendChild(p);
+            }
         }
 
         document.getElementById('btn-add-musica-playlist').addEventListener('click', function() {
@@ -925,7 +961,12 @@
             playlist.push({ nome: musica.nome, cantor: musica.cantor, genero: musica.genero, ano: musica.ano, link: musica.link, adicionadoPor: usuarioAtual, notas: [], notaMedia: 0, comentarios: [] });
             atualizarUsuario(usuarioAtual, { playlist });
             carregarPlaylist();
+            carregarPlaylistInicio();
             alert('🎵 "' + musica.nome + '" adicionada!');
+        });
+
+        document.getElementById('btn-add-musica-playlist-inicio').addEventListener('click', function() {
+            document.getElementById('btn-add-musica-playlist').click();
         });
 
         // AMIGOS
