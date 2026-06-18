@@ -8,19 +8,33 @@
 </head>
 <body>
 
-    <!-- ===== TELA DE LOGIN (sempre visível primeiro) ===== -->
+    <!-- ===== TELA DE LOGIN ===== -->
     <div id="tela-login">
         <div class="login-box">
             <div class="login-icon">🎵</div>
             <h1>Trilha Sonora <span>24h</span></h1>
-            <p class="login-sub">Entre com seu nome e comece o desafio!</p>
-            <input type="text" id="nome-usuario" placeholder="Digite seu nome" maxlength="20" />
-            <button id="btn-entrar">Entrar na Trilha 🎶</button>
-            <p class="login-aviso">⚡ Seu nome aparecerá no ranking!</p>
+            <p class="login-sub">Crie sua conta e comece o desafio!</p>
+
+            <form id="form-login">
+                <div class="campo">
+                    <label>📧 Seu e-mail</label>
+                    <input type="email" id="email-usuario" placeholder="exemplo@email.com" required />
+                </div>
+
+                <div class="campo">
+                    <label>👤 Seu nome (único)</label>
+                    <input type="text" id="nome-usuario" placeholder="Escolha um nome" maxlength="20" required />
+                    <span id="erro-nome" class="erro"></span>
+                </div>
+
+                <button type="submit" id="btn-entrar">Entrar na Trilha 🎶</button>
+            </form>
+
+            <p class="login-aviso">⚡ Seu nome aparecerá no ranking. Seu e-mail é privado!</p>
         </div>
     </div>
 
-    <!-- ===== CONTEÚDO PRINCIPAL (escondido até login) ===== -->
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
     <div id="conteudo-principal">
 
         <header>
@@ -31,7 +45,8 @@
                 </div>
                 <div class="usuario-logado">
                     <span id="nome-exibido">👤 Usuário</span>
-                    <button id="btn-sair">Sair</button>
+                    <button id="btn-sair" class="btn-sair">Sair</button>
+                    <button id="btn-excluir" class="btn-excluir">🗑️ Excluir</button>
                 </div>
             </div>
             <p class="subtitle">Um desafio musical a cada dia!</p>
@@ -130,17 +145,13 @@
     </div>
 
     <script>
-        // Quando a página carregar, esconde o conteúdo principal e mostra o login
+        // ===== INICIALIZAÇÃO =====
         document.addEventListener('DOMContentLoaded', function() {
-            // Esconde o conteúdo principal
             document.getElementById('conteudo-principal').style.display = 'none';
-            // Mostra a tela de login
             document.getElementById('tela-login').style.display = 'flex';
 
-            // Verifica se já tem usuário salvo
             var usuarioSalvo = localStorage.getItem('usuario_atual');
             if (usuarioSalvo) {
-                // Se tiver, faz login automático
                 fazerLogin(usuarioSalvo);
             }
         });
@@ -148,26 +159,41 @@
         // ===== ELEMENTOS =====
         var telaLogin = document.getElementById('tela-login');
         var conteudo = document.getElementById('conteudo-principal');
+        var formLogin = document.getElementById('form-login');
+        var inputEmail = document.getElementById('email-usuario');
         var inputNome = document.getElementById('nome-usuario');
-        var btnEntrar = document.getElementById('btn-entrar');
+        var erroNome = document.getElementById('erro-nome');
         var nomeExibido = document.getElementById('nome-exibido');
         var btnSair = document.getElementById('btn-sair');
+        var btnExcluir = document.getElementById('btn-excluir');
         var rankingLista = document.getElementById('ranking-lista');
         var btnParticipar = document.getElementById('btn-participar');
         var btnEnviar = document.getElementById('btn-enviar');
 
         // ===== FUNÇÕES DO RANKING =====
 
-        function carregarRanking() {
-            var dados = localStorage.getItem('ranking_trilha');
+        function carregarUsuarios() {
+            var dados = localStorage.getItem('usuarios_trilha');
             if (dados) {
                 return JSON.parse(dados);
             }
             return [];
         }
 
-        function salvarRanking(ranking) {
-            localStorage.setItem('ranking_trilha', JSON.stringify(ranking));
+        function salvarUsuarios(usuarios) {
+            localStorage.setItem('usuarios_trilha', JSON.stringify(usuarios));
+        }
+
+        function carregarRanking() {
+            var usuarios = carregarUsuarios();
+            var ranking = [];
+            for (var i = 0; i < usuarios.length; i++) {
+                ranking.push({
+                    nome: usuarios[i].nome,
+                    pontos: usuarios[i].pontos || 0
+                });
+            }
+            return ranking;
         }
 
         function renderizarRanking() {
@@ -179,7 +205,6 @@
                 return;
             }
 
-            // Ordena do maior para o menor
             ranking.sort(function(a, b) {
                 return b.pontos - a.pontos;
             });
@@ -205,94 +230,166 @@
         }
 
         function adicionarPontos(nome, pontos) {
-            var ranking = carregarRanking();
+            var usuarios = carregarUsuarios();
             var encontrou = false;
 
-            for (var i = 0; i < ranking.length; i++) {
-                if (ranking[i].nome.toLowerCase() === nome.toLowerCase()) {
-                    ranking[i].pontos += pontos;
+            for (var i = 0; i < usuarios.length; i++) {
+                if (usuarios[i].nome.toLowerCase() === nome.toLowerCase()) {
+                    usuarios[i].pontos = (usuarios[i].pontos || 0) + pontos;
                     encontrou = true;
                     break;
                 }
             }
 
             if (!encontrou) {
-                ranking.push({ nome: nome, pontos: pontos });
+                usuarios.push({ 
+                    nome: nome, 
+                    email: '', 
+                    pontos: pontos 
+                });
             }
 
-            salvarRanking(ranking);
+            salvarUsuarios(usuarios);
             renderizarRanking();
         }
 
         // ===== FUNÇÃO DE LOGIN =====
 
         function fazerLogin(nome) {
-            // Salva o nome
-            localStorage.setItem('usuario_atual', nome);
+            var usuarios = carregarUsuarios();
+            var usuario = null;
 
-            // Atualiza o nome exibido
-            nomeExibido.textContent = '👤 ' + nome;
-
-            // Esconde login e mostra conteúdo
-            telaLogin.style.display = 'none';
-            conteudo.style.display = 'block';
-
-            // Renderiza o ranking
-            renderizarRanking();
-
-            // Adiciona o usuário no ranking se não existir
-            var ranking = carregarRanking();
-            var existe = false;
-            for (var i = 0; i < ranking.length; i++) {
-                if (ranking[i].nome.toLowerCase() === nome.toLowerCase()) {
-                    existe = true;
+            for (var i = 0; i < usuarios.length; i++) {
+                if (usuarios[i].nome === nome) {
+                    usuario = usuarios[i];
                     break;
                 }
             }
-            if (!existe) {
-                ranking.push({ nome: nome, pontos: 0 });
-                salvarRanking(ranking);
-                renderizarRanking();
+
+            if (!usuario) {
+                alert('Usuário não encontrado!');
+                return;
             }
+
+            localStorage.setItem('usuario_atual', nome);
+            localStorage.setItem('email_atual', usuario.email);
+
+            nomeExibido.textContent = '👤 ' + nome;
+
+            telaLogin.style.display = 'none';
+            conteudo.style.display = 'block';
+
+            renderizarRanking();
         }
 
-        // ===== EVENTOS =====
+        // ===== EVENTO DE LOGIN =====
 
-        // Botão Entrar
-        btnEntrar.addEventListener('click', function() {
+        formLogin.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var email = inputEmail.value.trim();
             var nome = inputNome.value.trim();
+
+            // Validações
+            if (email === '') {
+                alert('Digite seu e-mail!');
+                return;
+            }
+
             if (nome.length < 2) {
                 alert('Digite um nome com pelo menos 2 caracteres!');
                 return;
             }
-            fazerLogin(nome);
+
+            // Verifica se o nome já existe
+            var usuarios = carregarUsuarios();
+            for (var i = 0; i < usuarios.length; i++) {
+                if (usuarios[i].nome.toLowerCase() === nome.toLowerCase()) {
+                    erroNome.textContent = '❌ Este nome já está em uso! Escolha outro.';
+                    erroNome.style.display = 'block';
+                    return;
+                }
+            }
+
+            erroNome.style.display = 'none';
+
+            // Salva o novo usuário
+            usuarios.push({
+                nome: nome,
+                email: email,
+                pontos: 0
+            });
+            salvarUsuarios(usuarios);
+
+            // Faz login
+            localStorage.setItem('usuario_atual', nome);
+            localStorage.setItem('email_atual', email);
+
+            nomeExibido.textContent = '👤 ' + nome;
+
+            telaLogin.style.display = 'none';
+            conteudo.style.display = 'block';
+
+            renderizarRanking();
+
             alert('🎵 Bem-vindo(a), ' + nome + '! Pronto para o desafio de hoje?');
         });
 
-        // Tecla Enter no input
-        inputNome.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                var nome = inputNome.value.trim();
-                if (nome.length < 2) {
-                    alert('Digite um nome com pelo menos 2 caracteres!');
-                    return;
-                }
-                fazerLogin(nome);
-                alert('🎵 Bem-vindo(a), ' + nome + '! Pronto para o desafio de hoje?');
-            }
-        });
+        // ===== SAIR =====
 
-        // Botão Sair
         btnSair.addEventListener('click', function() {
             if (confirm('Tem certeza que quer sair?')) {
                 localStorage.removeItem('usuario_atual');
+                localStorage.removeItem('email_atual');
                 telaLogin.style.display = 'flex';
                 conteudo.style.display = 'none';
                 inputNome.value = '';
+                inputEmail.value = '';
+                erroNome.style.display = 'none';
             }
         });
 
-        // Botão Participar (ganha 10 pontos)
+        // ===== EXCLUIR CONTA =====
+
+        btnExcluir.addEventListener('click', function() {
+            var nome = localStorage.getItem('usuario_atual');
+            if (!nome) return;
+
+            if (confirm('⚠️ Tem certeza que quer EXCLUIR sua conta permanentemente?\n\nTodos os seus pontos serão perdidos!')) {
+                if (confirm('Digite "SIM" para confirmar a exclusão.')) {
+                    var confirmacao = prompt('Digite SIM para confirmar:');
+                    if (confirmacao && confirmacao.toUpperCase() === 'SIM') {
+                        var usuarios = carregarUsuarios();
+                        var novosUsuarios = [];
+
+                        for (var i = 0; i < usuarios.length; i++) {
+                            if (usuarios[i].nome !== nome) {
+                                novosUsuarios.push(usuarios[i]);
+                            }
+                        }
+
+                        salvarUsuarios(novosUsuarios);
+
+                        localStorage.removeItem('usuario_atual');
+                        localStorage.removeItem('email_atual');
+
+                        telaLogin.style.display = 'flex';
+                        conteudo.style.display = 'none';
+                        inputNome.value = '';
+                        inputEmail.value = '';
+                        erroNome.style.display = 'none';
+
+                        alert('🗑️ Conta excluída com sucesso!');
+                        renderizarRanking();
+                    } else {
+                        alert('❌ Confirmação incorreta. Exclusão cancelada.');
+                    }
+                }
+            }
+        });
+
+        // ===== PARTICIPAR =====
+
         btnParticipar.addEventListener('click', function() {
             var nome = localStorage.getItem('usuario_atual');
             if (!nome) {
@@ -303,7 +400,8 @@
             alert('🎉 Você ganhou 10 pontos por participar do desafio de hoje!');
         });
 
-        // Botão Enviar resposta (ganha 5 pontos)
+        // ===== ENVIAR RESPOSTA =====
+
         btnEnviar.addEventListener('click', function() {
             var nome = localStorage.getItem('usuario_atual');
             if (!nome) {
