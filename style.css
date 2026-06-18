@@ -19,6 +19,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 90vh;
+    width: 100%;
 }
 
 .login-box {
@@ -119,6 +120,13 @@ body {
     color: #999;
 }
 
+/* ===== CONTEÚDO PRINCIPAL ===== */
+#conteudo-principal {
+    display: none;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 /* ===== HEADER ===== */
 header {
     text-align: center;
@@ -126,7 +134,6 @@ header {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     border-radius: 30px;
-    max-width: 1000px;
     margin: 0 auto 30px;
     box-shadow: 0 8px 32px rgba(255, 182, 193, 0.2);
     border: 2px solid rgba(255, 255, 255, 0.7);
@@ -211,7 +218,6 @@ header h1 span {
     background: linear-gradient(135deg, #f8bbd0, #b3e5fc);
     padding: 40px 30px;
     border-radius: 28px;
-    max-width: 1000px;
     margin: 0 auto 40px;
     text-align: center;
     box-shadow: 0 12px 40px rgba(244, 143, 177, 0.25);
@@ -283,7 +289,6 @@ header h1 span {
 
 /* ===== GRID DESAFIOS ===== */
 .desafios {
-    max-width: 1000px;
     margin: 0 auto 40px;
 }
 
@@ -358,7 +363,6 @@ header h1 span {
 
 /* ===== RANKING ===== */
 .ranking {
-    max-width: 1000px;
     margin: 0 auto 40px;
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(6px);
@@ -429,7 +433,6 @@ header h1 span {
 
 /* ===== PARTICIPAR ===== */
 .participar {
-    max-width: 1000px;
     margin: 0 auto 40px;
     background: linear-gradient(135deg, #fce4ec, #e1f5fe);
     padding: 36px 28px;
@@ -502,8 +505,6 @@ footer {
     color: #5c5c6e;
     font-weight: 500;
     font-size: 0.95rem;
-    max-width: 1000px;
-    margin: 0 auto;
 }
 
 /* ===== RESPONSIVO ===== */

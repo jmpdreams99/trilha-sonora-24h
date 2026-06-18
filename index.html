@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <!-- TELA DE LOGIN -->
+    <!-- ===== TELA DE LOGIN (sempre visível primeiro) ===== -->
     <div id="tela-login">
         <div class="login-box">
             <div class="login-icon">🎵</div>
@@ -20,8 +20,8 @@
         </div>
     </div>
 
-    <!-- CONTEÚDO PRINCIPAL -->
-    <div id="conteudo-principal" style="display: none;">
+    <!-- ===== CONTEÚDO PRINCIPAL (escondido até login) ===== -->
+    <div id="conteudo-principal">
 
         <header>
             <div class="header-top">
@@ -130,9 +130,20 @@
     </div>
 
     <script>
-        // ===== VARIAVEIS GLOBAIS =====
-        var usuarioAtual = '';
-        var ranking = [];
+        // Quando a página carregar, esconde o conteúdo principal e mostra o login
+        document.addEventListener('DOMContentLoaded', function() {
+            // Esconde o conteúdo principal
+            document.getElementById('conteudo-principal').style.display = 'none';
+            // Mostra a tela de login
+            document.getElementById('tela-login').style.display = 'flex';
+
+            // Verifica se já tem usuário salvo
+            var usuarioSalvo = localStorage.getItem('usuario_atual');
+            if (usuarioSalvo) {
+                // Se tiver, faz login automático
+                fazerLogin(usuarioSalvo);
+            }
+        });
 
         // ===== ELEMENTOS =====
         var telaLogin = document.getElementById('tela-login');
@@ -145,22 +156,22 @@
         var btnParticipar = document.getElementById('btn-participar');
         var btnEnviar = document.getElementById('btn-enviar');
 
-        // ===== FUNCOES =====
+        // ===== FUNÇÕES DO RANKING =====
 
         function carregarRanking() {
             var dados = localStorage.getItem('ranking_trilha');
             if (dados) {
-                ranking = JSON.parse(dados);
-            } else {
-                ranking = [];
+                return JSON.parse(dados);
             }
+            return [];
         }
 
-        function salvarRanking() {
+        function salvarRanking(ranking) {
             localStorage.setItem('ranking_trilha', JSON.stringify(ranking));
         }
 
         function renderizarRanking() {
+            var ranking = carregarRanking();
             rankingLista.innerHTML = '';
 
             if (ranking.length === 0) {
@@ -184,16 +195,17 @@
                 else if (i === 2) posicao = '🥉';
                 else posicao = (i + 1) + 'º';
 
-                div.innerHTML = '<span class="posicao">' + posicao + '</span>' +
-                                '<span class="nome">' + item.nome + '</span>' +
-                                '<span class="pontos">' + item.pontos + ' pts</span>';
+                div.innerHTML = 
+                    '<span class="posicao">' + posicao + '</span>' +
+                    '<span class="nome">' + item.nome + '</span>' +
+                    '<span class="pontos">' + item.pontos + ' pts</span>';
 
                 rankingLista.appendChild(div);
             }
         }
 
         function adicionarPontos(nome, pontos) {
-            carregarRanking();
+            var ranking = carregarRanking();
             var encontrou = false;
 
             for (var i = 0; i < ranking.length; i++) {
@@ -208,28 +220,28 @@
                 ranking.push({ nome: nome, pontos: pontos });
             }
 
-            salvarRanking();
+            salvarRanking(ranking);
             renderizarRanking();
         }
 
-        function entrar(nome) {
-            if (nome.length < 2) {
-                alert('Digite um nome com pelo menos 2 caracteres!');
-                return;
-            }
+        // ===== FUNÇÃO DE LOGIN =====
 
-            usuarioAtual = nome;
+        function fazerLogin(nome) {
+            // Salva o nome
             localStorage.setItem('usuario_atual', nome);
 
+            // Atualiza o nome exibido
             nomeExibido.textContent = '👤 ' + nome;
 
+            // Esconde login e mostra conteúdo
             telaLogin.style.display = 'none';
             conteudo.style.display = 'block';
 
-            carregarRanking();
+            // Renderiza o ranking
             renderizarRanking();
 
             // Adiciona o usuário no ranking se não existir
+            var ranking = carregarRanking();
             var existe = false;
             for (var i = 0; i < ranking.length; i++) {
                 if (ranking[i].nome.toLowerCase() === nome.toLowerCase()) {
@@ -239,39 +251,48 @@
             }
             if (!existe) {
                 ranking.push({ nome: nome, pontos: 0 });
-                salvarRanking();
+                salvarRanking(ranking);
                 renderizarRanking();
-            }
-
-            alert('🎵 Bem-vindo(a), ' + nome + '! Pronto para o desafio de hoje?');
-        }
-
-        function sair() {
-            if (confirm('Tem certeza que quer sair?')) {
-                localStorage.removeItem('usuario_atual');
-                usuarioAtual = '';
-                telaLogin.style.display = 'flex';
-                conteudo.style.display = 'none';
-                inputNome.value = '';
             }
         }
 
         // ===== EVENTOS =====
 
+        // Botão Entrar
         btnEntrar.addEventListener('click', function() {
             var nome = inputNome.value.trim();
-            entrar(nome);
+            if (nome.length < 2) {
+                alert('Digite um nome com pelo menos 2 caracteres!');
+                return;
+            }
+            fazerLogin(nome);
+            alert('🎵 Bem-vindo(a), ' + nome + '! Pronto para o desafio de hoje?');
         });
 
+        // Tecla Enter no input
         inputNome.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 var nome = inputNome.value.trim();
-                entrar(nome);
+                if (nome.length < 2) {
+                    alert('Digite um nome com pelo menos 2 caracteres!');
+                    return;
+                }
+                fazerLogin(nome);
+                alert('🎵 Bem-vindo(a), ' + nome + '! Pronto para o desafio de hoje?');
             }
         });
 
-        btnSair.addEventListener('click', sair);
+        // Botão Sair
+        btnSair.addEventListener('click', function() {
+            if (confirm('Tem certeza que quer sair?')) {
+                localStorage.removeItem('usuario_atual');
+                telaLogin.style.display = 'flex';
+                conteudo.style.display = 'none';
+                inputNome.value = '';
+            }
+        });
 
+        // Botão Participar (ganha 10 pontos)
         btnParticipar.addEventListener('click', function() {
             var nome = localStorage.getItem('usuario_atual');
             if (!nome) {
@@ -282,6 +303,7 @@
             alert('🎉 Você ganhou 10 pontos por participar do desafio de hoje!');
         });
 
+        // Botão Enviar resposta (ganha 5 pontos)
         btnEnviar.addEventListener('click', function() {
             var nome = localStorage.getItem('usuario_atual');
             if (!nome) {
@@ -290,24 +312,6 @@
             }
             adicionarPontos(nome, 5);
             alert('📨 Resposta enviada! +5 pontos!');
-        });
-
-        // ===== VERIFICA SESSÃO =====
-
-        window.addEventListener('load', function() {
-            var usuarioSalvo = localStorage.getItem('usuario_atual');
-
-            if (usuarioSalvo) {
-                usuarioAtual = usuarioSalvo;
-                nomeExibido.textContent = '👤 ' + usuarioSalvo;
-                telaLogin.style.display = 'none';
-                conteudo.style.display = 'block';
-                carregarRanking();
-                renderizarRanking();
-            } else {
-                telaLogin.style.display = 'flex';
-                conteudo.style.display = 'none';
-            }
         });
     </script>
 
