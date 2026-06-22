@@ -3,7 +3,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fff;
+    background: linear-gradient(135deg, #fff 0%, #fce4ec 100%);
     min-height: 100vh;
     padding: 20px;
     color: #333;
@@ -16,27 +16,28 @@ body {
     align-items: center;
     min-height: 90vh;
     width: 100%;
-    background: #fff;
+    background: linear-gradient(135deg, #fff 0%, #fce4ec 100%);
 }
 
 .login-box {
-    background: #fff;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(20px);
     padding: 50px 40px;
     border-radius: 40px;
     text-align: center;
     max-width: 500px;
     width: 100%;
-    box-shadow: 0 20px 60px rgba(244,143,177,0.2);
+    box-shadow: 0 30px 80px rgba(216,27,96,0.15);
     border: 2px solid #f8bbd0;
     animation: fadeIn 0.6s ease;
 }
 
 @keyframes fadeIn { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-@keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.1); } }
+@keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.05); } }
 
 .login-icon { font-size:64px; animation:pulse 2s infinite; display:block; margin-bottom:8px; }
-.login-box h1 { font-size:2.6rem; font-weight:700; color:#d81b60; margin-bottom:4px; }
-.login-box h1 span { color:#f48fb1; }
+.login-box h1 { font-size:2.6rem; font-weight:700; background:linear-gradient(135deg,#d81b60,#f48fb1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:4px; }
+.login-box h1 span { background:linear-gradient(135deg,#f48fb1,#d81b60); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 .login-sub { color:#999; font-size:1rem; margin-bottom:24px; font-weight:500; }
 
 .campo { text-align:left; margin-bottom:16px; }
@@ -51,11 +52,11 @@ body {
 .erro { display:none; color:#d81b60; font-size:0.8rem; margin-top:4px; font-weight:600; }
 
 #btn-entrar {
-    width:100%; padding:16px; background:#f48fb1; border:none; border-radius:16px;
+    width:100%; padding:16px; background:linear-gradient(135deg,#f48fb1,#d81b60); border:none; border-radius:16px;
     font-size:1.1rem; font-weight:700; color:#fff; cursor:pointer; transition:all 0.3s;
     box-shadow:0 4px 20px rgba(244,143,177,0.3); margin-top:6px;
 }
-#btn-entrar:hover { background:#d81b60; transform:scale(1.02); }
+#btn-entrar:hover { transform:scale(1.02); box-shadow:0 8px 32px rgba(216,27,96,0.3); }
 
 .login-aviso { margin-top:16px; font-size:0.8rem; color:#bbb; }
 
@@ -67,14 +68,15 @@ body {
 
 /* ===== HEADER ===== */
 header {
-    text-align:center; padding:24px 24px 16px; background:#fff; border-radius:30px;
-    margin:0 auto 24px; box-shadow:0 4px 20px rgba(244,143,177,0.1); border:2px solid #f8bbd0;
+    text-align:center; padding:24px 24px 16px; background:rgba(255,255,255,0.9);
+    border-radius:30px; margin:0 auto 24px; box-shadow:0 4px 20px rgba(244,143,177,0.1);
+    border:2px solid #f8bbd0; backdrop-filter:blur(10px);
 }
 .header-top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
 .logo { display:flex; align-items:center; gap:12px; }
 .music-icon { font-size:36px; animation:pulse 2s infinite; }
-header h1 { font-size:2.2rem; font-weight:700; color:#d81b60; }
-header h1 span { color:#f48fb1; }
+header h1 { font-size:2.2rem; font-weight:700; background:linear-gradient(135deg,#d81b60,#f48fb1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+header h1 span { background:linear-gradient(135deg,#f48fb1,#d81b60); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
 .usuario-logado {
     display:flex; align-items:center; gap:8px; background:#fce4ec; padding:6px 12px 6px 18px;
@@ -99,16 +101,16 @@ header h1 span { color:#f48fb1; }
     padding:10px 24px; border:2px solid #f8bbd0; border-radius:50px; background:#fff;
     color:#d81b60; font-weight:600; cursor:pointer; transition:all 0.3s; font-size:0.9rem;
 }
-.nav-tab:hover { background:#fce4ec; }
-.nav-tab.active { background:#d81b60; color:#fff; border-color:#d81b60; }
+.nav-tab:hover { background:#fce4ec; transform:translateY(-2px); box-shadow:0 4px 12px rgba(244,143,177,0.2); }
+.nav-tab.active { background:linear-gradient(135deg,#d81b60,#f48fb1); color:#fff; border-color:#d81b60; }
 
 /* ===== PÁGINAS ===== */
 .pagina { display:none; animation:fadeIn 0.4s; }
 .pagina.active { display:block; }
 
 /* ===== DESAFIO DO DIA ===== */
-.desafio-dia { background:#fce4ec; padding:30px 24px; border-radius:28px; margin:0 auto 24px; text-align:center; border:2px solid #f8bbd0; }
-.badge { display:inline-block; background:#d81b60; color:#fff; font-weight:700; font-size:0.8rem; padding:4px 16px; border-radius:50px; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+.desafio-dia { background:linear-gradient(135deg,#fce4ec,#fff); padding:30px 24px; border-radius:28px; margin:0 auto 24px; text-align:center; border:2px solid #f8bbd0; box-shadow:0 4px 20px rgba(244,143,177,0.08); }
+.badge { display:inline-block; background:linear-gradient(135deg,#d81b60,#f48fb1); color:#fff; font-weight:700; font-size:0.8rem; padding:4px 16px; border-radius:50px; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
 .desafio-dia h2 { font-size:1.8rem; color:#d81b60; }
 .tema { font-size:1.2rem; color:#333; }
 .tema strong { background:#fff; padding:2px 14px; border-radius:30px; color:#d81b60; }
@@ -118,56 +120,57 @@ header h1 span { color:#f48fb1; }
     background:#fff; border:2px solid #f48fb1; padding:12px 40px; font-size:1rem;
     font-weight:700; border-radius:60px; color:#d81b60; cursor:pointer; transition:all 0.3s;
 }
-.btn-participar:hover { background:#d81b60; color:#fff; border-color:#d81b60; transform:scale(1.04); }
+.btn-participar:hover { background:linear-gradient(135deg,#d81b60,#f48fb1); color:#fff; border-color:#d81b60; transform:scale(1.04); box-shadow:0 8px 28px rgba(216,27,96,0.25); }
 
 /* ===== PLAYLIST ===== */
-.playlist-container { background:#fce4ec; padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; }
+.playlist-container { background:linear-gradient(135deg,#fce4ec,#fff); padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; box-shadow:0 4px 20px rgba(244,143,177,0.08); }
 .playlist-container h2 { color:#d81b60; font-size:1.6rem; text-align:center; margin-bottom:4px; }
 .playlist-container .sub { text-align:center; color:#888; margin-bottom:12px; }
 
-.playlist-item { background:#fff; padding:14px 18px; border-radius:16px; border:2px solid #f8bbd0; margin-bottom:10px; }
+.playlist-item { background:#fff; padding:14px 18px; border-radius:16px; border:2px solid #f8bbd0; margin-bottom:10px; transition:all 0.3s; }
+.playlist-item:hover { border-color:#f48fb1; box-shadow:0 4px 16px rgba(244,143,177,0.1); }
 .playlist-item .top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
 .playlist-item .top .nome-musica { font-weight:600; color:#d81b60; }
 .playlist-item .top .artista-musica { color:#666; }
 .playlist-item .top .adicionado-por { color:#999; font-size:0.8rem; }
 .playlist-item .acoes { margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
 .playlist-item .acoes select { padding:4px 10px; border:2px solid #f8bbd0; border-radius:10px; font-size:0.8rem; background:#fff; }
-.playlist-item .acoes button { padding:4px 14px; background:#f48fb1; border:none; border-radius:10px; color:#fff; font-weight:600; font-size:0.8rem; cursor:pointer; }
+.playlist-item .acoes button { padding:4px 14px; background:#f48fb1; border:none; border-radius:10px; color:#fff; font-weight:600; font-size:0.8rem; cursor:pointer; transition:all 0.3s; }
 .playlist-item .acoes button:hover { background:#d81b60; }
 .playlist-item .comentarios-playlist { margin-top:8px; padding-top:8px; border-top:1px solid #f8bbd0; }
 .playlist-item .comentarios-playlist .comentario { font-size:0.85rem; color:#555; padding:4px 0; }
 .playlist-item .comentarios-playlist .comentario strong { color:#d81b60; }
 .playlist-item .comentarios-playlist textarea { width:100%; padding:6px 10px; border:2px solid #f8bbd0; border-radius:10px; font-size:0.8rem; resize:vertical; min-height:40px; margin-top:4px; }
-.playlist-item .comentarios-playlist button { margin-top:4px; padding:4px 14px; background:#f48fb1; border:none; border-radius:10px; color:#fff; font-weight:600; font-size:0.8rem; cursor:pointer; }
+.playlist-item .comentarios-playlist button { margin-top:4px; padding:4px 14px; background:#f48fb1; border:none; border-radius:10px; color:#fff; font-weight:600; font-size:0.8rem; cursor:pointer; transition:all 0.3s; }
 .playlist-item .comentarios-playlist button:hover { background:#d81b60; }
 .playlist-item .nota-exibida { font-weight:600; color:#f48fb1; font-size:0.9rem; }
 
 /* ===== RANKING ===== */
-.ranking { background:#fff; padding:24px 20px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; }
+.ranking { background:rgba(255,255,255,0.9); padding:24px 20px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; box-shadow:0 4px 20px rgba(244,143,177,0.08); }
 .ranking h2 { text-align:center; font-size:1.6rem; color:#d81b60; margin-bottom:16px; }
 #ranking-lista { display:flex; flex-direction:column; gap:8px; }
-.rank-item { display:flex; align-items:center; justify-content:space-between; background:#fce4ec; padding:10px 16px; border-radius:14px; }
-.rank-item:hover { background:#f8bbd0; }
+.rank-item { display:flex; align-items:center; justify-content:space-between; background:#fce4ec; padding:10px 16px; border-radius:14px; transition:all 0.3s; }
+.rank-item:hover { background:#f8bbd0; transform:translateX(4px); }
 .posicao { font-weight:700; font-size:1.1rem; color:#d81b60; width:36px; }
 .nome { font-weight:600; color:#333; flex:1; text-align:left; padding-left:8px; }
 .pontos { font-weight:700; color:#d81b60; background:#fff; padding:2px 14px; border-radius:50px; font-size:0.85rem; }
 .sem-participantes { text-align:center; color:#bbb; padding:16px; }
 
 /* ===== PARTICIPAR ===== */
-.participar { background:#fce4ec; padding:28px 20px; border-radius:28px; text-align:center; border:2px solid #f8bbd0; margin-bottom:24px; }
+.participar { background:linear-gradient(135deg,#fce4ec,#fff); padding:28px 20px; border-radius:28px; text-align:center; border:2px solid #f8bbd0; margin-bottom:24px; }
 .participar h2 { font-size:1.6rem; color:#d81b60; margin-bottom:16px; }
 .passos { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:16px; }
 .passo { display:flex; align-items:center; gap:8px; background:#fff; padding:8px 18px; border-radius:50px; font-weight:500; color:#333; border:2px solid #f8bbd0; }
-.numero { background:#f48fb1; color:#fff; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8rem; }
+.numero { background:linear-gradient(135deg,#f48fb1,#d81b60); color:#fff; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8rem; }
 
 .btn-enviar {
-    background:#f48fb1; border:none; padding:14px 44px; font-size:1.1rem; font-weight:700;
-    border-radius:60px; color:#fff; cursor:pointer; transition:all 0.3s; box-shadow:0 4px 16px rgba(244,143,177,0.3);
+    background:linear-gradient(135deg,#f48fb1,#d81b60); border:none; padding:14px 44px; font-size:1.1rem; font-weight:700;
+    border-radius:60px; color:#fff; cursor:pointer; transition:all 0.3s; box-shadow:0 4px 20px rgba(244,143,177,0.3);
 }
-.btn-enviar:hover { background:#d81b60; transform:scale(1.04); }
+.btn-enviar:hover { transform:scale(1.04); box-shadow:0 8px 32px rgba(216,27,96,0.3); }
 
 /* ===== JOGO ===== */
-.jogo-container { background:#fce4ec; padding:30px 24px; border-radius:28px; border:2px solid #f8bbd0; text-align:center; margin-bottom:24px; }
+.jogo-container { background:linear-gradient(135deg,#fce4ec,#fff); padding:30px 24px; border-radius:28px; border:2px solid #f8bbd0; text-align:center; margin-bottom:24px; box-shadow:0 4px 20px rgba(244,143,177,0.08); }
 .jogo-container h2 { color:#d81b60; font-size:1.8rem; margin-bottom:8px; }
 .jogo-container .sub { color:#888; margin-bottom:16px; }
 
@@ -176,8 +179,8 @@ header h1 span { color:#f48fb1; }
     padding:12px 32px; border:2px solid #f48fb1; border-radius:50px; background:#fff;
     color:#d81b60; font-weight:700; font-size:1rem; cursor:pointer; transition:all 0.3s;
 }
-.jogo-btn:hover { background:#d81b60; color:#fff; border-color:#d81b60; }
-.jogo-btn.selected { background:#d81b60; color:#fff; border-color:#d81b60; }
+.jogo-btn:hover { background:#f48fb1; color:#fff; border-color:#f48fb1; transform:translateY(-2px); }
+.jogo-btn.selected { background:linear-gradient(135deg,#d81b60,#f48fb1); color:#fff; border-color:#d81b60; }
 
 .jogo-duelo { display:flex; justify-content:center; align-items:center; gap:30px; flex-wrap:wrap; margin:16px 0; }
 .jogo-duelo-item { background:#fff; padding:20px 30px; border-radius:20px; border:3px solid #f8bbd0; cursor:pointer; transition:all 0.3s; min-width:120px; }
@@ -190,27 +193,47 @@ header h1 span { color:#f48fb1; }
 .jogo-resultado { font-size:1.4rem; font-weight:700; color:#d81b60; padding:16px; }
 
 /* ===== MÚSICA ALEATÓRIA ===== */
-.musica-aleatoria { background:#fce4ec; padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; text-align:center; }
+.musica-aleatoria { background:linear-gradient(135deg,#fce4ec,#fff); padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; text-align:center; box-shadow:0 4px 20px rgba(244,143,177,0.08); }
 .musica-aleatoria h2 { color:#d81b60; font-size:1.6rem; margin-bottom:4px; }
 .musica-aleatoria .sub { color:#888; margin-bottom:12px; }
 
-.musica-card { background:#fff; padding:20px; border-radius:20px; border:2px solid #f8bbd0; max-width:500px; margin:0 auto; }
+.musica-card { background:#fff; padding:20px; border-radius:20px; border:2px solid #f8bbd0; max-width:500px; margin:0 auto; transition:all 0.3s; }
+.musica-card:hover { border-color:#f48fb1; box-shadow:0 4px 24px rgba(244,143,177,0.15); }
 .musica-card h3 { color:#d81b60; font-size:1.2rem; }
 .musica-card .artista { color:#666; font-weight:500; }
 .musica-card .genero { color:#999; font-size:0.85rem; }
-.musica-card .link-musica { display:inline-block; margin-top:10px; padding:8px 24px; background:#f48fb1; color:#fff; border-radius:50px; text-decoration:none; font-weight:600; transition:all 0.3s; }
-.musica-card .link-musica:hover { background:#d81b60; }
+.musica-card .link-musica { display:inline-block; margin-top:10px; padding:8px 24px; background:linear-gradient(135deg,#f48fb1,#d81b60); color:#fff; border-radius:50px; text-decoration:none; font-weight:600; transition:all 0.3s; }
+.musica-card .link-musica:hover { transform:scale(1.05); box-shadow:0 4px 16px rgba(216,27,96,0.3); }
 .musica-card .nota-area { margin-top:10px; }
 .musica-card .nota-area select { padding:6px 12px; border:2px solid #f8bbd0; border-radius:12px; font-size:0.9rem; background:#fff; }
-.musica-card .nota-area button { padding:6px 16px; background:#f48fb1; border:none; border-radius:12px; color:#fff; font-weight:600; cursor:pointer; }
+.musica-card .nota-area button { padding:6px 16px; background:#f48fb1; border:none; border-radius:12px; color:#fff; font-weight:600; cursor:pointer; transition:all 0.3s; }
 .musica-card .nota-area button:hover { background:#d81b60; }
 .musica-card .comentarios-area { margin-top:10px; }
 .musica-card .comentarios-area textarea { width:100%; padding:8px 12px; border:2px solid #f8bbd0; border-radius:12px; font-size:0.9rem; resize:vertical; min-height:50px; }
-.musica-card .comentarios-area button { margin-top:6px; padding:6px 16px; background:#f48fb1; border:none; border-radius:12px; color:#fff; font-weight:600; cursor:pointer; }
+.musica-card .comentarios-area button { margin-top:6px; padding:6px 16px; background:#f48fb1; border:none; border-radius:12px; color:#fff; font-weight:600; cursor:pointer; transition:all 0.3s; }
 .musica-card .comentarios-area button:hover { background:#d81b60; }
 
+/* ===== CHAT ===== */
+.chat-container { background:linear-gradient(135deg,#fce4ec,#fff); padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; box-shadow:0 4px 20px rgba(244,143,177,0.08); }
+.chat-container h2 { color:#d81b60; font-size:1.6rem; text-align:center; margin-bottom:4px; }
+.chat-container .sub { text-align:center; color:#888; margin-bottom:12px; }
+
+.chat-messages { height:300px; overflow-y:auto; background:#fff; border-radius:16px; padding:12px; border:2px solid #f8bbd0; display:flex; flex-direction:column; margin-bottom:12px; }
+.chat-messages::-webkit-scrollbar { width:6px; }
+.chat-messages::-webkit-scrollbar-track { background:#fce4ec; border-radius:10px; }
+.chat-messages::-webkit-scrollbar-thumb { background:#f48fb1; border-radius:10px; }
+
+.chat-input-area { display:flex; gap:10px; }
+.chat-input-area input { flex:1; padding:12px 16px; border:2px solid #f8bbd0; border-radius:16px; font-size:1rem; outline:none; transition:all 0.3s; }
+.chat-input-area input:focus { border-color:#f48fb1; box-shadow:0 0 0 4px rgba(244,143,177,0.15); }
+.chat-input-area button { padding:12px 28px; background:linear-gradient(135deg,#f48fb1,#d81b60); border:none; border-radius:16px; color:#fff; font-weight:700; font-size:1rem; cursor:pointer; transition:all 0.3s; }
+.chat-input-area button:hover { transform:scale(1.04); box-shadow:0 4px 16px rgba(216,27,96,0.3); }
+
+.btn-chat-emoji { padding:6px 12px; background:#fff; border:2px solid #f8bbd0; border-radius:12px; font-size:1.2rem; cursor:pointer; transition:all 0.3s; }
+.btn-chat-emoji:hover { border-color:#d81b60; transform:scale(1.1); }
+
 /* ===== PERFIL ===== */
-.perfil-container { background:#fce4ec; padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; }
+.perfil-container { background:linear-gradient(135deg,#fce4ec,#fff); padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; box-shadow:0 4px 20px rgba(244,143,177,0.08); }
 .perfil-container h2 { color:#d81b60; font-size:1.6rem; text-align:center; margin-bottom:4px; }
 .perfil-info { display:flex; flex-direction:column; align-items:center; gap:6px; }
 .perfil-info .avatar { font-size:4rem; }
@@ -219,33 +242,35 @@ header h1 span { color:#f48fb1; }
 .perfil-info .detalhes { color:#888; font-size:0.9rem; }
 
 .perfil-edit { margin-top:16px; display:flex; flex-direction:column; gap:10px; max-width:400px; margin-left:auto; margin-right:auto; }
-.perfil-edit input { padding:10px 14px; border:2px solid #f8bbd0; border-radius:14px; font-size:0.9rem; background:#fff; color:#333; }
+.perfil-edit input { padding:10px 14px; border:2px solid #f8bbd0; border-radius:14px; font-size:0.9rem; background:#fff; color:#333; transition:all 0.3s; }
 .perfil-edit input:focus { border-color:#f48fb1; box-shadow:0 0 0 3px rgba(244,143,177,0.15); }
-.perfil-edit button { padding:10px; background:#f48fb1; border:none; border-radius:14px; color:#fff; font-weight:700; font-size:1rem; cursor:pointer; transition:all 0.3s; }
-.perfil-edit button:hover { background:#d81b60; }
+.perfil-edit button { padding:10px; background:linear-gradient(135deg,#f48fb1,#d81b60); border:none; border-radius:14px; color:#fff; font-weight:700; font-size:1rem; cursor:pointer; transition:all 0.3s; }
+.perfil-edit button:hover { transform:scale(1.02); box-shadow:0 4px 16px rgba(216,27,96,0.3); }
 
 /* ===== AMIGOS ===== */
-.amigos-container { background:#fce4ec; padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; }
+.amigos-container { background:linear-gradient(135deg,#fce4ec,#fff); padding:24px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; box-shadow:0 4px 20px rgba(244,143,177,0.08); }
 .amigos-container h2 { color:#d81b60; font-size:1.6rem; text-align:center; margin-bottom:4px; }
 .amigos-container .sub { text-align:center; color:#888; margin-bottom:12px; }
 
-.amigo-item { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:10px 16px; border-radius:14px; border:2px solid #f8bbd0; margin-bottom:8px; }
+.amigo-item { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:10px 16px; border-radius:14px; border:2px solid #f8bbd0; margin-bottom:8px; transition:all 0.3s; }
+.amigo-item:hover { border-color:#f48fb1; }
 .amigo-item .nome-amigo { font-weight:600; color:#333; }
 .amigo-item button { padding:4px 14px; border:none; border-radius:10px; font-weight:600; font-size:0.8rem; cursor:pointer; transition:all 0.3s; }
 
 .btn-aceitar { background:#4caf50; color:#fff; }
-.btn-aceitar:hover { background:#388e3c; }
+.btn-aceitar:hover { background:#388e3c; transform:scale(1.05); }
 .btn-recusar { background:#f44336; color:#fff; }
-.btn-recusar:hover { background:#c62828; }
-.btn-add-amigo { background:#f48fb1; color:#fff; }
-.btn-add-amigo:hover { background:#d81b60; }
+.btn-recusar:hover { background:#c62828; transform:scale(1.05); }
+.btn-add-amigo { background:linear-gradient(135deg,#f48fb1,#d81b60); color:#fff; }
+.btn-add-amigo:hover { transform:scale(1.05); box-shadow:0 4px 12px rgba(216,27,96,0.3); }
 .btn-remover-amigo { background:#ffcdd2; color:#c62828; }
-.btn-remover-amigo:hover { background:#c62828; color:#fff; }
+.btn-remover-amigo:hover { background:#c62828; color:#fff; transform:scale(1.05); }
 
 /* ===== NOTIFICAÇÕES ===== */
-.notificacoes-container { background:#fce4ec; padding:20px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; }
+.notificacoes-container { background:linear-gradient(135deg,#fce4ec,#fff); padding:20px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; box-shadow:0 4px 20px rgba(244,143,177,0.08); }
 .notificacoes-container h2 { color:#d81b60; font-size:1.4rem; text-align:center; margin-bottom:8px; }
-.notificacao-item { background:#fff; padding:10px 16px; border-radius:14px; border:2px solid #f8bbd0; margin-bottom:6px; font-size:0.9rem; color:#555; }
+.notificacao-item { background:#fff; padding:10px 16px; border-radius:14px; border:2px solid #f8bbd0; margin-bottom:6px; font-size:0.9rem; color:#555; transition:all 0.3s; }
+.notificacao-item:hover { border-color:#f48fb1; }
 .notificacao-item .data { color:#bbb; font-size:0.75rem; }
 
 /* ===== FOOTER ===== */
@@ -261,8 +286,11 @@ footer { text-align:center; padding:16px; color:#bbb; font-weight:500; font-size
     .jogo-duelo { gap:16px; }
     .jogo-duelo-item { padding:14px 20px; min-width:80px; }
     .nav-tab { padding:8px 16px; font-size:0.8rem; }
+    .chat-input-area { flex-direction:column; }
+    .chat-input-area button { width:100%; }
 }
 @media (max-width:420px) {
     .passos { flex-direction:column; align-items:center; }
     .jogo-duelo { flex-direction:column; }
+    .playlist-item .top { flex-direction:column; align-items:flex-start; gap:4px; }
 }
