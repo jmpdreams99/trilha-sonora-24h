@@ -146,15 +146,7 @@ header h1 span { background:linear-gradient(135deg,#f48fb1,#d81b60); -webkit-bac
 .playlist-item .nota-exibida { font-weight:600; color:#f48fb1; font-size:0.9rem; }
 
 /* ===== RANKING ===== */
-.ranking { background:rgba(255,255,255,0.9); padding:24px 20px; border-radius:28px; border:2px solid #f8bbd0; margin-bottom:24px; box-shadow:0 4px 20px rgba(244,143,177,0.08); }
-.ranking h2 { text-align:center; font-size:1.6rem; color:#d81b60; margin-bottom:16px; }
-#ranking-lista { display:flex; flex-direction:column; gap:8px; }
-.rank-item { display:flex; align-items:center; justify-content:space-between; background:#fce4ec; padding:10px 16px; border-radius:14px; transition:all 0.3s; }
-.rank-item:hover { background:#f8bbd0; transform:translateX(4px); }
-.posicao { font-weight:700; font-size:1.1rem; color:#d81b60; width:36px; }
-.nome { font-weight:600; color:#333; flex:1; text-align:left; padding-left:8px; }
-.pontos { font-weight:700; color:#d81b60; background:#fff; padding:2px 14px; border-radius:50px; font-size:0.85rem; }
-.sem-participantes { text-align:center; color:#bbb; padding:16px; }
+.ranking { display:none; }
 
 /* ===== PARTICIPAR ===== */
 .participar { background:linear-gradient(135deg,#fce4ec,#fff); padding:28px 20px; border-radius:28px; text-align:center; border:2px solid #f8bbd0; margin-bottom:24px; }
@@ -197,13 +189,17 @@ header h1 span { background:linear-gradient(135deg,#f48fb1,#d81b60); -webkit-bac
 .musica-aleatoria h2 { color:#d81b60; font-size:1.6rem; margin-bottom:4px; }
 .musica-aleatoria .sub { color:#888; margin-bottom:12px; }
 
-.musica-card { background:#fff; padding:20px; border-radius:20px; border:2px solid #f8bbd0; max-width:500px; margin:0 auto; transition:all 0.3s; }
+.musica-card { background:#fff; padding:20px; border-radius:20px; border:2px solid #f8bbd0; max-width:600px; margin:0 auto; transition:all 0.3s; }
 .musica-card:hover { border-color:#f48fb1; box-shadow:0 4px 24px rgba(244,143,177,0.15); }
 .musica-card h3 { color:#d81b60; font-size:1.2rem; }
 .musica-card .artista { color:#666; font-weight:500; }
 .musica-card .genero { color:#999; font-size:0.85rem; }
 .musica-card .link-musica { display:inline-block; margin-top:10px; padding:8px 24px; background:linear-gradient(135deg,#f48fb1,#d81b60); color:#fff; border-radius:50px; text-decoration:none; font-weight:600; transition:all 0.3s; }
 .musica-card .link-musica:hover { transform:scale(1.05); box-shadow:0 4px 16px rgba(216,27,96,0.3); }
+
+.letra-area { margin-top:12px; }
+.letra-area h4 { color:#d81b60; margin-top:12px; }
+
 .musica-card .nota-area { margin-top:10px; }
 .musica-card .nota-area select { padding:6px 12px; border:2px solid #f8bbd0; border-radius:12px; font-size:0.9rem; background:#fff; }
 .musica-card .nota-area button { padding:6px 16px; background:#f48fb1; border:none; border-radius:12px; color:#fff; font-weight:600; cursor:pointer; transition:all 0.3s; }
@@ -288,6 +284,7 @@ footer { text-align:center; padding:16px; color:#bbb; font-weight:500; font-size
     .nav-tab { padding:8px 16px; font-size:0.8rem; }
     .chat-input-area { flex-direction:column; }
     .chat-input-area button { width:100%; }
+    .musica-card { max-width:100%; }
 }
 @media (max-width:420px) {
     .passos { flex-direction:column; align-items:center; }

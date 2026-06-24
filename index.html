@@ -57,7 +57,7 @@
                 <button type="submit" id="btn-entrar">Entrar na Trilha 🎶</button>
             </form>
 
-            <p class="login-aviso">⚡ Seu nome aparecerá no ranking. Seu e-mail é privado!</p>
+            <p class="login-aviso">⚡ Seu nome aparecerá para seus amigos!</p>
         </div>
     </div>
 
@@ -94,16 +94,16 @@
         <!-- ===== PÁGINA INÍCIO ===== -->
         <div id="pagina-inicio" class="pagina active">
             <section class="desafio-dia">
-                <div class="badge">🔥 Desafio de hoje</div>
-                <h2>Qual é a Emoção?</h2>
-                <p class="tema">A palavra de hoje é: <strong>"SAUDADE"</strong></p>
-                <p class="descricao">Indique uma música em inglês que transmita essa emoção!</p>
-                <button class="btn-participar" id="btn-participar">Participar</button>
+                <div class="badge">🎵 Desafio do Dia</div>
+                <h2>Qual é a Letra?</h2>
+                <p class="tema">Tema: <strong>"AMOR"</strong></p>
+                <p class="descricao">Escolha uma música em inglês que tenha uma letra emocionante sobre amor!</p>
+                <button class="btn-participar" id="btn-participar">Ver Letras de Músicas</button>
             </section>
 
             <section class="playlist-container">
                 <h2>🎧 Playlist Colaborativa</h2>
-                <p class="sub">Suas músicas favoritas em inglês!</p>
+                <p class="sub">Suas músicas favoritas com letras!</p>
                 <div id="playlist-container-inicio">
                     <p style="text-align:center;color:#999;">Sua playlist está vazia.</p>
                 </div>
@@ -112,19 +112,18 @@
                 </div>
             </section>
 
-            <section class="ranking">
-                <h2>🏆 Ranking da Semana</h2>
-                <div id="ranking-lista"><p class="sem-participantes">Nenhum participante ainda.</p></div>
+            <section class="ranking" style="display:none;">
+                <!-- Ranking removido -->
             </section>
 
             <section class="participar">
                 <h2>Como participar?</h2>
                 <div class="passos">
-                    <div class="passo"><span class="numero">1</span><p>Escolha um desafio</p></div>
-                    <div class="passo"><span class="numero">2</span><p>Crie sua resposta</p></div>
-                    <div class="passo"><span class="numero">3</span><p>Ganhe pontos!</p></div>
+                    <div class="passo"><span class="numero">1</span><p>Escolha uma música</p></div>
+                    <div class="passo"><span class="numero">2</span><p>Leia a letra</p></div>
+                    <div class="passo"><span class="numero">3</span><p>Compartilhe com amigos!</p></div>
                 </div>
-                <button class="btn-enviar" id="btn-enviar">Enviar minha resposta</button>
+                <button class="btn-enviar" id="btn-enviar">Compartilhar música</button>
             </section>
         </div>
 
@@ -142,7 +141,6 @@
                 <div id="jogo-status">
                     <div class="jogo-placar" id="jogo-placar">Rodada 1 de 5</div>
                     
-                    <!-- CAMPEÃO ATUAL -->
                     <div id="jogo-campeao" style="display:none;background:linear-gradient(135deg,#fff,#fce4ec);border-radius:20px;padding:16px;margin-bottom:16px;border:3px solid #d81b60;">
                         <p style="color:#d81b60;font-weight:700;font-size:1.1rem;">👑 Campeão Atual</p>
                         <p id="campeao-nome" style="font-size:1.4rem;font-weight:700;color:#d81b60;"></p>
@@ -170,7 +168,7 @@
         <!-- ===== PÁGINA MÚSICA DO DIA ===== -->
         <div id="pagina-musica" class="pagina">
             <div class="musica-aleatoria">
-                <h2>🎵 Música Recomendada do Dia</h2>
+                <h2>🎵 Música do Dia</h2>
                 <p class="sub">Baseada nos seus cantores e gêneros favoritos!</p>
                 <div id="musica-do-dia-container">
                     <div class="musica-card">
@@ -178,12 +176,21 @@
                         <p class="artista" id="musica-dia-artista">Artista</p>
                         <p class="genero" id="musica-dia-genero">Gênero</p>
                         <a href="#" target="_blank" class="link-musica" id="musica-dia-link">▶ Ouvir no YouTube</a>
+                        
+                        <!-- LETRA DA MÚSICA -->
+                        <div class="letra-area">
+                            <h4 style="color:#d81b60;margin-top:12px;">📝 Letra da Música</h4>
+                            <div id="musica-dia-letra" style="background:#fce4ec;padding:16px;border-radius:12px;text-align:left;font-style:italic;color:#555;border:2px solid #f8bbd0;max-height:300px;overflow-y:auto;white-space:pre-wrap;font-family:'Segoe UI',sans-serif;margin-top:8px;">
+                                Carregando letra...
+                            </div>
+                        </div>
+                        
                         <div class="nota-area">
                             <select id="nota-musica-dia"><option value="1">⭐ 1</option><option value="2">⭐ 2</option><option value="3">⭐ 3</option><option value="4" selected>⭐ 4</option><option value="5">⭐ 5</option></select>
                             <button id="btn-nota-musica-dia">Dar Nota</button>
                         </div>
                         <div class="comentarios-area">
-                            <textarea id="comentario-musica-dia" placeholder="Deixe seu comentário sobre esta música..."></textarea>
+                            <textarea id="comentario-musica-dia" placeholder="O que você acha dessa letra?..."></textarea>
                             <button id="btn-comentario-musica-dia">Comentar</button>
                         </div>
                         <div id="musica-dia-comentarios"></div>
@@ -196,7 +203,7 @@
         <div id="pagina-playlist" class="pagina">
             <div class="playlist-container">
                 <h2>🎧 Playlist Colaborativa</h2>
-                <p class="sub">Músicas em inglês adicionadas por você e seus amigos!</p>
+                <p class="sub">Músicas em inglês com letras adicionadas por você e seus amigos!</p>
                 <div id="playlist-container">
                     <p style="text-align:center;color:#999;">Sua playlist está vazia.</p>
                 </div>
@@ -210,7 +217,7 @@
         <div id="pagina-chat" class="pagina">
             <div class="chat-container">
                 <h2>💬 Chat Musical</h2>
-                <p class="sub">Converse com seus amigos sobre música!</p>
+                <p class="sub">Converse com seus amigos sobre letras de músicas!</p>
                 
                 <div class="chat-messages" id="chat-messages">
                     <p style="text-align:center;color:#999;padding:20px;">Nenhuma mensagem ainda. Seja o primeiro!</p>
@@ -230,6 +237,8 @@
                     <button class="btn-chat-emoji" data-emoji="🎸">🎸</button>
                     <button class="btn-chat-emoji" data-emoji="🎹">🎹</button>
                     <button class="btn-chat-emoji" data-emoji="🥁">🥁</button>
+                    <button class="btn-chat-emoji" data-emoji="❤️">❤️</button>
+                    <button class="btn-chat-emoji" data-emoji="😭">😭</button>
                 </div>
             </div>
         </div>
@@ -242,7 +251,7 @@
                     <div class="avatar" id="perfil-avatar">🎵</div>
                     <div class="nome-perfil" id="perfil-nome">Usuário</div>
                     <div class="bio-perfil" id="perfil-bio">Sua biografia aqui...</div>
-                    <div class="detalhes" id="perfil-detalhes">Pontos: 0 | Amigos: 0</div>
+                    <div class="detalhes" id="perfil-detalhes">Amigos: 0</div>
                 </div>
                 <div class="perfil-edit">
                     <input type="text" id="edit-bio" placeholder="Nova biografia..." />
@@ -289,11 +298,10 @@
 
     <script>
         // ============================================================
-        // ===== DADOS: 100 CANTORES E 100 MÚSICAS (TODAS EM INGLÊS) =====
+        // ===== DADOS: 100 CANTORES E 100 MÚSICAS COM LETRAS =====
         // ============================================================
 
         const CANTORES = [
-            // Pop (30)
             { nome: 'Taylor Swift', genero: 'Pop', pais: 'EUA' },
             { nome: 'Ed Sheeran', genero: 'Pop', pais: 'Reino Unido' },
             { nome: 'Ariana Grande', genero: 'Pop', pais: 'EUA' },
@@ -324,7 +332,6 @@
             { nome: 'Tones and I', genero: 'Pop', pais: 'Austrália' },
             { nome: 'Lewis Capaldi', genero: 'Pop', pais: 'Reino Unido' },
             { nome: 'Charlie Puth', genero: 'Pop', pais: 'EUA' },
-            // Rock (20)
             { nome: 'Queen', genero: 'Rock', pais: 'Reino Unido' },
             { nome: 'The Beatles', genero: 'Rock', pais: 'Reino Unido' },
             { nome: 'Led Zeppelin', genero: 'Rock', pais: 'Reino Unido' },
@@ -345,7 +352,6 @@
             { nome: 'Måneskin', genero: 'Rock', pais: 'Itália' },
             { nome: 'The Killers', genero: 'Rock', pais: 'EUA' },
             { nome: 'Paramore', genero: 'Rock', pais: 'EUA' },
-            // Rap/Hip-Hop (15)
             { nome: 'Eminem', genero: 'Rap', pais: 'EUA' },
             { nome: 'Drake', genero: 'Rap', pais: 'Canadá' },
             { nome: 'Kendrick Lamar', genero: 'Rap', pais: 'EUA' },
@@ -361,7 +367,6 @@
             { nome: 'J. Cole', genero: 'Rap', pais: 'EUA' },
             { nome: 'Future', genero: 'Rap', pais: 'EUA' },
             { nome: 'Tyler, The Creator', genero: 'Rap', pais: 'EUA' },
-            // Eletrônico (10)
             { nome: 'David Guetta', genero: 'Eletrônico', pais: 'França' },
             { nome: 'Calvin Harris', genero: 'Eletrônico', pais: 'Reino Unido' },
             { nome: 'The Chainsmokers', genero: 'Eletrônico', pais: 'EUA' },
@@ -370,7 +375,6 @@
             { nome: 'Tiësto', genero: 'Eletrônico', pais: 'Holanda' },
             { nome: 'Martin Garrix', genero: 'Eletrônico', pais: 'Holanda' },
             { nome: 'Avicii', genero: 'Eletrônico', pais: 'Suécia' },
-            // Indie/Blues/Reggae/Jazz/Gospel/Metal (10)
             { nome: 'Arctic Monkeys', genero: 'Indie', pais: 'Reino Unido' },
             { nome: 'Tame Impala', genero: 'Indie', pais: 'Austrália' },
             { nome: 'B.B. King', genero: 'Blues', pais: 'EUA' },
@@ -384,82 +388,143 @@
         ];
 
         const MUSICAS = [
-            // Pop (25)
-            { nome: 'Shape of You', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2017, link: 'https://www.youtube.com/watch?v=JGwWNGJdvx8' },
-            { nome: 'Blinding Lights', cantor: 'The Weeknd', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=4NRXx6U8ABQ' },
-            { nome: 'Dance Monkey', cantor: 'Tones and I', genero: 'Pop', ano: 2019, link: 'https://www.youtube.com/watch?v=q0hyYWKXF0Q' },
-            { nome: 'Levitating', cantor: 'Dua Lipa', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=TUVcZfQe-Kw' },
-            { nome: 'Bad Guy', cantor: 'Billie Eilish', genero: 'Pop', ano: 2019, link: 'https://www.youtube.com/watch?v=DyDfgMOUjCI' },
-            { nome: 'Shallow', cantor: 'Lady Gaga', genero: 'Pop', ano: 2018, link: 'https://www.youtube.com/watch?v=bo_efYhYU2A' },
-            { nome: 'Thank U, Next', cantor: 'Ariana Grande', genero: 'Pop', ano: 2018, link: 'https://www.youtube.com/watch?v=gl1aHhXnN1k' },
-            { nome: 'Peaches', cantor: 'Justin Bieber', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=tQ0yjYUFK1k' },
-            { nome: 'Watermelon Sugar', cantor: 'Harry Styles', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=E07s5ZYygMg' },
-            { nome: 'Senorita', cantor: 'Shawn Mendes', genero: 'Pop', ano: 2019, link: 'https://www.youtube.com/watch?v=Pkh8UtuejGw' },
-            { nome: 'Havana', cantor: 'Camila Cabello', genero: 'Pop', ano: 2017, link: 'https://www.youtube.com/watch?v=HCjNJDNzw8Y' },
-            { nome: 'Lose You To Love Me', cantor: 'Selena Gomez', genero: 'Pop', ano: 2019, link: 'https://www.youtube.com/watch?v=zlJDTxahav0' },
-            { nome: 'Sorry', cantor: 'Justin Bieber', genero: 'Pop', ano: 2015, link: 'https://www.youtube.com/watch?v=fRh_vgS2dFE' },
-            { nome: 'New Rules', cantor: 'Dua Lipa', genero: 'Pop', ano: 2017, link: 'https://www.youtube.com/watch?v=k2qgadSvNyU' },
-            { nome: 'Without Me', cantor: 'Halsey', genero: 'Pop', ano: 2018, link: 'https://www.youtube.com/watch?v=ZAfAud_M_mg' },
-            { nome: 'Positions', cantor: 'Ariana Grande', genero: 'Pop', ano: 2020, link: 'https://www.youtube.com/watch?v=tcYodQoapMg' },
-            { nome: 'drivers license', cantor: 'Olivia Rodrigo', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=ZmDBbnmKpqQ' },
-            { nome: 'good 4 u', cantor: 'Olivia Rodrigo', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=gNi_6U5Pm_o' },
-            { nome: 'Kiss Me More', cantor: 'Doja Cat', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=0EVVKs6DQLo' },
-            { nome: 'Stay', cantor: 'The Kid LAROI', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=kTJczUoc26U' },
-            { nome: 'Shivers', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=Il0S8BoucSA' },
-            { nome: 'Bad Habits', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=orJSJGHjBLI' },
-            { nome: 'Cold Heart', cantor: 'Elton John', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=qRd5sS4RMUE' },
-            { nome: 'Need to Know', cantor: 'Doja Cat', genero: 'Pop', ano: 2021, link: 'https://www.youtube.com/watch?v=g8GJtR8bVrk' },
-            { nome: 'Don\'t Start Now', cantor: 'Dua Lipa', genero: 'Pop', ano: 2019, link: 'https://www.youtube.com/watch?v=oygrmJFKYZY' },
-            // Rock (20)
-            { nome: 'Bohemian Rhapsody', cantor: 'Queen', genero: 'Rock', ano: 1975, link: 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ' },
-            { nome: 'Smells Like Teen Spirit', cantor: 'Nirvana', genero: 'Rock', ano: 1991, link: 'https://www.youtube.com/watch?v=hTWKbfoikeg' },
-            { nome: 'Back in Black', cantor: 'AC/DC', genero: 'Rock', ano: 1980, link: 'https://www.youtube.com/watch?v=pAgnJDJN4VA' },
-            { nome: 'Sweet Child O\' Mine', cantor: 'Guns N\' Roses', genero: 'Rock', ano: 1987, link: 'https://www.youtube.com/watch?v=1w7OgIMMRc4' },
-            { nome: 'Wonderwall', cantor: 'Oasis', genero: 'Rock', ano: 1995, link: 'https://www.youtube.com/watch?v=6hzrDeceEKc' },
-            { nome: 'Californication', cantor: 'Red Hot Chili Peppers', genero: 'Rock', ano: 1999, link: 'https://www.youtube.com/watch?v=YlUKcNNmywk' },
-            { nome: 'Stairway to Heaven', cantor: 'Led Zeppelin', genero: 'Rock', ano: 1971, link: 'https://www.youtube.com/watch?v=QkF3oxziUI4' },
-            { nome: 'Enter Sandman', cantor: 'Metallica', genero: 'Rock', ano: 1991, link: 'https://www.youtube.com/watch?v=CD-E-LDc384' },
-            { nome: 'Everlong', cantor: 'Foo Fighters', genero: 'Rock', ano: 1997, link: 'https://www.youtube.com/watch?v=eBG7P-K-r1Y' },
-            { nome: 'Hotel California', cantor: 'Eagles', genero: 'Rock', ano: 1976, link: 'https://www.youtube.com/watch?v=09839DpTctU' },
-            { nome: 'Beggin', cantor: 'Måneskin', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=wXhTH1RGDyk' },
-            { nome: 'Enemy', cantor: 'Imagine Dragons', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=D9G1VOjN_84' },
-            { nome: 'I Wanna Be Your Slave', cantor: 'Måneskin', genero: 'Rock', ano: 2021, link: 'https://www.youtube.com/watch?v=JcW8-WXU_FA' },
-            // Rap (15)
-            { nome: 'Lose Yourself', cantor: 'Eminem', genero: 'Rap', ano: 2002, link: 'https://www.youtube.com/watch?v=_YhypkJhVOA' },
-            { nome: 'God\'s Plan', cantor: 'Drake', genero: 'Rap', ano: 2018, link: 'https://www.youtube.com/watch?v=xpVfcZ0ZcFM' },
-            { nome: 'HUMBLE.', cantor: 'Kendrick Lamar', genero: 'Rap', ano: 2017, link: 'https://www.youtube.com/watch?v=tvTRZJ-4EyI' },
-            { nome: 'Sicko Mode', cantor: 'Travis Scott', genero: 'Rap', ano: 2018, link: 'https://www.youtube.com/watch?v=6ONRf7h3Mdk' },
-            { nome: 'Juicy', cantor: 'Notorious B.I.G.', genero: 'Rap', ano: 1994, link: 'https://www.youtube.com/watch?v=_JZom_gVfuw' },
-            { nome: 'California Love', cantor: '2Pac', genero: 'Rap', ano: 1995, link: 'https://www.youtube.com/watch?v=1R6CkZTj-qE' },
-            { nome: 'Hotline Bling', cantor: 'Drake', genero: 'Rap', ano: 2015, link: 'https://www.youtube.com/watch?v=uxpDa-c-4Mc' },
-            { nome: 'Old Town Road', cantor: 'Lil Nas X', genero: 'Rap', ano: 2019, link: 'https://www.youtube.com/watch?v=w2Ov5jzm3j8' },
-            { nome: 'WAP', cantor: 'Cardi B', genero: 'Rap', ano: 2020, link: 'https://www.youtube.com/watch?v=hsm4poTWjMs' },
-            { nome: 'Montero', cantor: 'Lil Nas X', genero: 'Rap', ano: 2021, link: 'https://www.youtube.com/watch?v=6swmTBVI83k' },
-            // Eletrônico (10)
-            { nome: 'Titanium', cantor: 'David Guetta', genero: 'Eletrônico', ano: 2011, link: 'https://www.youtube.com/watch?v=JRfuAukYTKg' },
-            { nome: 'Wake Me Up', cantor: 'Avicii', genero: 'Eletrônico', ano: 2013, link: 'https://www.youtube.com/watch?v=IcrbM1l_BoI' },
-            { nome: 'Roses', cantor: 'The Chainsmokers', genero: 'Eletrônico', ano: 2015, link: 'https://www.youtube.com/watch?v=9Gq8e0cCk-w' },
-            { nome: 'Faded', cantor: 'Alan Walker', genero: 'Eletrônico', ano: 2015, link: 'https://www.youtube.com/watch?v=60ItHLz5WEA' },
-            { nome: 'Animals', cantor: 'Martin Garrix', genero: 'Eletrônico', ano: 2013, link: 'https://www.youtube.com/watch?v=gCYcHz2k5x0' },
-            { nome: 'Summer', cantor: 'Calvin Harris', genero: 'Eletrônico', ano: 2014, link: 'https://www.youtube.com/watch?v=ebXbLfLACGM' },
-            // Indie/Blues/Reggae/Jazz/Gospel/Metal (15)
-            { nome: 'Do I Wanna Know?', cantor: 'Arctic Monkeys', genero: 'Indie', ano: 2013, link: 'https://www.youtube.com/watch?v=bpOSxM0rNPM' },
-            { nome: 'The Less I Know The Better', cantor: 'Tame Impala', genero: 'Indie', ano: 2015, link: 'https://www.youtube.com/watch?v=sBzR63WmGkE' },
-            { nome: 'Heat Waves', cantor: 'Glass Animals', genero: 'Indie', ano: 2021, link: 'https://www.youtube.com/watch?v=mRD0-GxqHVo' },
-            { nome: 'The Thrill Is Gone', cantor: 'B.B. King', genero: 'Blues', ano: 1969, link: 'https://www.youtube.com/watch?v=4fk2prKnYnI' },
-            { nome: 'Layla', cantor: 'Eric Clapton', genero: 'Blues', ano: 1970, link: 'https://www.youtube.com/watch?v=9u5nTNKKZeE' },
-            { nome: 'No Woman No Cry', cantor: 'Bob Marley', genero: 'Reggae', ano: 1974, link: 'https://www.youtube.com/watch?v=7sE9XUdv8bc' },
-            { nome: 'One Love', cantor: 'Bob Marley', genero: 'Reggae', ano: 1977, link: 'https://www.youtube.com/watch?v=vdB-8eLEW8g' },
-            { nome: 'So What', cantor: 'Miles Davis', genero: 'Jazz', ano: 1959, link: 'https://www.youtube.com/watch?v=zqNTltOGh5c' },
-            { nome: 'What a Wonderful World', cantor: 'Louis Armstrong', genero: 'Jazz', ano: 1967, link: 'https://www.youtube.com/watch?v=E2VCwBzGdPM' },
-            { nome: 'I Can Only Imagine', cantor: 'MercyMe', genero: 'Gospel', ano: 2001, link: 'https://www.youtube.com/watch?v=N_lrrq_opng' },
-            { nome: 'Reckless Love', cantor: 'Cory Asbury', genero: 'Gospel', ano: 2018, link: 'https://www.youtube.com/watch?v=Sc6SS-Hbz2g' },
-            { nome: 'The Trooper', cantor: 'Iron Maiden', genero: 'Metal', ano: 1983, link: 'https://www.youtube.com/watch?v=1d7SPhy0ypQ' },
-            { nome: 'Paranoid', cantor: 'Black Sabbath', genero: 'Metal', ano: 1970, link: 'https://www.youtube.com/watch?v=0qanF-91aJo' },
+            // Pop com letras
+            { 
+                nome: 'Shape of You', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2017, 
+                link: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+                letra: `The club isn't the best place to find a lover\nSo the bar is where I go\nMe and my friends at the table doing shots\nDrinking fast and then we talk slow\n\nAnd you come over and start up a conversation with just me\nAnd trust me I'll give it a chance now\nTake my hand, stop, put Van The Man on the jukebox\nAnd then we start to dance, and now I'm singing like`
+            },
+            { 
+                nome: 'Blinding Lights', cantor: 'The Weeknd', genero: 'Pop', ano: 2020, 
+                link: 'https://www.youtube.com/watch?v=4NRXx6U8ABQ',
+                letra: `I've been tryna call\nI've been on my own for long enough\nMaybe you can show me how to love, maybe\nI'm going through withdrawals\nYou don't even have to do too much\nYou can turn me on with just a touch, baby`
+            },
+            { 
+                nome: 'Dance Monkey', cantor: 'Tones and I', genero: 'Pop', ano: 2019, 
+                link: 'https://www.youtube.com/watch?v=q0hyYWKXF0Q',
+                letra: `They say, "Oh my god, I see the way you shine"\nTake your hand, my dear, and place them both in mine\nYou know you stopped me dead while I was passing by\nAnd now I beg to see you dance just one more time`
+            },
+            { 
+                nome: 'Levitating', cantor: 'Dua Lipa', genero: 'Pop', ano: 2020, 
+                link: 'https://www.youtube.com/watch?v=TUVcZfQe-Kw',
+                letra: `If you wanna run away with me\nI know a galaxy\nAnd I can take you for a ride\nI had a premonition\nThat we fell into a rhythm\nWhere the music don't stop for life`
+            },
+            { 
+                nome: 'Bad Guy', cantor: 'Billie Eilish', genero: 'Pop', ano: 2019, 
+                link: 'https://www.youtube.com/watch?v=DyDfgMOUjCI',
+                letra: `White shirt now red, my bloody nose\nSleeping, you're on your tippy toes\nCreeping around like no one knows\nThink you're so criminal\n\nBruises on both my knees for you\nDon't say thank you or please\nI do what I want when I'm wanting to\nMy soul? So cynical`
+            },
+            { 
+                nome: 'Shallow', cantor: 'Lady Gaga', genero: 'Pop', ano: 2018, 
+                link: 'https://www.youtube.com/watch?v=bo_efYhYU2A',
+                letra: `Tell me something, girl\nAre you happy in this modern world?\nOr do you need more?\nIs there something else you're searching for?\n\nI'm falling\nIn all the good times I find myself longing for change\nAnd in the bad times I fear myself`
+            },
+            { 
+                nome: 'Thank U, Next', cantor: 'Ariana Grande', genero: 'Pop', ano: 2018, 
+                link: 'https://www.youtube.com/watch?v=gl1aHhXnN1k',
+                letra: `Thought I'd end up with Sean\nBut he wasn't a match\nWrote some songs about Ricky\nNow I listen and laugh\n\nEven almost got married\nAnd for Pete, I'm so thankful\nWish I could say, "Thank you" to Malcolm\n'Cause he was an angel`
+            },
+            { 
+                nome: 'Peaches', cantor: 'Justin Bieber', genero: 'Pop', ano: 2021, 
+                link: 'https://www.youtube.com/watch?v=tQ0yjYUFK1k',
+                letra: `I got my peaches out in Georgia (oh, yeah, shit)\nI get my weed from California (that's that shit)\nI took my chick up to the North, yeah (badass bitch)\nI get my light right from the source, yeah (yeah, that's it)`
+            },
+            { 
+                nome: 'Watermelon Sugar', cantor: 'Harry Styles', genero: 'Pop', ano: 2020, 
+                link: 'https://www.youtube.com/watch?v=E07s5ZYygMg',
+                letra: `Tastes like strawberries on a summer evening\nAnd it sounds just like a song\nI want more berries and that summer feeling\nIt's so wonderful and warm\n\nBreathe me in, breathe me out\nI don't know if I could ever go without`
+            },
+            { 
+                nome: 'Senorita', cantor: 'Shawn Mendes', genero: 'Pop', ano: 2019, 
+                link: 'https://www.youtube.com/watch?v=Pkh8UtuejGw',
+                letra: `I love it when you call me señorita\nI wish I could pretend I didn't need ya\nBut every touch is ooh-la-la-la\nIt's true, la-la-la\nOoh, I should be running\nOoh, you keep me coming for ya`
+            },
+            // Rock com letras
+            { 
+                nome: 'Bohemian Rhapsody', cantor: 'Queen', genero: 'Rock', ano: 1975, 
+                link: 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ',
+                letra: `Is this the real life? Is this just fantasy?\nCaught in a landslide, no escape from reality\nOpen your eyes, look up to the skies and see\nI'm just a poor boy, I need no sympathy\nBecause I'm easy come, easy go, little high, little low\nAnyway the wind blows doesn't really matter to me, to me`
+            },
+            { 
+                nome: 'Smells Like Teen Spirit', cantor: 'Nirvana', genero: 'Rock', ano: 1991, 
+                link: 'https://www.youtube.com/watch?v=hTWKbfoikeg',
+                letra: `Load up on guns, bring your friends\nIt's fun to lose and to pretend\nShe's over-bored and self-assured\nOh no, I know a dirty word\n\nHello, hello, hello, how low\nHello, hello, hello, how low\nHello, hello, hello, how low\nHello, hello, hello`
+            },
+            { 
+                nome: 'Back in Black', cantor: 'AC/DC', genero: 'Rock', ano: 1980, 
+                link: 'https://www.youtube.com/watch?v=pAgnJDJN4VA',
+                letra: `Back in black, I hit the sack\nI've been too long, I'm glad to be back\nYes, I'm let loose from the noose\nThat's kept me hanging about\n\nI've been looking at the sky\n'Cause it's getting me high\nForget the hearse, 'cause I'll never die`
+            },
+            { 
+                nome: 'Sweet Child O\' Mine', cantor: 'Guns N\' Roses', genero: 'Rock', ano: 1987, 
+                link: 'https://www.youtube.com/watch?v=1w7OgIMMRc4',
+                letra: `She's got a smile that it seems to me\nReminds me of childhood memories\nWhere everything was as fresh as the bright blue sky\nNow and then when I see her face\nShe takes me away to that special place\nAnd if I stared too long, I'd probably break down and cry`
+            },
+            { 
+                nome: 'Wonderwall', cantor: 'Oasis', genero: 'Rock', ano: 1995, 
+                link: 'https://www.youtube.com/watch?v=6hzrDeceEKc',
+                letra: `Today is gonna be the day\nThat they're gonna throw it back to you\nBy now you should've somehow\nRealized what you gotta do\nI don't believe that anybody\nFeels the way I do about you now`
+            },
+            // Rap com letras
+            { 
+                nome: 'Lose Yourself', cantor: 'Eminem', genero: 'Rap', ano: 2002, 
+                link: 'https://www.youtube.com/watch?v=_YhypkJhVOA',
+                letra: `Look, if you had one shot, or one opportunity\nTo seize everything you ever wanted in one moment\nWould you capture it or just let it slip?\n\nYo, his palms are sweaty, knees weak, arms are heavy\nThere's vomit on his sweater already, mom's spaghetti\nHe's nervous, but on the surface he looks calm and ready\nTo drop bombs, but he keeps on forgetting`
+            },
+            { 
+                nome: 'God\'s Plan', cantor: 'Drake', genero: 'Rap', ano: 2018, 
+                link: 'https://www.youtube.com/watch?v=xpVfcZ0ZcFM',
+                letra: `Yeah, they wishin' and wishin' and wishin' and wishin'\nThey wishin' on me, yeah\nI been movin' calm, don't start no trouble with me\nTryna keep it peaceful is a struggle for me\nDon't pull up at 6 AM to cuddle with me\nYou know how I like it when you loving on me`
+            },
+            { 
+                nome: 'HUMBLE.', cantor: 'Kendrick Lamar', genero: 'Rap', ano: 2017, 
+                link: 'https://www.youtube.com/watch?v=tvTRZJ-4EyI',
+                letra: `Nobody pray for me\nIt's been that day for me\nWay, yeah, yeah!\n\nAyy, I remember syrup sandwiches and crime allowances\nFinesse a nigga with some counterfeits\nBut now I'm countin' this\nParmesan where my accountant lives\nIn fact, I'm downin' this`
+            },
+            // Eletrônico
+            { 
+                nome: 'Titanium', cantor: 'David Guetta', genero: 'Eletrônico', ano: 2011, 
+                link: 'https://www.youtube.com/watch?v=JRfuAukYTKg',
+                letra: `You shout it out, but I can't hear a word you say\nI'm talking loud, not saying much\nI'm criticized, but all your bullets ricochet\nYou shoot me down, but I get up\n\nI'm bulletproof, nothing to lose\nFire away, fire away\nRicochet, you take your aim\nFire away, fire away`
+            },
+            { 
+                nome: 'Wake Me Up', cantor: 'Avicii', genero: 'Eletrônico', ano: 2013, 
+                link: 'https://www.youtube.com/watch?v=IcrbM1l_BoI',
+                letra: `Feeling my way through the darkness\nGuided by a beating heart\nI can't tell where the journey will end\nBut I know where to start\n\nThey tell me I'm too young to understand\nThey say I'm caught up in a dream\nWell life will pass me by if I don't open up my eyes\nWell that's fine by me`
+            },
+            // Indie
+            { 
+                nome: 'Do I Wanna Know?', cantor: 'Arctic Monkeys', genero: 'Indie', ano: 2013, 
+                link: 'https://www.youtube.com/watch?v=bpOSxM0rNPM',
+                letra: `Have you got color in your cheeks?\nDo you ever get that fear that you can't shift the tide?\nThat sticks around like something in your teeth?\nAre there some aces up your sleeve?\n\nHave you no idea that you're in deep?\nI've dreamt about you nearly every night this week\nHow many secrets can you keep?\n'Cause there's this tune I found that makes me think of you somehow`
+            },
+            { 
+                nome: 'The Less I Know The Better', cantor: 'Tame Impala', genero: 'Indie', ano: 2015, 
+                link: 'https://www.youtube.com/watch?v=sBzR63WmGkE',
+                letra: `Someone said they left together\nI ran out the door to get her\nShe was holding hands with Trevor\nNot the greatest feeling ever\n\nSaid, "Pull yourself together"\nYou should try your luck with Heather\nThen I heard they slept together\nOh, the less I know the better`
+            },
+            // Reggae
+            { 
+                nome: 'No Woman No Cry', cantor: 'Bob Marley', genero: 'Reggae', ano: 1974, 
+                link: 'https://www.youtube.com/watch?v=7sE9XUdv8bc',
+                letra: `No woman, no cry\nNo woman, no cry\nNo woman, no cry\nNo woman, no cry\n\nSaid, said, said I remember when we used to sit\nIn the government yard in Trenchtown\nOba, observing the hypocrites\nMingle with the good people we meet`
+            },
+            // Jazz
+            { 
+                nome: 'What a Wonderful World', cantor: 'Louis Armstrong', genero: 'Jazz', ano: 1967, 
+                link: 'https://www.youtube.com/watch?v=E2VCwBzGdPM',
+                letra: `I see trees of green, red roses too\nI see them bloom for me and you\nAnd I think to myself what a wonderful world\n\nI see skies of blue and clouds of white\nThe bright blessed day, the dark sacred night\nAnd I think to myself what a wonderful world`
+            },
+            // Gospel
+            { 
+                nome: 'I Can Only Imagine', cantor: 'MercyMe', genero: 'Gospel', ano: 2001, 
+                link: 'https://www.youtube.com/watch?v=N_lrrq_opng',
+                letra: `I can only imagine what it will be like\nWhen I walk by your side\nI can only imagine what my eyes will see\nWhen your face is before me\nI can only imagine\n\nSurrounded by your glory\nWhat will my heart feel?\nWill I dance for you Jesus\nOr in awe of you be still?`
+            },
         ];
 
         // ============================================================
-        // ===== LÓGICA DO SITE =====
+        // ===== LÓGICA DO SITE (SEM PONTOS) =====
         // ============================================================
 
         let usuarioAtual = null;
@@ -540,37 +605,6 @@
             }
         }
 
-        function adicionarPontos(nome, pontos) {
-            const usuario = getUsuario(nome);
-            if (usuario) {
-                usuario.pontos = (usuario.pontos || 0) + pontos;
-                atualizarUsuario(nome, { pontos: usuario.pontos });
-                renderizarRanking();
-                renderizarPerfil();
-            }
-        }
-
-        function renderizarRanking() {
-            const usuarios = carregarUsuarios();
-            const ranking = usuarios.map(u => ({ nome: u.nome, pontos: u.pontos || 0 }));
-            ranking.sort((a, b) => b.pontos - a.pontos);
-
-            const lista = document.getElementById('ranking-lista');
-            lista.innerHTML = '';
-            if (ranking.length === 0) {
-                lista.innerHTML = '<p class="sem-participantes">Nenhum participante ainda.</p>';
-                return;
-            }
-            for (let i = 0; i < ranking.length && i < 10; i++) {
-                const item = ranking[i];
-                const div = document.createElement('div');
-                div.className = 'rank-item';
-                let pos = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i + 1) + 'º';
-                div.innerHTML = '<span class="posicao">' + pos + '</span><span class="nome">' + item.nome + '</span><span class="pontos">' + item.pontos + ' pts</span>';
-                lista.appendChild(div);
-            }
-        }
-
         // LOGIN
         function validarGmail(email) {
             return email.endsWith('@gmail.com') && email.split('@')[0].length > 0;
@@ -615,7 +649,7 @@
             }
 
             const novoUsuario = {
-                nome, email, pontos: 0, bio: '🎵 Amante da música!', avatar: '🎤',
+                nome, email, bio: '🎵 Amante da música!', avatar: '🎤',
                 amigos: [], solicitacoes: [], notificacoes: [],
                 notificacoesAtivas: notificacoes === 'sim',
                 favCantores: [favCantor1, favCantor2, favCantor3],
@@ -638,7 +672,6 @@
             document.getElementById('tela-login').style.display = 'none';
             document.getElementById('conteudo-principal').style.display = 'block';
 
-            renderizarRanking();
             renderizarPerfil();
             renderizarAmigos();
             renderizarNotificacoes();
@@ -675,7 +708,6 @@
                     document.getElementById('tela-login').style.display = 'flex';
                     document.getElementById('conteudo-principal').style.display = 'none';
                     alert('🗑️ Conta excluída!');
-                    renderizarRanking();
                 }
             }
         });
@@ -687,7 +719,7 @@
             document.getElementById('perfil-avatar').textContent = u.avatar || '🎤';
             document.getElementById('perfil-nome').textContent = u.nome;
             document.getElementById('perfil-bio').textContent = u.bio || 'Sua biografia aqui...';
-            document.getElementById('perfil-detalhes').textContent = 'Pontos: ' + (u.pontos || 0) + ' | Amigos: ' + (u.amigos ? u.amigos.length : 0);
+            document.getElementById('perfil-detalhes').textContent = 'Amigos: ' + (u.amigos ? u.amigos.length : 0);
             document.getElementById('edit-bio').value = u.bio || '';
             document.getElementById('edit-avatar').value = u.avatar || '🎤';
         }
@@ -700,7 +732,7 @@
             alert('✅ Perfil atualizado!');
         });
 
-        // MÚSICA DO DIA
+        // ===== MÚSICA DO DIA COM LETRA =====
         function carregarMusicaDoDia() {
             const u = getUsuario(usuarioAtual);
             if (!u) return;
@@ -713,6 +745,9 @@
             document.getElementById('musica-dia-artista').textContent = '🎤 ' + musica.cantor;
             document.getElementById('musica-dia-genero').textContent = '🎵 ' + musica.genero + ' | ' + musica.ano;
             document.getElementById('musica-dia-link').href = musica.link;
+            
+            // Mostrar a letra
+            document.getElementById('musica-dia-letra').textContent = musica.letra || 'Letra não disponível para esta música.';
 
             const key = musica.nome + '|' + musica.cantor;
             const comentarios = u.musicasComentarios || {};
@@ -760,7 +795,7 @@
             alert('💬 Comentário adicionado!');
         });
 
-        // ===== JOGO COM CAMPEÃO =====
+        // ===== JOGO SEM PONTOS =====
         function iniciarJogo() {
             jogoData.rodada = 0;
             jogoData.escolhas = [];
@@ -775,32 +810,28 @@
             if (jogoData.rodada >= jogoData.totalRodadas) {
                 document.getElementById('jogo-placar').textContent = '🎉 Fim de jogo!';
                 document.getElementById('jogo-duelo').innerHTML = '<div style="padding:20px;text-align:center;font-size:1.2rem;color:#d81b60;">🏆 Campeão: <strong>' + jogoData.campeao.nome + '</strong></div>';
-                document.getElementById('jogo-resultado').textContent = '🏆 ' + jogoData.campeao.nome + ' é o campeão! +10 pontos!';
+                document.getElementById('jogo-resultado').textContent = '🏆 ' + jogoData.campeao.nome + ' é o campeão!';
                 document.getElementById('btn-proxima-rodada').style.display = 'none';
-                adicionarPontos(usuarioAtual, 10);
                 document.getElementById('btn-reiniciar-jogo').style.display = 'inline-block';
                 return;
             }
 
             const lista = jogoData.modo === 'cantor' ? CANTORES : MUSICAS;
             
-            // Se tem campeão, ele fica
             let desafiante;
             if (jogoData.campeao) {
-                // Pega um desafiante diferente do campeão
                 do {
                     desafiante = lista[Math.floor(Math.random() * lista.length)];
                 } while (desafiante.nome === jogoData.campeao.nome);
                 jogoData.itens = [jogoData.campeao, desafiante];
             } else {
-                // Primeira rodada: dois aleatórios
                 let a, b;
                 do {
                     a = lista[Math.floor(Math.random() * lista.length)];
                     b = lista[Math.floor(Math.random() * lista.length)];
                 } while (a.nome === b.nome);
                 jogoData.itens = [a, b];
-                jogoData.campeao = a; // Inicializa com o primeiro
+                jogoData.campeao = a;
             }
 
             const a = jogoData.itens[0];
@@ -808,7 +839,6 @@
             
             document.getElementById('jogo-placar').textContent = 'Rodada ' + (jogoData.rodada + 1) + ' de ' + jogoData.totalRodadas;
 
-            // Mostrar campeão atual
             document.getElementById('jogo-campeao').style.display = 'block';
             document.getElementById('campeao-nome').textContent = '👑 ' + jogoData.campeao.nome;
             document.getElementById('campeao-detalhes').textContent = jogoData.modo === 'cantor' ? 
@@ -827,7 +857,6 @@
                 document.getElementById('item2-genero').textContent = b.cantor + ' | ' + b.genero;
             }
 
-            // Estilizar campeão
             document.querySelectorAll('.jogo-duelo-item')[0].style.borderColor = '#d81b60';
             document.querySelectorAll('.jogo-duelo-item')[0].style.background = 'linear-gradient(135deg,#fff,#fce4ec)';
 
@@ -841,12 +870,11 @@
                     const idx = parseInt(this.dataset.escolha) - 1;
                     const escolhido = jogoData.itens[idx];
                     jogoData.escolhas.push(escolhido);
-                    jogoData.campeao = escolhido; // O vencedor vira o campeão
+                    jogoData.campeao = escolhido;
                     jogoData.rodada++;
                     document.getElementById('jogo-resultado').textContent = '✅ ' + (jogoData.modo === 'cantor' ? escolhido.nome : escolhido.nome + ' - ' + escolhido.cantor) + ' venceu e continua!';
                     document.getElementById('btn-proxima-rodada').style.display = 'inline-block';
                     document.querySelectorAll('.jogo-duelo-item').forEach(e => { e.style.cursor = 'default'; e.onclick = null; });
-                    adicionarPontos(usuarioAtual, 2);
                 };
             });
         }
@@ -879,7 +907,7 @@
             });
         });
 
-        // ===== PLAYLIST =====
+        // ===== PLAYLIST COM LETRAS =====
         function carregarPlaylist() {
             const u = getUsuario(usuarioAtual);
             if (!u) return;
@@ -893,10 +921,14 @@
             for (const item of playlist) {
                 const div = document.createElement('div');
                 div.className = 'playlist-item';
+                const letraExibida = item.letra ? item.letra.substring(0, 150) + (item.letra.length > 150 ? '...' : '') : 'Letra não disponível';
                 div.innerHTML = `
                     <div class="top">
                         <div><span class="nome-musica">${item.nome}</span> <span class="artista-musica">- ${item.cantor}</span> <span class="adicionado-por">(por ${item.adicionadoPor})</span></div>
                         <div><span class="nota-exibida">⭐ ${item.notaMedia || 0}</span> <a href="${item.link}" target="_blank" style="color:#f48fb1;text-decoration:none;font-weight:600;">▶</a></div>
+                    </div>
+                    <div style="margin-top:6px;padding:8px;background:#fce4ec;border-radius:10px;font-size:0.85rem;color:#555;font-style:italic;border:1px solid #f8bbd0;">
+                        📝 ${letraExibida}
                     </div>
                     <div class="acoes">
                         <select class="nota-playlist"><option value="1">⭐1</option><option value="2">⭐2</option><option value="3">⭐3</option><option value="4">⭐4</option><option value="5">⭐5</option></select>
@@ -972,10 +1004,14 @@
             for (const item of mostrar) {
                 const div = document.createElement('div');
                 div.className = 'playlist-item';
+                const letraExibida = item.letra ? item.letra.substring(0, 80) + (item.letra.length > 80 ? '...' : '') : 'Letra não disponível';
                 div.innerHTML = `
                     <div class="top">
                         <div><span class="nome-musica">${item.nome}</span> <span class="artista-musica">- ${item.cantor}</span></div>
                         <div><span class="nota-exibida">⭐ ${item.notaMedia || 0}</span> <a href="${item.link}" target="_blank" style="color:#f48fb1;text-decoration:none;font-weight:600;">▶</a></div>
+                    </div>
+                    <div style="margin-top:6px;padding:6px;background:#fce4ec;border-radius:8px;font-size:0.8rem;color:#555;font-style:italic;border:1px solid #f8bbd0;">
+                        📝 ${letraExibida}
                     </div>
                 `;
                 container.appendChild(div);
@@ -995,7 +1031,18 @@
             if (disponiveis.length === 0) { alert('Todas as músicas já estão na playlist!'); return; }
             const musica = disponiveis[Math.floor(Math.random() * disponiveis.length)];
             const playlist = u.playlist || [];
-            playlist.push({ nome: musica.nome, cantor: musica.cantor, genero: musica.genero, ano: musica.ano, link: musica.link, adicionadoPor: usuarioAtual, notas: [], notaMedia: 0, comentarios: [] });
+            playlist.push({ 
+                nome: musica.nome, 
+                cantor: musica.cantor, 
+                genero: musica.genero, 
+                ano: musica.ano, 
+                link: musica.link, 
+                letra: musica.letra || 'Letra não disponível',
+                adicionadoPor: usuarioAtual, 
+                notas: [], 
+                notaMedia: 0, 
+                comentarios: [] 
+            });
             atualizarUsuario(usuarioAtual, { playlist });
             carregarPlaylist();
             carregarPlaylistInicio();
@@ -1054,7 +1101,6 @@
             input.value = '';
             carregarChat();
             
-            // Notificar amigos
             const u = getUsuario(usuarioAtual);
             if (u && u.notificacoesAtivas && u.amigos && u.amigos.length > 0) {
                 for (const amigo of u.amigos) {
@@ -1062,7 +1108,7 @@
                     if (amigoObj && amigoObj.notificacoesAtivas) {
                         if (!amigoObj.notificacoes) amigoObj.notificacoes = [];
                         amigoObj.notificacoes.push({
-                            texto: '💬 ' + usuarioAtual + ' enviou uma mensagem no chat: "' + mensagem.substring(0, 30) + (mensagem.length > 30 ? '...' : '') + '"',
+                            texto: '💬 ' + usuarioAtual + ' enviou uma mensagem: "' + mensagem.substring(0, 30) + (mensagem.length > 30 ? '...' : '') + '"',
                             data: new Date().toLocaleString()
                         });
                         atualizarUsuario(amigo, { notificacoes: amigoObj.notificacoes });
@@ -1242,28 +1288,31 @@
         // ===== BOTÕES =====
         document.getElementById('btn-participar').addEventListener('click', function() {
             if (!usuarioAtual) { alert('Faça login!'); return; }
-            adicionarPontos(usuarioAtual, 10);
-            alert('🎉 +10 pontos!');
-            const u = getUsuario(usuarioAtual);
-            if (u && u.notificacoesAtivas) {
-                if (!u.notificacoes) u.notificacoes = [];
-                u.notificacoes.push({ texto: '🎉 +10 pontos no desafio!', data: new Date().toLocaleString() });
-                atualizarUsuario(usuarioAtual, { notificacoes: u.notificacoes });
-                renderizarNotificacoes();
-            }
+            // Mostra uma música aleatória com letra
+            const musica = MUSICAS[Math.floor(Math.random() * MUSICAS.length)];
+            document.getElementById('musica-dia-nome').textContent = musica.nome;
+            document.getElementById('musica-dia-artista').textContent = '🎤 ' + musica.cantor;
+            document.getElementById('musica-dia-genero').textContent = '🎵 ' + musica.genero + ' | ' + musica.ano;
+            document.getElementById('musica-dia-link').href = musica.link;
+            document.getElementById('musica-dia-letra').textContent = musica.letra || 'Letra não disponível.';
+            document.querySelector('.nav-tab[data-pagina="pagina-musica"]').click();
+            alert('🎵 Confira a música do dia!');
         });
 
         document.getElementById('btn-enviar').addEventListener('click', function() {
             if (!usuarioAtual) { alert('Faça login!'); return; }
-            adicionarPontos(usuarioAtual, 5);
-            alert('📨 +5 pontos!');
-            const u = getUsuario(usuarioAtual);
-            if (u && u.notificacoesAtivas) {
-                if (!u.notificacoes) u.notificacoes = [];
-                u.notificacoes.push({ texto: '📨 +5 pontos por resposta!', data: new Date().toLocaleString() });
-                atualizarUsuario(usuarioAtual, { notificacoes: u.notificacoes });
-                renderizarNotificacoes();
-            }
+            const musica = MUSICAS[Math.floor(Math.random() * MUSICAS.length)];
+            const mensagem = '🎵 Recomendo a música "' + musica.nome + '" - ' + musica.cantor + '! A letra é incrível!';
+            
+            const mensagens = JSON.parse(localStorage.getItem('chat_mensagens') || '[]');
+            mensagens.push({
+                usuario: usuarioAtual,
+                mensagem: mensagem,
+                data: new Date().toLocaleString()
+            });
+            localStorage.setItem('chat_mensagens', JSON.stringify(mensagens));
+            carregarChat();
+            alert('📨 Música compartilhada no chat!');
         });
 
         setTimeout(() => { iniciarJogo(); }, 500);
