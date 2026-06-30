@@ -145,9 +145,6 @@ header h1 span { background:linear-gradient(135deg,#f48fb1,#d81b60); -webkit-bac
 .playlist-item .comentarios-playlist button:hover { background:#d81b60; }
 .playlist-item .nota-exibida { font-weight:600; color:#f48fb1; font-size:0.9rem; }
 
-/* ===== RANKING ===== */
-.ranking { display:none; }
-
 /* ===== PARTICIPAR ===== */
 .participar { background:linear-gradient(135deg,#fce4ec,#fff); padding:28px 20px; border-radius:28px; text-align:center; border:2px solid #f8bbd0; margin-bottom:24px; }
 .participar h2 { font-size:1.6rem; color:#d81b60; margin-bottom:16px; }

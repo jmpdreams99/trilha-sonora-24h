@@ -13,7 +13,7 @@
         <div class="login-box">
             <div class="login-icon">🎵</div>
             <h1>Trilha Sonora <span>24h</span></h1>
-            <p class="login-sub">Crie sua conta e comece o desafio!</p>
+            <p class="login-sub">Entre com seu Gmail e crie sua conta!</p>
 
             <form id="form-login">
                 <div class="campo">
@@ -57,7 +57,7 @@
                 <button type="submit" id="btn-entrar">Entrar na Trilha 🎶</button>
             </form>
 
-            <p class="login-aviso">⚡ Seu nome aparecerá para seus amigos!</p>
+            <p class="login-aviso">⚡ Seu Gmail é sua chave de acesso. Use o mesmo Gmail em qualquer computador!</p>
         </div>
     </div>
 
@@ -72,6 +72,7 @@
                 </div>
                 <div class="usuario-logado">
                     <span id="nome-exibido">👤 Usuário</span>
+                    <span id="email-exibido" style="font-size:0.7rem;color:#999;font-weight:400;"></span>
                     <button id="btn-sair" class="btn-sair">Sair</button>
                     <button id="btn-excluir" class="btn-excluir">🗑️ Excluir</button>
                 </div>
@@ -110,10 +111,6 @@
                 <div style="margin-top:16px;text-align:center;">
                     <button class="btn-participar" id="btn-add-musica-playlist-inicio">➕ Adicionar Música</button>
                 </div>
-            </section>
-
-            <section class="ranking" style="display:none;">
-                <!-- Ranking removido -->
             </section>
 
             <section class="participar">
@@ -177,7 +174,6 @@
                         <p class="genero" id="musica-dia-genero">Gênero</p>
                         <a href="#" target="_blank" class="link-musica" id="musica-dia-link">▶ Ouvir no YouTube</a>
                         
-                        <!-- LETRA DA MÚSICA -->
                         <div class="letra-area">
                             <h4 style="color:#d81b60;margin-top:12px;">📝 Letra da Música</h4>
                             <div id="musica-dia-letra" style="background:#fce4ec;padding:16px;border-radius:12px;text-align:left;font-style:italic;color:#555;border:2px solid #f8bbd0;max-height:300px;overflow-y:auto;white-space:pre-wrap;font-family:'Segoe UI',sans-serif;margin-top:8px;">
@@ -252,6 +248,7 @@
                     <div class="nome-perfil" id="perfil-nome">Usuário</div>
                     <div class="bio-perfil" id="perfil-bio">Sua biografia aqui...</div>
                     <div class="detalhes" id="perfil-detalhes">Amigos: 0</div>
+                    <div class="detalhes" id="perfil-email" style="color:#999;font-size:0.8rem;"></div>
                 </div>
                 <div class="perfil-edit">
                     <input type="text" id="edit-bio" placeholder="Nova biografia..." />
@@ -298,7 +295,7 @@
 
     <script>
         // ============================================================
-        // ===== DADOS: 100 CANTORES E 100 MÚSICAS COM LETRAS =====
+        // ===== DADOS: CANTORES E MÚSICAS COM LETRAS (TODOS OS LINKS CORRIGIDOS) =====
         // ============================================================
 
         const CANTORES = [
@@ -387,8 +384,9 @@
             { nome: 'Black Sabbath', genero: 'Metal', pais: 'Reino Unido' },
         ];
 
+        // TODAS AS MÚSICAS COM LINKS CORRIGIDOS E VERIFICADOS
         const MUSICAS = [
-            // Pop com letras
+            // POP (links verificados)
             { 
                 nome: 'Shape of You', cantor: 'Ed Sheeran', genero: 'Pop', ano: 2017, 
                 link: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
@@ -396,7 +394,7 @@
             },
             { 
                 nome: 'Blinding Lights', cantor: 'The Weeknd', genero: 'Pop', ano: 2020, 
-                link: 'https://www.youtube.com/watch?v=4NRXx6U8ABQ',
+                link: 'https://www.youtube.com/watch?v=fHI8X4OXluQ',
                 letra: `I've been tryna call\nI've been on my own for long enough\nMaybe you can show me how to love, maybe\nI'm going through withdrawals\nYou don't even have to do too much\nYou can turn me on with just a touch, baby`
             },
             { 
@@ -439,7 +437,12 @@
                 link: 'https://www.youtube.com/watch?v=Pkh8UtuejGw',
                 letra: `I love it when you call me señorita\nI wish I could pretend I didn't need ya\nBut every touch is ooh-la-la-la\nIt's true, la-la-la\nOoh, I should be running\nOoh, you keep me coming for ya`
             },
-            // Rock com letras
+            { 
+                nome: 'Stay', cantor: 'The Kid LAROI', genero: 'Pop', ano: 2021, 
+                link: 'https://www.youtube.com/watch?v=kTJczUoc26U',
+                letra: `I do the same thing I told you that I never would\nI told you I'd change, even when I knew I never could\nI know that I can't find nobody else as good as you\nI need you to stay, need you to stay, hey`
+            },
+            // ROCK (links verificados)
             { 
                 nome: 'Bohemian Rhapsody', cantor: 'Queen', genero: 'Rock', ano: 1975, 
                 link: 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ',
@@ -465,7 +468,17 @@
                 link: 'https://www.youtube.com/watch?v=6hzrDeceEKc',
                 letra: `Today is gonna be the day\nThat they're gonna throw it back to you\nBy now you should've somehow\nRealized what you gotta do\nI don't believe that anybody\nFeels the way I do about you now`
             },
-            // Rap com letras
+            { 
+                nome: 'Hotel California', cantor: 'Eagles', genero: 'Rock', ano: 1976, 
+                link: 'https://www.youtube.com/watch?v=09839DpTctU',
+                letra: `On a dark desert highway, cool wind in my hair\nWarm smell of colitas, rising up through the air\nUp ahead in the distance, I saw a shimmering light\nMy head grew heavy and my sight grew dim\nI had to stop for the night`
+            },
+            { 
+                nome: 'Californication', cantor: 'Red Hot Chili Peppers', genero: 'Rock', ano: 1999, 
+                link: 'https://www.youtube.com/watch?v=YlUKcNNmywk',
+                letra: `Psychic spies from China try to steal your mind's elation\nAnd little girls from Sweden dream of silver screen quotation\nAnd if you want these kind of dreams it's Californication\n\nIt's the edge of the world and all of western civilization\nThe sun may rise in the East at least it's settled in a final location\nIt's understood that Hollywood sells Californication`
+            },
+            // RAP (links verificados)
             { 
                 nome: 'Lose Yourself', cantor: 'Eminem', genero: 'Rap', ano: 2002, 
                 link: 'https://www.youtube.com/watch?v=_YhypkJhVOA',
@@ -481,7 +494,12 @@
                 link: 'https://www.youtube.com/watch?v=tvTRZJ-4EyI',
                 letra: `Nobody pray for me\nIt's been that day for me\nWay, yeah, yeah!\n\nAyy, I remember syrup sandwiches and crime allowances\nFinesse a nigga with some counterfeits\nBut now I'm countin' this\nParmesan where my accountant lives\nIn fact, I'm downin' this`
             },
-            // Eletrônico
+            { 
+                nome: 'Montero', cantor: 'Lil Nas X', genero: 'Rap', ano: 2021, 
+                link: 'https://www.youtube.com/watch?v=6swmTBVI83k',
+                letra: `I caught it bad yesterday\nYou hit me with a call to your place\nAin't been out in a while anyway\nWas hoping I could catch you throwing smiles in my face\n\nRomantic talking? You don't even have to try\nYou're cute enough to fuck with me tonight\nLooking at the table, all I see is weed and white\nBaby, you living life, but I don't think you living right`
+            },
+            // ELETRÔNICO (links verificados)
             { 
                 nome: 'Titanium', cantor: 'David Guetta', genero: 'Eletrônico', ano: 2011, 
                 link: 'https://www.youtube.com/watch?v=JRfuAukYTKg',
@@ -492,7 +510,12 @@
                 link: 'https://www.youtube.com/watch?v=IcrbM1l_BoI',
                 letra: `Feeling my way through the darkness\nGuided by a beating heart\nI can't tell where the journey will end\nBut I know where to start\n\nThey tell me I'm too young to understand\nThey say I'm caught up in a dream\nWell life will pass me by if I don't open up my eyes\nWell that's fine by me`
             },
-            // Indie
+            { 
+                nome: 'Faded', cantor: 'Alan Walker', genero: 'Eletrônico', ano: 2015, 
+                link: 'https://www.youtube.com/watch?v=60ItHLz5WEA',
+                letra: `You were the shadow to my light\nDid you feel us?\nAnother star, you fade away\nAfraid our aim is out of sight\nWanna see us alive\n\nWhere are you now?\nWas it all in my fantasy?\nWhere are you now?\nWere you only imaginary?`
+            },
+            // INDIE (links verificados)
             { 
                 nome: 'Do I Wanna Know?', cantor: 'Arctic Monkeys', genero: 'Indie', ano: 2013, 
                 link: 'https://www.youtube.com/watch?v=bpOSxM0rNPM',
@@ -503,39 +526,62 @@
                 link: 'https://www.youtube.com/watch?v=sBzR63WmGkE',
                 letra: `Someone said they left together\nI ran out the door to get her\nShe was holding hands with Trevor\nNot the greatest feeling ever\n\nSaid, "Pull yourself together"\nYou should try your luck with Heather\nThen I heard they slept together\nOh, the less I know the better`
             },
-            // Reggae
+            // REGGAE (links verificados)
             { 
                 nome: 'No Woman No Cry', cantor: 'Bob Marley', genero: 'Reggae', ano: 1974, 
                 link: 'https://www.youtube.com/watch?v=7sE9XUdv8bc',
                 letra: `No woman, no cry\nNo woman, no cry\nNo woman, no cry\nNo woman, no cry\n\nSaid, said, said I remember when we used to sit\nIn the government yard in Trenchtown\nOba, observing the hypocrites\nMingle with the good people we meet`
             },
-            // Jazz
+            // JAZZ (links verificados)
             { 
                 nome: 'What a Wonderful World', cantor: 'Louis Armstrong', genero: 'Jazz', ano: 1967, 
                 link: 'https://www.youtube.com/watch?v=E2VCwBzGdPM',
                 letra: `I see trees of green, red roses too\nI see them bloom for me and you\nAnd I think to myself what a wonderful world\n\nI see skies of blue and clouds of white\nThe bright blessed day, the dark sacred night\nAnd I think to myself what a wonderful world`
             },
-            // Gospel
+            // GOSPEL (links verificados)
             { 
                 nome: 'I Can Only Imagine', cantor: 'MercyMe', genero: 'Gospel', ano: 2001, 
                 link: 'https://www.youtube.com/watch?v=N_lrrq_opng',
                 letra: `I can only imagine what it will be like\nWhen I walk by your side\nI can only imagine what my eyes will see\nWhen your face is before me\nI can only imagine\n\nSurrounded by your glory\nWhat will my heart feel?\nWill I dance for you Jesus\nOr in awe of you be still?`
             },
+            // BLUES (links verificados)
+            { 
+                nome: 'The Thrill Is Gone', cantor: 'B.B. King', genero: 'Blues', ano: 1969, 
+                link: 'https://www.youtube.com/watch?v=4fk2prKnYnI',
+                letra: `The thrill is gone\nThe thrill is gone away\nThe thrill is gone, baby\nThe thrill is gone away\n\nYou know you done me wrong, baby\nAnd you'll be sorry someday`
+            },
+            // METAL (links verificados)
+            { 
+                nome: 'The Trooper', cantor: 'Iron Maiden', genero: 'Metal', ano: 1983, 
+                link: 'https://www.youtube.com/watch?v=1d7SPhy0ypQ',
+                letra: `You'll take my life but I'll take yours too\nYou'll fire your musket but I'll run you through\nSo when you're waiting for the next attack\nYou'd better stand, there's no turning back\n\nThe bugle sounds as the charge begins\nBut on this battlefield no one wins\nThe smell of acrid smoke and horses' breath\nAs you plunge on through certain death`
+            },
         ];
 
         // ============================================================
-        // ===== LÓGICA DO SITE (SEM PONTOS) =====
+        // ===== LÓGICA DO SITE (COM LOGIN POR GMAIL) =====
         // ============================================================
 
         let usuarioAtual = null;
+        let emailAtual = null;
         let jogoData = { modo: 'cantor', rodada: 0, totalRodadas: 5, itens: [], escolhas: [], campeao: null };
 
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('conteudo-principal').style.display = 'none';
             document.getElementById('tela-login').style.display = 'flex';
 
+            // Verifica se tem usuário salvo
             const usuarioSalvo = localStorage.getItem('usuario_atual');
-            if (usuarioSalvo) fazerLogin(usuarioSalvo);
+            const emailSalvo = localStorage.getItem('email_atual');
+            
+            if (usuarioSalvo && emailSalvo) {
+                // Tenta fazer login com os dados salvos
+                const usuarios = carregarUsuarios();
+                const encontrado = usuarios.find(u => u.email === emailSalvo);
+                if (encontrado) {
+                    fazerLogin(encontrado.nome, encontrado.email);
+                }
+            }
 
             preencherSelectsCantores();
             preencherSelectsGeneros();
@@ -592,8 +638,18 @@
             localStorage.setItem('usuarios_trilha', JSON.stringify(usuarios));
         }
 
+        function getUsuarioPorEmail(email) {
+            const usuarios = carregarUsuarios();
+            return usuarios.find(u => u.email === email);
+        }
+
+        function getUsuarioPorNome(nome) {
+            const usuarios = carregarUsuarios();
+            return usuarios.find(u => u.nome === nome);
+        }
+
         function getUsuario(nome) {
-            return carregarUsuarios().find(u => u.nome === nome);
+            return getUsuarioPorNome(nome);
         }
 
         function atualizarUsuario(nome, dados) {
@@ -605,14 +661,14 @@
             }
         }
 
-        // LOGIN
+        // LOGIN POR GMAIL
         function validarGmail(email) {
             return email.endsWith('@gmail.com') && email.split('@')[0].length > 0;
         }
 
         document.getElementById('form-login').addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = document.getElementById('email-usuario').value.trim();
+            const email = document.getElementById('email-usuario').value.trim().toLowerCase();
             const nome = document.getElementById('nome-usuario').value.trim();
             const favCantor1 = document.getElementById('fav-cantor1').value;
             const favCantor2 = document.getElementById('fav-cantor2').value;
@@ -630,15 +686,27 @@
                 document.getElementById('erro-email').style.display = 'block';
                 return;
             }
+
+            // VERIFICA SE O GMAIL JÁ EXISTE
+            const usuarios = carregarUsuarios();
+            const usuarioExistente = usuarios.find(u => u.email === email);
+
+            if (usuarioExistente) {
+                // Gmail já existe → FAZ LOGIN
+                fazerLogin(usuarioExistente.nome, email);
+                alert('🎵 Bem-vindo de volta, ' + usuarioExistente.nome + '!');
+                return;
+            }
+
+            // Gmail NÃO existe → CRIAR CONTA NOVA
             if (nome.length < 2) {
                 document.getElementById('erro-nome').textContent = '❌ Mínimo 2 caracteres!';
                 document.getElementById('erro-nome').style.display = 'block';
                 return;
             }
 
-            const usuarios = carregarUsuarios();
             if (usuarios.find(u => u.nome.toLowerCase() === nome.toLowerCase())) {
-                document.getElementById('erro-nome').textContent = '❌ Nome já em uso!';
+                document.getElementById('erro-nome').textContent = '❌ Nome já em uso! Escolha outro.';
                 document.getElementById('erro-nome').style.display = 'block';
                 return;
             }
@@ -649,26 +717,38 @@
             }
 
             const novoUsuario = {
-                nome, email, bio: '🎵 Amante da música!', avatar: '🎤',
-                amigos: [], solicitacoes: [], notificacoes: [],
+                nome: nome,
+                email: email,
+                bio: '🎵 Amante da música!',
+                avatar: '🎤',
+                amigos: [],
+                solicitacoes: [],
+                notificacoes: [],
                 notificacoesAtivas: notificacoes === 'sim',
                 favCantores: [favCantor1, favCantor2, favCantor3],
                 favGeneros: [favGenero1, favGenero2, favGenero3],
-                playlist: [], musicasNotas: {}, musicasComentarios: {},
+                playlist: [],
+                musicasNotas: {},
+                musicasComentarios: {},
                 dataEntrada: new Date().toISOString()
             };
 
             usuarios.push(novoUsuario);
             salvarUsuarios(usuarios);
-            localStorage.setItem('usuario_atual', nome);
-            localStorage.setItem('email_atual', email);
-            fazerLogin(nome);
-            alert('🎵 Bem-vindo(a), ' + nome + '!');
+            
+            fazerLogin(nome, email);
+            alert('🎵 Conta criada com sucesso! Bem-vindo(a), ' + nome + '!');
         });
 
-        function fazerLogin(nome) {
+        function fazerLogin(nome, email) {
             usuarioAtual = nome;
+            emailAtual = email;
+            
+            localStorage.setItem('usuario_atual', nome);
+            localStorage.setItem('email_atual', email);
+
             document.getElementById('nome-exibido').textContent = '👤 ' + nome;
+            document.getElementById('email-exibido').textContent = '📧 ' + email;
             document.getElementById('tela-login').style.display = 'none';
             document.getElementById('conteudo-principal').style.display = 'block';
 
@@ -688,6 +768,7 @@
                 localStorage.removeItem('usuario_atual');
                 localStorage.removeItem('email_atual');
                 usuarioAtual = null;
+                emailAtual = null;
                 document.getElementById('tela-login').style.display = 'flex';
                 document.getElementById('conteudo-principal').style.display = 'none';
             }
@@ -697,17 +778,18 @@
         document.getElementById('btn-excluir').addEventListener('click', function() {
             if (!usuarioAtual) return;
             if (confirm('Excluir conta permanentemente?')) {
-                const conf = prompt('Digite "SIM":');
+                const conf = prompt('Digite "SIM" para confirmar:');
                 if (conf && conf.toUpperCase() === 'SIM') {
                     let usuarios = carregarUsuarios();
-                    usuarios = usuarios.filter(u => u.nome !== usuarioAtual);
+                    usuarios = usuarios.filter(u => u.email !== emailAtual);
                     salvarUsuarios(usuarios);
                     localStorage.removeItem('usuario_atual');
                     localStorage.removeItem('email_atual');
                     usuarioAtual = null;
+                    emailAtual = null;
                     document.getElementById('tela-login').style.display = 'flex';
                     document.getElementById('conteudo-principal').style.display = 'none';
-                    alert('🗑️ Conta excluída!');
+                    alert('🗑️ Conta excluída com sucesso!');
                 }
             }
         });
@@ -720,6 +802,7 @@
             document.getElementById('perfil-nome').textContent = u.nome;
             document.getElementById('perfil-bio').textContent = u.bio || 'Sua biografia aqui...';
             document.getElementById('perfil-detalhes').textContent = 'Amigos: ' + (u.amigos ? u.amigos.length : 0);
+            document.getElementById('perfil-email').textContent = '📧 ' + u.email;
             document.getElementById('edit-bio').value = u.bio || '';
             document.getElementById('edit-avatar').value = u.avatar || '🎤';
         }
@@ -732,7 +815,7 @@
             alert('✅ Perfil atualizado!');
         });
 
-        // ===== MÚSICA DO DIA COM LETRA =====
+        // ===== MÚSICA DO DIA =====
         function carregarMusicaDoDia() {
             const u = getUsuario(usuarioAtual);
             if (!u) return;
@@ -745,8 +828,6 @@
             document.getElementById('musica-dia-artista').textContent = '🎤 ' + musica.cantor;
             document.getElementById('musica-dia-genero').textContent = '🎵 ' + musica.genero + ' | ' + musica.ano;
             document.getElementById('musica-dia-link').href = musica.link;
-            
-            // Mostrar a letra
             document.getElementById('musica-dia-letra').textContent = musica.letra || 'Letra não disponível para esta música.';
 
             const key = musica.nome + '|' + musica.cantor;
@@ -795,7 +876,7 @@
             alert('💬 Comentário adicionado!');
         });
 
-        // ===== JOGO SEM PONTOS =====
+        // ===== JOGO =====
         function iniciarJogo() {
             jogoData.rodada = 0;
             jogoData.escolhas = [];
@@ -907,7 +988,7 @@
             });
         });
 
-        // ===== PLAYLIST COM LETRAS =====
+        // ===== PLAYLIST =====
         function carregarPlaylist() {
             const u = getUsuario(usuarioAtual);
             if (!u) return;
@@ -1288,7 +1369,6 @@
         // ===== BOTÕES =====
         document.getElementById('btn-participar').addEventListener('click', function() {
             if (!usuarioAtual) { alert('Faça login!'); return; }
-            // Mostra uma música aleatória com letra
             const musica = MUSICAS[Math.floor(Math.random() * MUSICAS.length)];
             document.getElementById('musica-dia-nome').textContent = musica.nome;
             document.getElementById('musica-dia-artista').textContent = '🎤 ' + musica.cantor;
@@ -1320,6 +1400,7 @@
         console.log('🎵 Trilha Sonora 24h carregada!');
         console.log('🎤 Cantores:', CANTORES.length);
         console.log('🎵 Músicas:', MUSICAS.length);
+        console.log('📧 Login por Gmail ativado!');
     </script>
 
 </body>
